@@ -1,0 +1,37 @@
+
+
+/*estilos para la tabla*/
+table th {
+    background-color: #337ab7 !important;
+    color: #FFF;
+  
+}
+table td {
+    background-color: #ffffff !important;
+    color: rgb(8, 8, 8);
+  
+}
+.table-bordered td, .table-bordered th {
+    border: 1px solid #0000005a;
+}
+table>tbody>tr>td {
+    vertical-align: middle !important;
+    text-align: center;
+ 
+}
+
+/*para alinear los botones y cuadro de busqueda*/
+.btn-group, .btn-group-vertical {
+    position: absolute !important;
+}
+
+
+
+a:not([href]):not([tabindex]) {
+    color: black;
+    text-decoration: none;
+}
+.text-center {
+    text-align: justify!important;
+}
+

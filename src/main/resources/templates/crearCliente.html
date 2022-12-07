@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<!-- CSS only -->
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
+	crossorigin="anonymous">
+<title>Crear Cliente</title>
+</head>
+<body>
+
+
+	<div class="container">
+		<div Class="row">
+			<h1>Crear Cliente</h1>
+		</div>
+	
+		<section class="form-register" style="margin: auto; margin-top: 20px;">
+        
+                             <form th:action="@{/clientes}" th:object="${Cliente}" method="POST" >
+
+                            <input class="controls" type="text" required name="nombres" id="nombres" th:field="*{Nombres}" placeholder=" Nombres">
+                            <input class="controls" type="text" required name="apellidos"  th:field="*{Apellidos}" id="apellidos" placeholder=" Apellidos">
+                            <input class="controls" type="email"required name="Correo"  th:field="*{Email}" id="Correo" placeholder=" Correo">
+                            <input class="controls" type="number"required id="numero"  th:field="*{Telefono}" placeholder="Telefono" >
+                        
+                            <input type="submit" class="btn btn-info"id="submit"
+                            onclick="validacion()" value="Enviar">
+                            <input type="reset" name="reset"class="btn btn-info" 
+                            value="Restablecer"> 
+                            </form>
+        
+
+                  </section>
+
+	</div>
+</body>
+</html>

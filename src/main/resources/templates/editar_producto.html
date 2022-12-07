@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<!-- CSS only -->
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
+	crossorigin="anonymous">
+<title>Editar Cliente</title>
+</head>
+<body>
+
+
+	<div class="container">
+		<div Class="row">
+			<h1>Editar</h1>
+		</div>
+	
+		<section class="form-register" style="margin: auto; margin-top: 20px;">
+		
+		                     
+		                    <form th:action="@{/Solware2/home/C_ProductosA/{ID_Producto}(ID_Producto=${Producto.ID_Producto})} " th:object="${Producto}" method="POST" >
+                            <input type="text" name="Caja" id="nombre" class="input" th:field="*{Nombre}">
+                            <input type="text" name="Caja" id="CodigoProveedor" class="input" th:field="*{Proveedor}" placeholder="Codigo proveedor" required maxlength="10" minlength="1" pattern="[0-9]+">
+							<input type="text" name="Caja" id="Tamaño" th:field="*{Tamano}" class="input" required maxlength="10" minlength="1" >                          
+                              <input type="text" name="Caja" id="Total" th:field="*{Precio}" class="input" required maxlength="10" minlength="1" pattern="[0-9]+">   
+                            
+                            <input type="submit" class="btn btn-info"id="submit"
+                            value="Enviar">
+                            <input type="reset" name="reset"class="btn btn-info" 
+                            value="Restablecer"> 
+                            </form>
+		
+
+			      </section>
+
+	</div>
+</body>
+</html>

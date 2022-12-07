@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<!-- CSS only -->
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
+	crossorigin="anonymous">
+<title>Editar Cliente</title>
+</head>
+<body>
+
+		 <main class="main col">
+    <div class="row justify-content-center align-content-center text-center">
+        <div class="columna col-lg-6">
+            <h1  class="perfil">Editar</h1><br>
+
+
+<section class="form-register" style="margin: auto; margin-top: 20px; width: auto; height: 400px">
+
+<div class="row">
+<form th:action="@{/Solware2/home/ConsultarUs/{ID_Usuario}(ID_Usuario=${Usuario.ID_Usuario})} " th:object="${Usuario}" method="POST">
+<div class="row">
+  <div class="col-sm-6">
+    <label for="Nombres" class="form-label">Nombres</label>
+    <input id="Nombres" type="text" class="form-control" required th:field="*{Nombre}">
+  </div>
+  <div class="col-sm-6">
+    <label for="Apellidos" class="form-label">Apellidos</label>
+    <input id="Apellidos" type="text" class="form-control"required th:field="*{Apellido}">  
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-6">
+	             <label class="form-label">Rol</label>
+	               <select th:field="*{Rol}" class="form-control">
+	                <option th:each="rol:${roles}" th:value="${rol.ID_Rol}" th:text="${rol.Nombre_Rol}"></option>
+	               </select>
+	              
+	            </div>
+  <div class="col-sm-6">
+    <label for="Correo" class="form-label">Correo</label>
+    <input id="Correo" type="email" class="form-control"required th:field="*{Correo}">
+   
+  </div>
+</div>
+<div class="row">
+      <div class="col-sm-6">
+          <label for="Telefono"class="form-label">Telefono</label>
+          <input id="Telefono" name="Telefono" type="tel" class="form-control" required th:field="*{Telefono}">    
+      </div>
+      <div class="col-sm-6">
+        <label for="Contrasena"class="form-label">Contraseña</label>
+        <input id="Contrasena" type="password" class="form-control"required th:field="*{Contrasena}">
+      </div>     
+</div>
+<div class="row">
+<div class="col-md-12">
+<br>
+<br>
+      <input type="submit" class="btn btn-primary"id="submit"
+                onclick="validacion()" value="Enviar">   
+       <input type="reset" name="reset"class="btn btn-danger" 
+                value="Restablecer"> </div>
+</div>
+</form>
+</div>
+</div>
+</div>
+</section>
+
+	</div>
+</body>
+</html>

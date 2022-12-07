@@ -1,0 +1,55 @@
+body{
+  background-color: #0003;
+}
+.seccion_principal{
+	margin:0 auto;
+	margin-top: 1em;
+	padding: 0;
+}
+
+.usuario-img{
+	margin-top: -2px;
+	margin-bottom: 35px;
+}
+.usuario-img img {
+	width: 50%;
+}
+#sesion{
+	height: 675px;
+  
+}
+.inicio{
+	font-family: fantasy;
+}
+select {
+  margin-top: 1px;
+  margin-bottom: 35px;
+  width: 95%;
+  padding: 5px 10px;
+  border: auto;
+  border-radius: 1px;
+  background: #00000073;
+  align-content: center;
+
+}
+.inputs{
+ 
+  width: 75%;
+  height: 35px;
+}
+.inicioSesion{
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    width: 100%;
+    pointer-events: auto;
+    background-color: #0003;
+    background-clip: padding-box;
+    border: 1px solid rgba(0,0,0,.2);
+    border-radius: 0.3rem;
+    outline: 0;
+    top: 105px;
+
+}

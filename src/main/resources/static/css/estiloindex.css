@@ -1,0 +1,128 @@
+*{
+	margin: 0px;
+	padding: 0px;
+}
+#cprincipal{
+	height: auto;
+	padding: 0px;
+	margin: 0px;
+}
+.footer{
+	width: 100%;
+	height: 120px;
+	border-style: none;
+}
+.header{
+	width: 100%;
+	height: 172px;
+	border-style: none;
+}
+#texto{
+	letter-spacing: 4px;
+	text-align: center;
+	color: black;
+	text-indent: 40px;
+
+}
+.text{
+	text-align: center;
+	
+
+}
+.img{
+	margin: auto;
+	width: 78%;
+	display: block;
+}
+.row{
+	height: 700px;
+}
+#inicioS{
+	height: 700px;
+	width: 40%;
+
+}
+#login{
+	height: 600px;
+	width: 70%;
+	background-image: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);	
+}
+#email{
+	width: 40%;
+	margin-top: 50px ;
+	text-align: center;
+	
+}
+
+
+#mv{
+	text-align: center;
+
+}
+#mision{
+	text-align: center;
+	style="font-family: fantasy;
+	color: skyblue;
+	border-style: double;
+	text-shadow: 1px  0px 0px black, 0px  1px 0px black,-1px  0px 0px black,0px -1px 0px black;">
+	font-size: 40px;
+	font-family: cursive;
+}
+#vision{
+	text-align: center;
+	style="font-family: fantasy;
+	color: skyblue;
+	border-style: double;
+	text-shadow: 1px  0px 0px black, 0px  1px 0px black,-1px  0px 0px black,0px -1px 0px black;">
+	font-size: 40px;
+	font-family: cursive;
+}
+#misionletra{
+	font-size: 23px;
+	font-family: cursive;
+	color: black;
+	text-align: justify;
+
+}
+#visionletra{
+	font-size: 23px;
+	font-family: cursive;
+	color: black;
+	text-align: justify;
+	
+}
+#caja{
+	display: block;
+	margin: auto;
+}
+#titulo{
+	text-align: center;
+	font-size: 80px;
+	font-family: fantasy;
+}
+.volver{
+	font-size: 40px;
+}
+.somos {
+	margin: 5px;
+	padding: 30px;
+	}
+#im{
+	text-align: center;
+}
+.servi{
+	height: 700px;
+}
+.im{
+	padding-top: 104px;
+}
+.vid{
+	padding-top: 40px;
+}
+#som{
+	font-size: 23px;
+	font-family: cursive;
+	color: black;
+	text-align: justify;
+
+}

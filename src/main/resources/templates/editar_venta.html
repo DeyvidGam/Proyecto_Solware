@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<!-- CSS only -->
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
+	crossorigin="anonymous">
+<title>Editar Venta</title>
+</head>
+<body>
+
+
+	<div class="container">
+		<div Class="row">
+			<h1>Editar</h1>
+		</div>
+	
+		<section class="form-register" style="margin: auto; margin-top: 20px;">
+		
+		                     
+		                    <form th:action="@{/Solware2/home/ConsultarAdmin/{ID_Venta}(ID_Venta=${Venta.ID_Venta})} " th:object="${Venta}" method="POST" >
+		                    
+                            <input class="controls" type="datetime-local" name="FechaYHora" id="FechaYHora" th:field="*{FechaYHora}" >
+                            <input class="controls" type="text" name="Modo_Pago"  th:field="*{Modo_Pago}" id="Modo_Pago" >
+                            <input class="controls" type="text"name="Valor_Venta"  th:field="*{Valor_Venta}" id="Valor_Venta" >
+                            <input class="controls" type="text" id="IDPedido"  th:field="*{IDPedido}">
+
+                            <input type="submit" class="btn btn-info"id="submit"
+                            value="Enviar">
+                            <input type="reset" name="reset"class="btn btn-info" 
+                            value="Restablecer"> 
+                            </form>
+		
+
+			      </section>
+
+	</div>
+</body>
+</html>

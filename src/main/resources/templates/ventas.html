@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/babdd0dc30.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="/css/ab.css">
+    <link rel="stylesheet" type="text/css" href="/css/estilofooter.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/estiloinventario.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/Ventas.js"></script>
+</head>
+<body>
+
+<div class="container-fluid">
+        <div class="row justify-content-center align-content-center">
+           
+ <div class="col-7 barra1"style="color: white;">
+               
+            </div>
+
+            <div class="col-5 barra1">
+                <div class="dropdown">
+                    <a class="btn  dropdown-toggle boton text-light" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-user-circle user"></i> Carlos David Beltran
+                    </a>
+                    <ul class="dropdown-menu boton" aria-labelledby="dropdownMenuButton1">
+                        <a class="dropdown-item" href="/Solware2/PerfilV">Mi perfil</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="/Solware2/home/index">Cerrar sesión</a>
+                      </div>
+                    </ul>
+                  </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="barra-lateral col-12 col-sm-auto">
+                
+                <nav class="menu d-flex d-sm-block justify-content-center flex-wrap" >
+                    <img id="logo" th:src="@{/img/LOGO SOL WARE .PNG}" width="140px">
+                    <a  class="option" href="/Solware2/aa" ><i class="fas fa-home" title="Inicio"></i><span>Inicio</span></a>
+                    <a  class="option" href="/Solware2/PerfilV" > <i class="fa-solid fa-user" title="Perfil"></i><span>Perfil</span></a>
+                    <div class="dropdown">
+                        <a class=" dropdown-toggle " type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                         Proveedor
+                        </a>
+                        <ul class="dropdown-menu " aria-labelledby="dropdownMenuButton1">
+                            <a class="dropdown-item" href="/Solware2/C_Proveedores/nuevo">C_Proveedores</a>
+                            <a class="dropdown-item" href="/Solware2/C_Proveedores">Consultar</a>
+                          
+                          </ul></div>
+
+                    <div class="dropdown">
+                        <a class=" dropdown-toggle " type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                         Productos
+                        </a>
+                        <ul class="dropdown-menu " aria-labelledby="dropdownMenuButton1">
+                            <a class="dropdown-item" href="/Solware2/C_Productos/nuevo">C_Productos</a>
+                            <a class="dropdown-item" href="/Solware2/C_Productos">Consultar</a>
+                          
+                          </ul></div><div class="dropdown">
+                        <a class=" dropdown-toggle " type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                         Cliente
+                        </a>
+                        <ul class="dropdown-menu " aria-labelledby="dropdownMenuButton1">
+                            <a class="dropdown-item" href="/Solware2/C_Cliente/nuevo">C_Cliente</a>
+                            <a class="dropdown-item" href="/Solware2/C_Cliente">Consultar</a>
+                          
+                          </ul></div>
+                    <div class="dropdown">
+                        <a class=" dropdown-toggle " type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                         pedido
+                        </a>
+                        <ul class="dropdown-menu " aria-labelledby="dropdownMenuButton1">
+                            <a class="dropdown-item" href="/Solware2/Pedidos">C_Pedido</a>
+                            <a class="dropdown-item" href="/Solware2/C_Pedidos">Consultar</a>
+                          
+                          </ul></div>
+                    <a  class="option" href="/Solware2/ConsultarV/nuevo" ><i class="fas fa-dollar-sign" title="Ventas"></i><span>Crear Ventas</span></a>
+                    <a  class="option" href="/Solware2/ConsultarV" > <i class="fa-solid fa-magnifying-glass" title="Ventas"></i><span>Consultar Ventas</span></a>
+                    <a  class="option" href="/Solware2/ReportesV" ><i class="fa-solid fa-bug"></i><span>ReportesV</span></a>
+                    
+                </nav>
+            </div>
+            <main class="main col">
+                <div class="row justify-content-center align-content-center text-center">
+                    <div class="columna col-lg-12">
+                      
+                      <form th:action="@{/Solware2/home/ConsultarV}" th:object="${Venta}" method="POST" >
+                        <main class="perfiles">
+                            <link rel="stylesheet" href="/css/estiloPerfilV.css">
+                       <title>Sol y Asociados</title>
+                       <h1  class="perfile"> VENTAS</h1>
+                        <section class="form-register" style="margin-top: 30px;">
+                       
+                    
+        
+             
+                            <label for="Label">Fecha de Venta</label>
+                                
+                            <ul class="nav flex-column">
+                                <div class=" input-group mb-3" style="width: 50%; margin-left: 25%;">
+                                  <span class="input-group-text" id="addon-wrapping"><i class="bi bi-calendar4-range"></i></span>
+                                  <input id="fecha" type="datetime-local" class="form-control"aria-describedby="basic-addon1" th:field="*{FechaYHora}" >
+                                </div>
+                              </ul>
+                     <br>
+                
+                          <div>
+                          <label for="Caja">Codigo del pedido </label>
+                          <input type="text" name="Caja" th:field="*{IDPedido}" id="CodigoPedido"  class="input" required maxlength="10" minlength="1" pattern="[0-9]+">
+                          <button type="button" class="btn btn" data-toggle="modal" data-target="#myModal"><i class="fa-solid fa-plus"></i></button>
+                                <!-- The Modal -->
+                        <div class="modal" id="myModal">
+                            <div class="modal-dialog">
+                              <div class="modal-content">
+                
+                                <!-- Modal Header -->
+                                <div class="modal-header">
+                                  <h4 style="text-align: center;">ID pedido</h4>
+                                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                </div>
+                
+                                <!-- Modal body -->
+                                <div class="modal-body" style="right: 75px;margin-right: 150px;left: auto;">
+                                 <table class="tableizer-table">
+                                  <thead><tr class="tableizer-firstrow"><th>pedido</th><th>&nbsp;</th><th>&nbsp;</th><th>&nbsp;</th></tr></thead><tbody>
+                                   <tr><td>ID_Pedido</td><td>Fecha_pedido</td><td>Total</td><td>ID_Cliente</td></tr>
+                                   <tr><td>1</td><td>2022-01-05</td><td>107000</td><td>1583497591</td></tr>
+                                   <tr><td>2</td><td>2022-01-05</td><td>575750</td><td>1480041324</td></tr>
+                                   <tr><td>3</td><td>2022-01-05</td><td>20000</td><td>1089521730</td></tr>
+                                   <tr><td>4</td><td>2022-01-05</td><td>2500</td><td>1235619635</td></tr>
+                                   <tr><td>5</td><td>2022-01-05</td><td>9000</td><td>1500578912</td></tr>
+                                  </tbody></table>
+                                </div>
+                
+                                <!-- Modal footer -->
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                                </div>
+                
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                    
+                    <br>
+                    <div style="margin-left: 105px ;">
+                        <strong aria-required="true" style="margin-right: 307px">Tipo De Pago</strong><br>
+                        <input type="radio" required th:field="*{Modo_Pago}" name="size" id="TipoPago" value="Nequi">
+                        <label for="small" style="margin-right: 307px"> Nequi</label><br>
+                        <input type="radio" th:field="*{Modo_Pago}" name="size" id="TipoPago" required value="Daviplata" >
+                        <label for="small"  style="margin-right: 285px;">Daviplata</label><br>
+                        <input type="radio"required th:field="*{Modo_Pago}" name="size" id="TipoPago" value="Bancolombia" >
+                        <label for="small" style="margin-right: 260px;">Bancolombia</label>
+                        <br>
+                    </div>
+                    <br>
+                        <main >
+                        <label for="Caja">Total </label>
+                        <input type="text" name="Caja" id="Total"  th:field="*{Valor_Venta}" class="input" required maxlength="10" minlength="1" pattern="[0-9]+"></main>
+                  
+                      
+                       <br>
+                        <div class="col-12 "><br>
+                        <input type="submit" class="btn btn-info"id="submit"
+                            onclick="validacion()" value="Enviar">
+                            <input type="reset" name="reset"class="btn btn-info" 
+                            value="Restablecer"> 
+                        
+                    </div>
+                      
+                    </div>
+
+                </div>
+
+            </main>
+   
+   
+    <footer class="pie-pagina">
+        <div class="grupo-1">
+            <div class="box">
+                <figure>
+                    <a href="#">
+                        <img src="/img/LOGO_SOL_Y_ASOCIADOS.png" alt="Logo">
+                    </a>
+                </figure>
+            </div>
+            <div class="box">
+                <h2>SOBRE NOSOTROS</h2>
+                <p>Satélite administrativo de terminaciones gráficas</p>
+                <p>BOGOTA D.C KR 90-6D 4 </p>
+                <p>3132877292</p>
+            </div>
+            <div class="box">
+                <h2>SIGUENOS</h2>
+                <div class="red-social">
+                    <a href="#" class="fa fa-facebook"></a>
+                    <a href="#" class="fa fa-instagram"></a>
+                    <a href="#" class="fa fa-twitter"></a>
+                    <a href="#" class="fa fa-youtube"></a>
+                </div>
+            </div>
+        </div>
+        <div class="grupo-2">
+            <small>&copy; 2022 <b>Sol y Asociados</b> - Todos los Derechos Reservados.</small>
+        </div>
+      </footer>
+
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/646c794df3.js"></script>
+   
+    <script>
+        $(document).ready(function () {
+          $("#AB").on("keyup", function () {
+            var value = $(this).val().toLowerCase();
+            $("#myTable tr").filter(function () {
+              $(this).toggle($(this).text().toLowerCase().indexOf(value) > -2)
+            });
+          });
+        });
+      </script>
+      <script type="text/javascript">
+    
+        function actualizar(){
+          window.location="tablasconfiltro1.html"
+        }
+    
+        function exportTableToExcel(tableID, filename = ''){
+        var downloadLink;
+        var dataType = 'application/vnd.ms-excel';
+        var tableSelect = document.getElementById(tableID);
+        var tableHTML = tableSelect.outerHTML.replace(/ /g, '%20');
+        
+        // Specify file name
+        filename = filename?filename+'.xls':'excel_data.xls';
+        
+        // Create download link element
+        downloadLink = document.createElement("a");
+        
+        document.body.appendChild(downloadLink);
+        
+        if(navigator.msSaveOrOpenBlob){
+            var blob = new Blob(['ufeff', tableHTML], {
+                type: dataType
+            });
+            navigator.msSaveOrOpenBlob( blob, filename);
+        }else{
+            // Create a link to the file
+            downloadLink.href = 'data:' + dataType + ', ' + tableHTML;
+        
+            // Setting the file name
+            downloadLink.download = filename;
+           
+             //triggering the function
+             downloadLink.click();
+           
+        }
+    }
+        
+    </script>
+          
+</body>
+</html>

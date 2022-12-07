@@ -1,0 +1,55 @@
+body{
+	margin: 0px;
+	font-family: "Muli",sans-serif;
+	background-image: linear-gradient(to right, #fa709a 0%, #fee140 100%);
+}
+h1{
+	margin: 0px;
+}
+
+
+.error-message{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	height: calc(100vh - 200px);
+	width: 100%;
+}
+.error-message__container{
+	text-align: center;
+	color: black;
+	width: 80%;
+}
+h1{
+	font-size: 200px;
+	float: none;
+	margin-top: 200px;
+
+}
+p{
+	font-size: 60px;
+}
+.animated{
+	animation-duration: 2.0s;
+	animation-fill-mode: both;
+	animation-iteration-count: infinite;
+}
+@keyframes bounce{
+	0%, 20%, 50%, 80%, 100%{transform: translateY(0);}
+	40% {transform: translateY(-30px);}
+	60% {transform: translateY(-15px);}
+
+}
+.bounce{
+	animation-name: bounce;
+}
+.volver{
+	color: black;
+}
+#errorC{
+	float: left;
+	left: 50px;
+	padding-top: 200px;
+	width: 30%;
+}

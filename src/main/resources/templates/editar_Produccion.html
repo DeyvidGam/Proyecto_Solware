@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<!-- CSS only -->
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
+	crossorigin="anonymous">
+<title>Editar Produccion</title>
+</head>
+<body>
+
+
+	<div class="container">
+		<div Class="row">
+			<h1>Editar</h1>
+		</div>
+	
+		<section class="form-register" style="margin: auto; margin-top: 20px;">
+					
+		                    <form th:action="@{/Solware2/home/ConsultarPAdmin/{ID_Produccion}(ID_Produccion=${Produccion.ID_Produccion})}" th:object="${Produccion}" method="POST" >
+                        	<label>Operario:</label><br>
+                            <input type="text" name="Operario" id="Operario"  th:field="*{Operario}" placeholder=" Operario" disabled="disabled">
+                            <div style="margin-left: 10px ;">
+		                        <strong aria-required="true" style="margin-right: 20px">Estado</strong><br>
+		                        <label>1</label>
+		                        <input type="radio" th:field="*{Estado_Produccion}" name="size" id="1" value="1"><br>
+		                        <label>2</label>
+		                        <input type="radio" th:field="*{Estado_Produccion}" name="size" id="2" value="2" >	                     
+                       			 <br>
+                  			</div>
+                  			<input type="date" name="Fecha_Inicio" id="Fecha_Inicio"  th:field="*{Fecha_Inicio}" placeholder=" Fecha_Inicio">
+                  			<input type="text" name="Cantidad" id="Cantidad"  th:field="*{Cantidad}" placeholder=" Cantidad" >
+                  			<input type="date" name="Fecha_Fin" id="Fecha_Fin"  th:field="*{Fecha_Fin}" placeholder=" Fecha_Fin">
+                  			<input type="text" name="Pedido" id="Pedido"  th:field="*{Pedido}" placeholder=" Pedido" >
+                  			<input type="text" name="ID_Inventario" id="ID_Inventario"  th:field="*{id_Inventario}" placeholder=" ID_Inventario" >
+                  		
+                            <input type="submit" class="btn btn-info"id="submit"
+                            onclick="validacion()" value="Enviar">
+                            <input type="reset" name="reset"class="btn btn-info" 
+                            value="Restablecer"> 
+                            </form>
+		
+
+			      </section>
+
+	</div>
+</body>
+</html>

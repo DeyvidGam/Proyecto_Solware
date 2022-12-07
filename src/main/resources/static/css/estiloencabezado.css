@@ -1,0 +1,26 @@
+*{
+	margin: 0px;
+	padding: 0px;
+}
+.container-fluid{
+background-image: linear-gradient(to right, #ffffff 0%, #00c9ff 100%);
+}
+.title{
+	font-family: fantasy;
+	text-align: center;
+	color: #000000;
+    text-shadow: 3px 3px 6px #ffffff;
+}
+
+.conte{
+	padding: 0;
+	margin: 0;
+	height: auto;
+
+}
+.barra{
+	width: 100%;
+}
+.letra{
+	font-size:40px;
+}

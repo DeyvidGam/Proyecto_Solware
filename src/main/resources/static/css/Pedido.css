@@ -1,0 +1,28 @@
+form{
+    width: 900px;
+    height: 450px;
+    margin: auto;
+    background-color: gainsboro;
+    overflow: hidden;
+    border-radius: 20px;
+}
+th,td {
+    padding: 0.4rem !important;
+}
+body>div {
+    box-shadow: 10px 10px 8px #888888;
+  
+    border-radius: 10px;
+}
+.tablax{
+    width: 500px;
+}
+.a{
+  max-width: 109%;
+}
+.btnC{
+    text-align: left;
+}
+h1{
+    text-align: center;
+}

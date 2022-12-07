@@ -1,0 +1,40 @@
+table.tableizer-table {
+	font-size: 14px;
+    border: 1px solid #CCC;
+    font-family: Arial, Helvetica, sans-serif;
+    width: 80%;
+    margin-left: 125px;
+	} 
+	.tableizer-table td {
+		padding: 9px;
+		margin: 9px;
+		border: 2px solid #343a40;
+		margin-top: 1px;
+	}
+	.tableizer-table th {
+		background-color: #104E8B; 
+		color: #FFF;
+		font-weight: bold;
+	}	
+	.medio {
+    height: 95%;
+    width: 80%;
+    text-align: center;
+    margin-left: 300px;
+    padding-top: 20px;
+
+}
+.medioo {
+    font-size: 14px;
+    border: 1px solid #CCC;
+    font-family: Arial, Helvetica, sans-serif;
+    width: 80%;
+    margin-left: 200px;
+    	padding: 9px;
+		margin: 9px;
+		border: 2px solid #CCC;
+		margin-top: 1px;
+}
+.crear{
+	text-align: center;
+}

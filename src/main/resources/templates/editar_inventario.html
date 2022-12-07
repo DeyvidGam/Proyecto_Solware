@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<!-- CSS only -->
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
+	crossorigin="anonymous">
+<title>Editar Inventario</title>
+</head>
+<body>
+
+
+	<div class="container">
+		<div Class="row">
+			<h1>Editar</h1>
+		</div>
+	
+<section class="form-register" style="margin: auto; margin-top: 20px; width: auto; height: 400px">
+
+<div class="row">
+     <form th:action="@{/Solware2/home/Consultar/{ID_Inventario}(ID_Inventario=${Inventario.ID_Inventario})} " th:object="${Inventario}" method="POST" >
+  
+<div class="row">
+  <div class="col-sm-6">
+    <label for="Fecha" class="form-label">Fecha</label>
+    <input id="Fecha" type="date" class="form-control" required th:field="*{Fecha}">
+  </div>
+  <div class="col-sm-6">
+    <label class="form-label">Insumo</label>
+      <select th:field="*{Insumo}" class="form-control">
+       <option th:each="insumo:${insumos}" th:value="${insumo.ID_Insumo}" th:text="${insumo.Nombre_Material}"></option>
+      </select>
+     
+   </div>
+</div>
+<div class="row">
+  <div class="col-sm-6">
+	             <label class="form-label">Movimiento</label>
+	               <select th:field="*{Movimiento}" class="form-control">
+	                <option th:each="movimiento:${movimientos}" th:value="${movimiento.ID_Movimiento}" th:text="${movimiento.Nombre}"></option>
+	               </select>
+	              
+	            </div>
+  <div class="col-sm-6">
+    <label for="Entrada" class="form-label">Entrada</label>
+    <input id="Entrada" type="number" class="form-control"required th:field="*{Entrada}">
+   
+  </div>
+</div>
+<div class="row">
+    <div class="col-sm-6">
+        <label for="Salida" class="form-label">Salida</label>
+        <input id="Salida" type="number" class="form-control"required th:field="*{Salida}">
+       
+      </div>
+      <div class="col-sm-6">
+        <label for="Disponible" class="form-label">Disponible</label>
+        <input id="Disponible" type="number" class="form-control"required th:field="*{Disponible}">
+       
+      </div>  
+</div>
+<div class="row">
+<div class="col-md-12">
+<br>
+<br>
+      <input type="submit" class="btn btn-primary"id="submit"
+                onclick="validacion()" value="Enviar">   
+       <input type="reset" name="reset"class="btn btn-danger" 
+                value="Restablecer"> </div>
+</div>
+</form>
+</div>
+</div>
+</div>
+</section>
+
+	</div>
+</body>
+</html>
