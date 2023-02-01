@@ -3,7 +3,8 @@
 	padding: 0px;
 }
 #cprincipal{
-	height: auto;
+	
+	height: 850px;
 	padding: 0px;
 	margin: 0px;
 }
@@ -61,21 +62,11 @@
 }
 #mision{
 	text-align: center;
-	style="font-family: fantasy;
-	color: skyblue;
-	border-style: double;
-	text-shadow: 1px  0px 0px black, 0px  1px 0px black,-1px  0px 0px black,0px -1px 0px black;">
-	font-size: 40px;
-	font-family: cursive;
+	
 }
 #vision{
 	text-align: center;
-	style="font-family: fantasy;
-	color: skyblue;
-	border-style: double;
-	text-shadow: 1px  0px 0px black, 0px  1px 0px black,-1px  0px 0px black,0px -1px 0px black;">
-	font-size: 40px;
-	font-family: cursive;
+	
 }
 #misionletra{
 	font-size: 23px;
@@ -94,6 +85,26 @@
 #caja{
 	display: block;
 	margin: auto;
+	padding: auto;
+	align-items: center;
+}
+.mision{
+	margin-right: 20px;
+	display: block;
+	margin: 0 260px;
+}
+
+.manual:hover{
+	width: 35%;
+}
+.quienes:hover{
+	width: 28%;
+}
+.vision:hover{
+	width: 45%
+}
+.mision:hover{
+	width: 40%
 }
 #titulo{
 	text-align: center;

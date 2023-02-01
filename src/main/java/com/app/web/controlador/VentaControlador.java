@@ -56,6 +56,8 @@ public class VentaControlador {
 	@GetMapping("/ConsultarAdmin/editar/{ID_Venta}")
 	public String Editar(@PathVariable Long ID_Venta,Model modelo ) {
 		modelo.addAttribute("Venta", ventaServicio.obtenerVentaPorId(ID_Venta));
+		List<Pedido> listapedido = pedidoServicio.listarpedidos(); 
+		modelo.addAttribute("Pedidos", listapedido);
 	    return "editar_venta";
 	}
 

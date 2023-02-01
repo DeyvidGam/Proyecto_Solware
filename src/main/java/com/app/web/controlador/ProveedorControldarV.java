@@ -56,7 +56,6 @@ public class ProveedorControldarV {
 		proveedorExistente.setNombre(proveedor.getNombre());
 		proveedorExistente.setEmail(proveedor.getEmail());
 		proveedorExistente.setTelefono(proveedor.getTelefono());
-		proveedorExistente.setTipoProducto(proveedor.getTipoProducto());
 		proveedorExistente.setProducto(proveedor.getProducto());
 		proveedorServicio.updateProveedor(proveedorExistente);
 		return "redirect:/proveedor";

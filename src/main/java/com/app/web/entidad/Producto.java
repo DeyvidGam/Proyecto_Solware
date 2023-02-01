@@ -5,7 +5,6 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -30,15 +29,12 @@ public class Producto {
     @OneToMany(mappedBy = "producto",cascade = CascadeType.ALL)
     List<Detalle_Pedido>listaProductos;
     private int Precio;
-	public Producto(Long iD_Producto, String nombre, String proveedor, String tamano,
-			List<com.app.web.entidad.Proveedor> listaProvedor, List<Detalle_Pedido> listaProductos, int precio) {
+	public Producto(Long iD_Producto, String nombre, String proveedor, String tamano, int precio) {
 		super();
 		ID_Producto = iD_Producto;
 		Nombre = nombre;
 		Proveedor = proveedor;
 		Tamano = tamano;
-		this.listaProvedor = listaProvedor;
-		this.listaProductos = listaProductos;
 		Precio = precio;
 	}
 	public Producto() {
@@ -68,18 +64,6 @@ public class Producto {
 	public void setTamano(String tamano) {
 		Tamano = tamano;
 	}
-	public List<Proveedor> getListaProvedor() {
-		return listaProvedor;
-	}
-	public void setListaProvedor(List<Proveedor> listaProvedor) {
-		this.listaProvedor = listaProvedor;
-	}
-	public List<Detalle_Pedido> getListaProductos() {
-		return listaProductos;
-	}
-	public void setListaProductos(List<Detalle_Pedido> listaProductos) {
-		this.listaProductos = listaProductos;
-	}
 	public int getPrecio() {
 		return Precio;
 	}
@@ -89,7 +73,7 @@ public class Producto {
 	@Override
 	public String toString() {
 		return "Producto [ID_Producto=" + ID_Producto + ", Nombre=" + Nombre + ", Proveedor=" + Proveedor + ", Tamano="
-				+ Tamano + ", listaProvedor=" + listaProvedor + ", listaProductos=" + listaProductos + ", Precio="
+				+ Tamano + ", Precio="
 				+ Precio + "]";
 	}
 	

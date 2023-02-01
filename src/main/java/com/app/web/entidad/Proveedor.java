@@ -17,25 +17,22 @@ public class Proveedor {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long ID_Proveedor;
-    @Column(name = "Nombre ")
+    @Column(name = "Nombre")
     private String Nombre;
-    @Column(name = "Email ")
+    @Column(name = "Email")
     private String Email;
-    @Column(name = "telefono ")
+    @Column(name = "telefono")
     private int  telefono;
-    @Column(name = "TipoProducto ")
-    private String TipoProducto;
     @ManyToOne
 	 @JoinColumn (name="Producto")
 	 Producto producto;
-	public Proveedor(Long iD_Proveedor, String nombre, String email, int telefono, String tipoProducto,
+	public Proveedor(Long iD_Proveedor, String nombre, String email, int telefono,
 			Producto producto) {
 		super();
 		ID_Proveedor = iD_Proveedor;
 		Nombre = nombre;
 		Email = email;
 		this.telefono = telefono;
-		TipoProducto = tipoProducto;
 		this.producto = producto;
 	}
 	public Proveedor() {
@@ -65,12 +62,6 @@ public class Proveedor {
 	public void setTelefono(int telefono) {
 		this.telefono = telefono;
 	}
-	public String getTipoProducto() {
-		return TipoProducto;
-	}
-	public void setTipoProducto(String tipoProducto) {
-		TipoProducto = tipoProducto;
-	}
 	public Producto getProducto() {
 		return producto;
 	}
@@ -78,9 +69,5 @@ public class Proveedor {
 		this.producto = producto;
 	}
 	
-    
-  
-
-
-	
+   
 }

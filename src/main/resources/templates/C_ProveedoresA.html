@@ -34,9 +34,7 @@
 	<div class="container-fluid">
 		<div class="row justify-content-center align-content-center">
 
- <div class="col-7 barra1"style="color: white;">
-
-			</div>
+			<div class="col-7 barra1" style="color: white;"></div>
 
 			<div class="col-5 barra1">
 				<div class="dropdown">
@@ -170,35 +168,36 @@
 					<div class="columna col-lg-12">
 
 						<div class="table-responsive responsive">
-							<table id="tabla" class="table table-striped table-bordered" cellspacing="0" width="100%">
-                             
-                            <h1 >Proveedores</h1>
-                            
-                           <thead class="table-dark">
-                                    <tr>
-                                        <th>ID_Proveedor</th>
-                                        <th>Nombre</th>
-                                        <th>Email</th>
-                                        <th>telefono</th>
-                                        <th>Producto</th>
-                                        <th>Acciones</th>
+							<table id="tabla" class="table table-striped table-bordered"
+								cellspacing="0" width="100%">
 
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr th:each="provedores : ${Proveedor}">
-                                        <td th:text="${provedores.ID_Proveedor}">ID_Proveedor</td>
-                                        <td th:text="${provedores.Nombre}">Nombre</td>
-                                        <td th:text="${provedores.Email}">Email</td>
-                                        <td th:text="${provedores.telefono}">telefono</td>
-                                        <td th:text="${provedores.Producto.Nombre}">Producto</td>
-                                        <td><a th:href="@{/Solware2/home/C_ProveedoresA/{ID_Proveedor}(ID_Proveedor=${provedores.ID_Proveedor})}"
-                                        class="btn btn-danger">eliminar</a>
-                                        <a th:href="@{/Solware2/home/C_ProveedoresA/editar/{ID_Proveedor}(ID_Proveedor=${provedores.ID_Proveedor})}"
-                                        class="btn btn-info">Editar</a>
-                                        </td>
-                                    </tr>
-                                </tbody>
+								<h1>Proveedores</h1>
+
+								<thead class="table-dark">
+									<tr>
+										<th>ID_Proveedor</th>
+										<th>Nombre</th>
+										<th>Email</th>
+										<th>telefono</th>
+										<th>Producto</th>
+										<th>Acciones</th>
+
+									</tr>
+								</thead>
+								<tbody>
+									<tr th:each="provedores : ${Proveedor}">
+										<td th:text="${provedores.ID_Proveedor}">ID_Proveedor</td>
+										<td th:text="${provedores.Nombre}">Nombre</td>
+										<td th:text="${provedores.Email}">Email</td>
+										<td th:text="${provedores.telefono}">telefono</td>
+										<td th:text="${provedores.Producto.Nombre}">Producto</td>
+										<td><a
+											th:href="@{/Solware2/home/C_ProveedoresA/{ID_Proveedor}(ID_Proveedor=${provedores.ID_Proveedor})}"
+											class="btn btn-danger">eliminar</a> <a
+											th:href="@{/Solware2/home/C_ProveedoresA/editar/{ID_Proveedor}(ID_Proveedor=${provedores.ID_Proveedor})}"
+											class="btn btn-info">Editar</a></td>
+									</tr>
+								</tbody>
 
 							</table>
 						</div>

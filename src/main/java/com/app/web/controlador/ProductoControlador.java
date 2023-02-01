@@ -51,6 +51,8 @@ public class ProductoControlador {
 	@GetMapping("/C_ProductosA/editar/{ID_Producto}")
 	public String Editar(@PathVariable Long ID_Producto,Model modelo ) {
 		modelo.addAttribute("Producto", productoServicio.obtenerProductoPorId(ID_Producto));
+		List<Proveedor> listaproveedor = proveedorServicio.listarproveedores();
+		modelo.addAttribute("Proveedores", listaproveedor);
 	    return "editar_producto";
 	}
 	

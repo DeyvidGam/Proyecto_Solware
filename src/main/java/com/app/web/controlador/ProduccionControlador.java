@@ -67,6 +67,12 @@ public class ProduccionControlador {
 	@GetMapping("/ConsultarPAdmin/editar/{ID_Produccion}")
 	public String Editar(@PathVariable Long ID_Produccion,Model modelo ) {
 		modelo.addAttribute("Produccion", produccionServicio.obtenerProduccionPorId(ID_Produccion));
+		List<Usuario> listausuario = usuarioServicio.listarusuario();
+		List<Pedido> listapedido = pedidoServicio.listarpedidos();
+		List<Inventario> listainventario = inventarioServicio.listarinventario();
+		modelo.addAttribute("Usuarios", listausuario);
+		modelo.addAttribute("Pedidos", listapedido);
+		modelo.addAttribute("Inventarios", listainventario);
 	    return "editar_Produccion";
 	}
 	

@@ -50,16 +50,14 @@ public class ProveedorControldar {
 		proveedorServicio.guardarProveedor(proveedor);
 		return "redirect:/Solware2/home/C_ProveedoresA";
 	}
-	@PostMapping("/proveedor")
-	public String guardarCliente(@ModelAttribute("Proveedor") Proveedor proveedor) {
-		proveedorServicio.guardarProveedor(proveedor);
-		return "redirect:/Solware2/home/C_ProveedoresA";
-	}
+
 
 	@GetMapping("/C_ProveedoresA/editar/{ID_Proveedor}")
 	public String Editar(@PathVariable Long ID_Proveedor,Model modelo ) {
 		modelo.addAttribute("Proveedor", proveedorServicio.obtenerProveedorPorId(ID_Proveedor));
-	    return "editar_proveedor";
+		List<Producto> listaproducto = productoServicio.listarProducto();
+		modelo.addAttribute("Productos", listaproducto);
+		return "editar_proveedor";
 	}
 
 	@PostMapping("/C_ProveedoresA/{ID_Proveedor}")
@@ -69,7 +67,6 @@ public class ProveedorControldar {
 		proveedorExistente.setNombre(proveedor.getNombre());
 		proveedorExistente.setEmail(proveedor.getEmail());
 		proveedorExistente.setTelefono(proveedor.getTelefono());
-		proveedorExistente.setTipoProducto(proveedor.getTipoProducto());
 		proveedorExistente.setProducto(proveedor.getProducto());
 		proveedorServicio.updateProveedor(proveedorExistente);
 		return "redirect:/Solware2/home/C_ProveedoresA";
