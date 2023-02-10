@@ -22,7 +22,7 @@ public class Estado {
     private Long ID_Estado;
     @Column(name = "Tipo_Estado ")
     private String Tipo_Estado;
-    @OneToMany(mappedBy = "estadoInsumo",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "estado_Insumo",cascade = CascadeType.ALL)
     List<Insumo>listaEstadoInsumo;
     @OneToMany(mappedBy = "estado_Produccion",cascade = CascadeType.ALL)
     List<Produccion>listaProduccion;

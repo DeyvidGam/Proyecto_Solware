@@ -33,8 +33,7 @@
 	<div class="container-fluid">
 		<div class="row justify-content-center align-content-center">
 
-			 <div class="col-7 barra1"style="color: white;">
-			</div>
+			<div class="col-7 barra1" style="color: white;"></div>
 
 			<div class="col-5 barra1">
 				<div class="dropdown">
@@ -170,70 +169,134 @@
 							<div class="col-md-12">
 								<h1>INVENTARIO</h1>
 							</div>
-							<section class="form-register" style="margin: auto; margin-top: 20px; width: auto; height: 400px">
+							<section class="form-register"
+								style="margin: auto; margin-top: 20px; width: 650px; height: 400px">
 
-<div class="row">
-    <form th:action="@{/Solware2/home/Consultar}" th:object="${Inventario}"
-    method="POST">
-<div class="row">
-  <div class="col-sm-6">
-    <label for="Fecha" class="form-label">Fecha</label>
-    <input id="Fecha" type="date" class="form-control" required th:field="*{Fecha}">
-  </div>
-  <div class="col-sm-6">
-    <label class="form-label">Insumo</label>
-      <select th:field="*{Insumo}" class="form-control">
-       <option th:each="insumo:${insumos}" th:value="${insumo.ID_Insumo}" th:text="${insumo.Nombre_Material}"></option>
-      </select>
-     
-   </div>
-</div>
-<div class="row">
-  <div class="col-sm-6">
-	             <label class="form-label">Movimiento</label>
-	               <select th:field="*{Movimiento}" class="form-control">
-	                <option th:each="movimiento:${movimientos}" th:value="${movimiento.ID_Movimiento}" th:text="${movimiento.Nombre}"></option>
-	               </select>
-	              
-	            </div>
-  <div class="col-sm-6">
-    <label for="Entrada" class="form-label">Entrada</label>
-    <input id="Entrada" type="number" class="form-control"required th:field="*{Entrada}">
-   
-  </div>
-</div>
-<div class="row">
-    <div class="col-sm-6">
-        <label for="Salida" class="form-label">Salida</label>
-        <input id="Salida" type="number" class="form-control"required th:field="*{Salida}">
-       
-      </div>
-      <div class="col-sm-6">
-        <label for="Disponible" class="form-label">Disponible</label>
-        <input id="Disponible" type="number" class="form-control"required th:field="*{Disponible}">
-       
-      </div>  
-</div>
-<div class="row">
-<div class="col-md-12">
-<br>
-<br>
-      <input type="submit" class="btn btn-primary"id="submit"
-                onclick="validacion()" value="Enviar">   
-       <input type="reset" name="reset"class="btn btn-danger" 
-                value="Restablecer"> </div>
-</div>
-</form>
-</div>
-</div>
-</div>
-</section>
 
+								<form th:action="@{/Solware2/home/Consultar}"
+									th:object="${Inventario}" method="POST">
+									<div class="row">
+										<div class="row">
+											<div class="col-sm-5">
+												<label for="Fecha" class="form-label">Fecha</label> <input
+													id="Fecha" type="date" class="form-control" required
+													th:field="*{Fecha}" style="display: block">
+											</div>
+											<div class="col-sm-5">
+												<label class="form-label">Insumo</label> <select
+													th:field="*{Insumo}" class="form-control"
+													style="margin-right: 60px; display: inline;">
+													<option th:each="insumo:${insumos}"
+														th:value="${insumo.ID_Insumo}"
+														th:text="${insumo.Nombre_Material}"></option>
+												</select>
+											</div>
+
+											<div class="col-sm-2"
+												style="display: inline-flex; align-items: self-end; justify-content: center;">
+												<!-- Button to Open the Modal -->
+												<button type="button" class="btn btn-primary"
+													data-toggle="modal" data-target="#myModal">Consultar
+												</button>
+
+												<!-- The Modal -->
+												<div class="modal fade" id="myModal">
+													<div class="modal-dialog">
+														<div class="modal-content">
+
+															<!-- Modal Header -->
+															<div class="modal-header">
+																<h4 class="modal-title">Insumos</h4>
+																<button type="button" class="close" data-dismiss="modal">&times;</button>
+															</div>
+
+															<!-- Modal body -->
+															<div class="modal-body">
+																<main class="main col">
+																	<div
+																		class="row justify-content-center align-content-center text-center">
+																		<div class="columna col-lg-10">
+
+																			<div class="table-responsive responsive">
+																				<table id="tabla"
+																					class="table table-striped table-bordered"
+																					cellspacing="0" width="100%">
+																					<thead class="table-dark">
+																						<tr>
+																							<th>Nombre</th>
+																							<th>Stock</th>
+																						</tr>
+																					</thead>
+																					<tbody>
+																						<tr th:each="insumo : ${insumos}">
+																							<td th:text="${insumo.Nombre_Material}"></td>
+																							<td th:text="${insumo.Disponible}"></td>
+																						</tr>
+																					</tbody>
+																				</table>
+																			</div>
+																		</div>
+
+																	</div>
+
+																</main>
+															</div>
+
+															<!-- Modal footer -->
+															<div class="modal-footer">
+																<button type="button" class="btn btn-danger"
+																	data-dismiss="modal">Close</button>
+															</div>
+
+														</div>
+													</div>
+												</div>
+
+											</div>
+										</div>
+
+										<div class="row">
+											<div class="col-sm-5">
+												<label class="form-label">Movimiento</label> <select
+													th:field="*{Movimiento}" class="form-control">
+													<option th:each="movimiento:${movimientos}"
+														th:value="${movimiento.ID_Movimiento}"
+														th:text="${movimiento.Nombre}"></option>
+												</select>
+
+											</div>
+
+
+											<div class="col-sm-5">
+												<label for="Cantidad" class="form-label">Cantidad</label> <input
+													id="Cantidad" type="number" class="form-control" required
+													th:field="*{Cantidad}">
+
+											</div>
+											<div class="col-sm-4"></div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-12">
+											<br> <br> <input type="submit"
+												class="btn btn-primary" id="submit" value="Enviar">
+											<input type="reset" name="reset" class="btn btn-danger"
+												value="Restablecer">
+											<div th:if="${mostrarAlerta}" class="alert alert-success"
+												role="alert">No se puede sacar mas insumo del existente</div>
+
+										</div>
+									</div>
+								</form>
 						</div>
 					</div>
-
 				</div>
+				</section>
 		</div>
+	</div>
+
+	</div>
+	</div>
 
 	</div>
 

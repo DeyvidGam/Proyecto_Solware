@@ -19,6 +19,5 @@ public class MovimientoControlador {
 		modelo.addAttribute("Movimiento", movimientoServicio.listarmovimiento());
 		return "movimiento";
 	}
-	
 
 }

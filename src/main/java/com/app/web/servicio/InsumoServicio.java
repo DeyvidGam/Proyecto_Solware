@@ -10,4 +10,5 @@ public interface InsumoServicio {
 	    public Insumo guardarInsumo(Insumo insumo);
 	    public Insumo updateInsumo(Insumo insumo);
 	    public void delete(Long ID_Insumo);
+	    
 }

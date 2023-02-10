@@ -186,9 +186,7 @@
 									<th>ID Inventario</th>
 									<th>ID Insumo</th>
 									<th>Movimiento</th>
-									<th>Entrada</th>
-									<th>Salida</th>
-									<th>Disponible</th>
+									<th>Cantidad</th>
 									<th>Fecha</th>
 									<th>Acciones</th>
 								</thead>
@@ -197,9 +195,7 @@
 										<td th:text="${inventario.ID_Inventario}"></td>
 										<td th:text="${inventario.Insumo.Nombre_Material}"></td>
 										<td th:text="${inventario.Movimiento.Nombre}"></td>
-										<td th:text="${inventario.Entrada}"></td>
-										<td th:text="${inventario.Salida}"></td>
-										<td th:text="${inventario.Disponible}"></td>
+										<td th:text="${inventario.Cantidad}"></td>
 										<td th:text="${inventario.Fecha}"></td>
 										<td>
 										<a th:href="@{/Solware2/home/Consultar/{ID_Inventario}(ID_Inventario=${inventario.ID_Inventario})}"

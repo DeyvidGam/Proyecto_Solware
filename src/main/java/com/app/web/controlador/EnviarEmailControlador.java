@@ -30,7 +30,10 @@ public class EnviarEmailControlador {
 	    public String Mostrarformulario(){
 	        return "EnviarEmail";
 	    }
-	
+	 @GetMapping("Recuperarcontraseña")
+	    public String Recuperarcontraseña(){
+	        return "Recordarcontra";
+	    }
 	 @PostMapping("/sendMail")
 	 
 	 public String sendMail(@RequestParam("recipient") String recipient,@RequestParam("subject") String subject, @RequestParam("msgBody") String msgBody){
@@ -39,7 +42,7 @@ public class EnviarEmailControlador {
 		 email.setSubject(subject);
 		 email.setMsgBody(msgBody);
 		 emailServicioImp.sendSimpleMail(email);
-	        return "redirect:Email";
+	        return "redirect:inicioSesion";
 	    }
 	 @PostMapping("SendMassiveMails")
 	 

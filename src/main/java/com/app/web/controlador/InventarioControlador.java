@@ -31,66 +31,80 @@ public class InventarioControlador {
 	private  InsumoServicio insumoServicio;
 	@Autowired
 	private MovimientoServicio movimientoServicio;
-	
+
 	@GetMapping("/Consultar")
 
 	public String listarinventario(Model modelo) {
 		modelo.addAttribute("Inventario", inventarioServicio.listarinventario());
 		return "Consultar";
 	}
-	
+
 	@GetMapping("/ModuloInventario")
 	public String crearInventario(Model modelo) {
 		Inventario inventario = new Inventario();
-		
+
 		List<Insumo> listainsumos = insumoServicio.listarinsumo();
 		List<Movimiento> listamovimientos = movimientoServicio.listarmovimiento();
-		
+
 		modelo.addAttribute("Inventario", inventario);
-		
+
 		modelo.addAttribute("insumos", listainsumos);
 		modelo.addAttribute("movimientos", listamovimientos);
 		return "ModuloInventario";
 
 	}
-	
+
+	public void MovimientoInventario(Inventario inventario) {
+		inventarioServicio.guardarInventario(inventario);
+		Inventario inventarioExistente = inventarioServicio.obtenerInventarioPorId(inventario.getID_Inventario());
+		Insumo insumo = insumoServicio.obtenerInsumoPorId(inventarioExistente.getInsumo().getID_Insumo());
+		int disponible = insumo.getDisponible();
+		
+		if (inventario.getMovimiento().getNombre().equalsIgnoreCase("Entrada")) {
+			insumo.setDisponible(inventarioExistente.getCantidad() + disponible);
+		}else if(inventario.getMovimiento().getNombre().equalsIgnoreCase("Salida") && (disponible>inventarioExistente.getCantidad())) {
+			insumo.setDisponible(inventarioExistente.getCantidad() - disponible);
+		}
+		insumoServicio.guardarInsumo(insumo);
+	}
+
 	@PostMapping("/Consultar")
 	public String guardarInventario(@ModelAttribute("Inventario") Inventario inventario) {
 		inventarioServicio.guardarInventario(inventario);
+		MovimientoInventario(inventario);
 		return "redirect:/Solware2/home/Consultar";
 	}
-	
+
 	@GetMapping("/Consultar/editar/{ID_Inventario}")
 	public String Editar(@PathVariable Long ID_Inventario,Model modelo ) {
 		List<Insumo> listainsumos = insumoServicio.listarinsumo();
 		List<Movimiento> listamovimientos = movimientoServicio.listarmovimiento();
 		modelo.addAttribute("insumos", listainsumos);
 		modelo.addAttribute("movimientos", listamovimientos);
-		
+
 		modelo.addAttribute("Inventario", inventarioServicio.obtenerInventarioPorId(ID_Inventario));
-	    return "editar_inventario";
+		return "editar_inventario";
 	}
-	
+
 	@PostMapping("/Consultar/{ID_Inventario}")
 	public String updateInventario(@PathVariable Long ID_Inventario, @ModelAttribute("Inventario") Inventario inventario, Model modelo) {
 		Inventario inventarioExistente = inventarioServicio.obtenerInventarioPorId(ID_Inventario);
 		inventarioExistente.setID_Inventario(ID_Inventario);
 		inventarioExistente.setInsumo(inventario.getInsumo());
 		inventarioExistente.setMovimiento(inventario.getMovimiento());
-		inventarioExistente.setEntrada(inventario.getEntrada());
-		inventarioExistente.setSalida(inventario.getSalida());
-		inventarioExistente.setDisponible(inventario.getDisponible());
+		inventarioExistente.setCantidad(inventario.getCantidad());
 		inventarioExistente.setFecha(inventario.getFecha());
+
 		inventarioServicio.updateInventario(inventarioExistente);
 		return "redirect:/Solware2/home/Consultar";
 	}
-	
+
 	@GetMapping("/Consultar/{ID_Inventario}")
 	public String deleteInventario(@PathVariable Long ID_Inventario) {
-	
+
 		inventarioServicio.delete(ID_Inventario);
 		return "redirect:/Solware2/home/Consultar";
-		
+
 	}
-	
+
 }

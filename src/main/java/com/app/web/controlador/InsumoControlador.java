@@ -1,18 +1,25 @@
 package com.app.web.controlador;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
 import com.app.web.entidad.Insumo;
 import com.app.web.servicio.InsumoServicio;
 
-
-
 @Controller
+@RequestMapping(path="/Solware2/home")
+@CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.POST,RequestMethod.PUT})
+
 public class InsumoControlador {
 	@Autowired
 	private InsumoServicio insumoServicio;
@@ -31,6 +38,12 @@ public class InsumoControlador {
 		return "crearInsumo";
 
 	}
+	  @GetMapping("/consultar-stock")
+	    public String consultarStock(Model model) {
+	        List<Insumo> insumos = insumoServicio.listarinsumo();
+	        model.addAttribute("insumos", insumos);
+	        return "stock-insumos";
+	    }
 
 	@PostMapping("/insumo")
 	public String guardarInsumo(@ModelAttribute("Insumo") Insumo insumo) {
@@ -48,7 +61,8 @@ public class InsumoControlador {
 		Insumo insumoExistente = insumoServicio.obtenerInsumoPorId(ID_Insumo);
 		insumoExistente.setID_Insumo(ID_Insumo);
 		insumoExistente.setNombre_Material(insumo.getNombre_Material());
-		insumoExistente.setEstadoInsumo(insumo.getEstadoInsumo());
+		insumoExistente.setEstado_Insumo(insumo.getEstado_Insumo());
+		insumoExistente.setDisponible(insumo.getDisponible());
 		insumoServicio.updateInsumo(insumoExistente);
 		return "redirect:/insumo";
 	}

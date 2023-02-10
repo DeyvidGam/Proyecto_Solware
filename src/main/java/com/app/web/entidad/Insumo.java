@@ -23,46 +23,71 @@ public class Insumo {
     private Long ID_Insumo;
     @Column(name="Nombre_Material")
     private String Nombre_Material;
+    @Column(name="Disponible")
+    private int Disponible;
     @ManyToOne
-	@JoinColumn (name="EstadoInsumo")
+	@JoinColumn (name="Estado_Insumo")
     
-	 Estado estadoInsumo;
+	 Estado estado_Insumo;
     
     @OneToMany(mappedBy = "insumo", cascade = CascadeType.ALL)
     List<Detalle_Produccion>listaDetalle_ProduccionIns;
+
+	public Insumo(Long iD_Insumo, String nombre_Material, int disponible, Estado estado_Insumo) {
+		super();
+		ID_Insumo = iD_Insumo;
+		Nombre_Material = nombre_Material;
+		Disponible = disponible;
+		this.estado_Insumo = estado_Insumo;
+	}
+	
+
 	public Insumo() {
 		super();
 	}
-	public Insumo(Long iD_Insumo, Estado estadoInsumo, String nombre_Material,
-			List<Detalle_Produccion> listaDetalle_ProduccionIns) {
-		super();
-		ID_Insumo = iD_Insumo;
-		this.estadoInsumo = estadoInsumo;
-		Nombre_Material = nombre_Material;
-		this.listaDetalle_ProduccionIns = listaDetalle_ProduccionIns;
-	}
+
+
 	public Long getID_Insumo() {
 		return ID_Insumo;
 	}
+
 	public void setID_Insumo(Long iD_Insumo) {
 		ID_Insumo = iD_Insumo;
 	}
-	public Estado getEstadoInsumo() {
-		return estadoInsumo;
-	}
-	public void setEstadoInsumo(Estado estadoInsumo) {
-		this.estadoInsumo = estadoInsumo;
-	}
+
 	public String getNombre_Material() {
 		return Nombre_Material;
 	}
+
 	public void setNombre_Material(String nombre_Material) {
 		Nombre_Material = nombre_Material;
 	}
+
+	public int getDisponible() {
+		return Disponible;
+	}
+
+	public void setDisponible(int disponible) {
+		Disponible = disponible;
+	}
+
+	public Estado getEstado_Insumo() {
+		return estado_Insumo;
+	}
+
+	public void setEstado_Insumo(Estado estado_Insumo) {
+		this.estado_Insumo = estado_Insumo;
+	}
+
+
 	@Override
 	public String toString() {
-		return "Insumo [ID_Insumo=" + ID_Insumo + ", estadoInsumo=" + estadoInsumo + ", Nombre_Material="
-				+ Nombre_Material + "]";
+		return "Insumo [ID_Insumo=" + ID_Insumo + ", Nombre_Material=" + Nombre_Material + ", Disponible=" + Disponible
+				+ ", estado_Insumo=" + estado_Insumo + "]";
 	}
+
+	
+	
+	
 	
 }

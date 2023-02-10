@@ -60,4 +60,8 @@ public class Homecontrolador {
 	public String mision(Model modelo) {
 		return "mision";
 	}
+	@GetMapping("/Recordarcontra")
+	public String contraseña(Model modelo) {
+		return "Recordarcontra";
+	}
 }
