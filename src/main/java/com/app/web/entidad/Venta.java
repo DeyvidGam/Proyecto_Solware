@@ -1,5 +1,8 @@
 package com.app.web.entidad;
 
+import java.time.LocalDateTime;
+import java.util.Date;
+import org.springframework.core.convert.converter.Converter;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,11 +21,11 @@ public class Venta {
     private Long ID_Venta;
 	
     @Column(name = "FechaYHora")
-    private String FechaYHora;
+    private LocalDateTime FechaYHora;
     @Column(name = "Modo_Pago")
     private String Modo_Pago;
     @Column(name = "Valor_Venta")
-    private int  Valor_Venta;
+    private double Valor_Venta;
     @ManyToOne
 	 @JoinColumn (name="IDPedido")
 	 Pedido iDPedido;
@@ -30,14 +33,18 @@ public class Venta {
 	
 	}
 
-	public Venta(Long iD_Venta, Pedido iDPedido, String fechaYHora, String modo_Pago, int valor_Venta) {
+	
+
+	public Venta(Long iD_Venta, LocalDateTime fechaYHora, String modo_Pago, Pedido iDPedido) {
 		super();
 		ID_Venta = iD_Venta;
-		this.iDPedido = iDPedido;
 		FechaYHora = fechaYHora;
 		Modo_Pago = modo_Pago;
-		Valor_Venta = valor_Venta;
+		this.iDPedido = iDPedido;
+		Valor_Venta = iDPedido.getTotal();
 	}
+
+
 
 	public Long getID_Venta() {
 		return ID_Venta;
@@ -55,13 +62,18 @@ public class Venta {
 		this.iDPedido = iDPedido;
 	}
 
-	public String getFechaYHora() {
+
+	public LocalDateTime getFechaYHora() {
 		return FechaYHora;
 	}
 
-	public void setFechaYHora(String fechaYHora) {
-		FechaYHora = fechaYHora;
+
+
+	public void setFechaYHora(LocalDateTime localDateTime) {
+		FechaYHora = localDateTime;
 	}
+
+
 
 	public String getModo_Pago() {
 		return Modo_Pago;
@@ -71,12 +83,12 @@ public class Venta {
 		Modo_Pago = modo_Pago;
 	}
 
-	public int getValor_Venta() {
+	public double getValor_Venta() {
 		return Valor_Venta;
 	}
 
-	public void setValor_Venta(int valor_Venta) {
-		Valor_Venta = valor_Venta;
+	public void setValor_Venta(double sumaTotal) {
+		Valor_Venta = sumaTotal;
 	}
 
 	@Override

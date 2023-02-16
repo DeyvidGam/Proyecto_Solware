@@ -1,12 +1,15 @@
 package com.app.web.entidad;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -23,20 +26,17 @@ public class Proveedor {
     private String Email;
     @Column(name = "telefono")
     private int  telefono;
-    @ManyToOne
-	 @JoinColumn (name="Producto")
-	 Producto producto;
-	public Proveedor(Long iD_Proveedor, String nombre, String email, int telefono,
-			Producto producto) {
+    @OneToMany(mappedBy = "proveedor",cascade = CascadeType.ALL)
+    List<Producto>listaProducto;
+	public Proveedor() {
+		super();
+	}
+	public Proveedor(Long iD_Proveedor, String nombre, String email, int telefono) {
 		super();
 		ID_Proveedor = iD_Proveedor;
 		Nombre = nombre;
 		Email = email;
 		this.telefono = telefono;
-		this.producto = producto;
-	}
-	public Proveedor() {
-		super();
 	}
 	public Long getID_Proveedor() {
 		return ID_Proveedor;
@@ -62,12 +62,13 @@ public class Proveedor {
 	public void setTelefono(int telefono) {
 		this.telefono = telefono;
 	}
-	public Producto getProducto() {
-		return producto;
+	@Override
+	public String toString() {
+		return "Proveedor [ID_Proveedor=" + ID_Proveedor + ", Nombre=" + Nombre + ", Email=" + Email + ", telefono="
+				+ telefono + "]";
 	}
-	public void setProducto(Producto producto) {
-		this.producto = producto;
-	}
+   
+	
 	
    
 }

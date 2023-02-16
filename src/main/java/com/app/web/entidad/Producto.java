@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 @Entity
@@ -19,23 +21,22 @@ public class Producto {
     private Long ID_Producto;
     @Column(name = "Nombre ")
     private String Nombre;
-    @Column(name = "Proveedor ")
-    private String Proveedor;
     @Column(name = "Tamano ")
     private String Tamano;
     @Column(name = "Precio ")
-    @OneToMany(mappedBy = "producto",cascade = CascadeType.ALL)
-    List<Proveedor>listaProvedor;
+    private int Precio;
+    @ManyToOne
+	 @JoinColumn (name="Proveedor")
+	 Proveedor proveedor;
     @OneToMany(mappedBy = "producto",cascade = CascadeType.ALL)
     List<Detalle_Pedido>listaProductos;
-    private int Precio;
-	public Producto(Long iD_Producto, String nombre, String proveedor, String tamano, int precio) {
+	public Producto(Long iD_Producto, String nombre, String tamano, int precio, Proveedor proveedor) {
 		super();
 		ID_Producto = iD_Producto;
 		Nombre = nombre;
-		Proveedor = proveedor;
 		Tamano = tamano;
 		Precio = precio;
+		this.proveedor = proveedor;
 	}
 	public Producto() {
 		super();
@@ -52,12 +53,6 @@ public class Producto {
 	public void setNombre(String nombre) {
 		Nombre = nombre;
 	}
-	public String getProveedor() {
-		return Proveedor;
-	}
-	public void setProveedor(String proveedor) {
-		Proveedor = proveedor;
-	}
 	public String getTamano() {
 		return Tamano;
 	}
@@ -70,12 +65,19 @@ public class Producto {
 	public void setPrecio(int precio) {
 		Precio = precio;
 	}
+	public Proveedor getProveedor() {
+		return proveedor;
+	}
+	public void setProveedor(Proveedor proveedor) {
+		this.proveedor = proveedor;
+	}
 	@Override
 	public String toString() {
-		return "Producto [ID_Producto=" + ID_Producto + ", Nombre=" + Nombre + ", Proveedor=" + Proveedor + ", Tamano="
-				+ Tamano + ", Precio="
-				+ Precio + "]";
+		return "Producto [ID_Producto=" + ID_Producto + ", Nombre=" + Nombre + ", Tamano=" + Tamano + ", Precio="
+				+ Precio + ", proveedor=" + proveedor + "]";
 	}
+   
+	
 	
   
 }

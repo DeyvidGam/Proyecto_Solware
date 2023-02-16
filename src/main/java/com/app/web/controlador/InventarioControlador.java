@@ -62,8 +62,8 @@ public class InventarioControlador {
 		
 		if (inventario.getMovimiento().getNombre().equalsIgnoreCase("Entrada")) {
 			insumo.setDisponible(inventarioExistente.getCantidad() + disponible);
-		}else if(inventario.getMovimiento().getNombre().equalsIgnoreCase("Salida") && (disponible>inventarioExistente.getCantidad())) {
-			insumo.setDisponible(inventarioExistente.getCantidad() - disponible);
+		}else if(inventario.getMovimiento().getNombre().equalsIgnoreCase("Salida") && (disponible>=inventarioExistente.getCantidad())) {
+			insumo.setDisponible(disponible - inventarioExistente.getCantidad() );
 		}
 		insumoServicio.guardarInsumo(insumo);
 	}

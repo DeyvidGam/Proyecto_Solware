@@ -1,5 +1,6 @@
 package com.app.web.entidad;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -23,9 +24,8 @@ public class Pedido {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long ID_Pedido;
-	
     @Column(name = "Fecha_Pedido ")
-    private String Fecha_Pedido;
+    private Date Fecha_Pedido;
     @Column(name = "Total ")
     private int Total;
     @ManyToOne
@@ -35,12 +35,30 @@ public class Pedido {
     List<Produccion>listaProduccion;
     @OneToMany(mappedBy = "pedido",cascade = CascadeType.ALL)
     List<Detalle_Pedido>listaDetallePedido;
-    @OneToMany(mappedBy = "iDPedido",cascade = CascadeType.ALL)
+    public List<Produccion> getListaProduccion() {
+		return listaProduccion;
+	}
+	public void setListaProduccion(List<Produccion> listaProduccion) {
+		this.listaProduccion = listaProduccion;
+	}
+	public List<Detalle_Pedido> getListaDetallePedido() {
+		return listaDetallePedido;
+	}
+	public void setListaDetallePedido(List<Detalle_Pedido> listaDetallePedido) {
+		this.listaDetallePedido = listaDetallePedido;
+	}
+	public List<Venta> getListaVentas() {
+		return listaVentas;
+	}
+	public void setListaVentas(List<Venta> listaVentas) {
+		this.listaVentas = listaVentas;
+	}
+	@OneToMany(mappedBy = "iDPedido",cascade = CascadeType.ALL)
     List<Venta>listaVentas;
 	public Pedido() {
 	
 	}
-	public Pedido(Long iD_Pedido, Cliente cliente, String fecha_Pedido, int total) {
+	public Pedido(Long iD_Pedido, Cliente cliente, Date fecha_Pedido, int total) {
 		super();
 		ID_Pedido = iD_Pedido;
 		this.cliente = cliente;
@@ -59,17 +77,18 @@ public class Pedido {
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
 	}
-	public String getFecha_Pedido() {
+	
+	public Date getFecha_Pedido() {
 		return Fecha_Pedido;
 	}
-	public void setFecha_Pedido(String fecha_Pedido) {
+	public void setFecha_Pedido(Date fecha_Pedido) {
 		Fecha_Pedido = fecha_Pedido;
 	}
 	public int getTotal() {
 		return Total;
 	}
-	public void setTotal(int total) {
-		Total = total;
+	public void setTotal(double sumaTotal) {
+		Total = (int) sumaTotal;
 	}
 	@Override
 	public String toString() {

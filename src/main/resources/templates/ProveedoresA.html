@@ -157,38 +157,44 @@
 						<main class="inicios">
 							<h1 class="perfil">Registrar Proveedor</h1>
 							<section class="form-register"
-								style="margin: auto; margin-top: 20px; width: auto; height: 400px">
+								style="margin: auto; margin-top: 20px; width: 600px; height: 400px">
 
 								<div class="row">
 									<form th:action="@{/Solware2/home/C_ProveedoresA}"
 										th:object="${Proveedor}" method="POST">
 										<div class="row">
-											<div class="col-sm-6">
+										<div class="col-sm-2">
+										</div>
+											<div class="col-sm-8">
 												<label for="Nombre" class="form-label">Nombre</label> <input
 													id="Nombre" type="text" class="form-control" required
-													th:field="*{Nombre}">
+													th:field="*{Nombre}"placeholder="Nombre">
 											</div>
-											<div class="col-sm-6">
-												<label for="Email" class="form-label">Email</label> <input
-													id="Email" type="email" class="form-control" required
-													th:field="*{Email}">
-											</div>
+											<div class="col-sm-2">
+										</div>
 										</div>
 										<div class="row">
-											<div class="col-sm-6">
+										<div class="col-sm-2">
+										</div>
+											<div class="col-sm-8"style="margin-top: 20px;">
+												<label for="Email" class="form-label">Email</label> <input
+													id="Email" type="email" class="form-control" required
+													th:field="*{Email}" placeholder="Email">
+											</div>
+											<div class="col-sm-2">
+										</div>
+										</div>
+										<div class="row">
+										<div class="col-sm-2">
+										</div>
+											<div class="col-sm-8"style="margin-top: 20px;">
 												<label for="Telefono" class="form-label">Telefono</label> <input
 													id="Telefono" type="tel" class="form-control" required
-													th:field="*{telefono}">
+													th:field="*{telefono}"placeholder="Telefono">
 											</div>
+											<div class="col-sm-2">
+										</div>
 
-											<div class="col-sm-6">
-												<label class="form-label">ID Producto</label> <select
-													th:field="*{Producto}" class="form-control">
-													<option th:each="Producto:${Productos}"
-														th:value="${Producto.ID_Producto}"
-														th:text="${Producto.Nombre}"></option>
-												</select>
-											</div>
 										</div>
 
 										<div class="row">

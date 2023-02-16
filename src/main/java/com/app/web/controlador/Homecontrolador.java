@@ -64,4 +64,8 @@ public class Homecontrolador {
 	public String contraseña(Model modelo) {
 		return "Recordarcontra";
 	}
+	@GetMapping("/Contactenos")
+	public String contactenos(Model modelo) {
+		return "Contactenos";
+	}
 }

@@ -178,7 +178,7 @@
                                     <tr th:each="productos : ${Producto}">
                                         <td th:text="${productos.ID_Producto}">ID_Producto</td>
                                         <td th:text="${productos.Nombre}">Nombre</td>
-                                        <td th:text="${productos.Proveedor}">Proveedor</td>
+                                        <td th:text="${productos.Proveedor.Nombre}">Proveedor</td>
                                         <td th:text="${productos.Tamano}">Tamano</td>
                                         <td th:text="${productos.Precio}">Precio</td>
                                         <td>

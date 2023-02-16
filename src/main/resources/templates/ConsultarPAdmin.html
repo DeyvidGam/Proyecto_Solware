@@ -42,9 +42,7 @@
 
 	<div class="container-fluid">
 		<div class="row justify-content-center align-content-center">
- <div class="col-7 barra1"style="color: white;">
-
-			</div>
+			<div class="col-7 barra1" style="color: white;"></div>
 
 			<div class="col-5 barra1">
 				<div class="dropdown">
@@ -182,7 +180,8 @@
 								cellspacing="0" width="100%">
 
 								<h1>PRODUCCIÓN</h1>
-							 <a  th:href="@{/Solware2/home/Email}" class="btn btn-primary">Notificar</a>
+								<a style="margin-bottom: 8px;" th:href="@{/Solware2/home/Email}"
+									class="btn btn-primary">Notificar</a>
 								<thead>
 									<th>ID_Produccion</th>
 									<th>Operario</th>
@@ -193,27 +192,25 @@
 									<th>ID Pedido</th>
 									<th>ID Inventario</th>
 									<th>Acciones</th>
-									
+
 								</thead>
 								<tbody>
 
-									<tr th:each = "produccion : ${Produccion}">
+									<tr th:each="produccion : ${Produccion}">
 										<td th:text="${produccion.ID_Produccion}"></td>
-										<td  th:text="${produccion.Operario.Nombre}+' '+${produccion.Operario.Apellido}"></td>
-										<td  th:text="${produccion.Estado_Produccion.Tipo_Estado}"></td>
-										<td  th:text="${produccion.Fecha_Inicio}"></td>
-										<td  th:text="${produccion.Cantidad}"></td>
-										<td  th:text="${produccion.Fecha_Fin}"></td>
-										<td  th:text="${produccion.Pedido.ID_Pedido}"></td>
-										<td  th:text="${produccion.id_Inventario.ID_Inventario}"></td>
-										<td>
-										<a
-                                            th:href="@{/Solware2/home/ConsultarPAdmin/{ID_Produccion}(ID_Produccion=${produccion.ID_Produccion})}"
-                                            class="btn btn-danger">eliminar</a>
-                                            <a
-                                            th:href="@{/Solware2/home/ConsultarPAdmin/editar/{ID_Produccion}(ID_Produccion=${produccion.ID_Produccion})}"
-                                            class="btn btn-info">Editar</a>
-										</td>
+										<td
+											th:text="${produccion.Operario.Nombre}+' '+${produccion.Operario.Apellido}"></td>
+										<td th:text="${produccion.Estado_Produccion.Tipo_Estado}"></td>
+										<td th:text="${produccion.Fecha_Inicio}"></td>
+										<td th:text="${produccion.Cantidad}"></td>
+										<td th:text="${produccion.Fecha_Fin}"></td>
+										<td th:text="${produccion.Pedido.ID_Pedido}"></td>
+										<td th:text="${produccion.id_Inventario.ID_Inventario}"></td>
+										<td><a
+											th:href="@{/Solware2/home/ConsultarPAdmin/{ID_Produccion}(ID_Produccion=${produccion.ID_Produccion})}"
+											class="btn btn-danger">eliminar</a> <a
+											th:href="@{/Solware2/home/ConsultarPAdmin/editar/{ID_Produccion}(ID_Produccion=${produccion.ID_Produccion})}"
+											class="btn btn-info">Editar</a></td>
 									</tr>
 								</tbody>
 							</table>

@@ -1,5 +1,5 @@
-<!DOCTYPE html >
-<html xmlns:th="http://www.thymeleaf.org">
+<!DOCTYPE html>
+<html>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -156,7 +156,7 @@
                 <div class="row justify-content-center align-content-center text-center">
                     <div class="columna col-lg-12">
                       
-                      <form th:action="@{/Solware2/home/GuardarPedido}" th:object="${Pedido}" method="POST" >
+                      <form th:action="@{/Solware2/home/C_Pedidos}" th:object="${Pedido}" method="POST" >
                             <div class="d-flex">
         <div class="col-sm-12">
             <div class="card">
@@ -165,15 +165,7 @@
                         <div class="form-group">
                             <label>Datos del Cliente</label>
                         </div>
-                        <div class="form-group d-flex">
-                            <div class="col-sm-6">
-    <label class="form-label">Cliente</label>
-      <select th:field="*{cliente}" class="form-control">
-       <option th:each="cliente:${Clientes}" th:value="${cliente.Identificacion}" th:text="${cliente.Nombres}+' '+${cliente.Apellidos}"></option>
-      </select>
-</div>
-                            
-                        </div>
+                        
                         <div class="form-group">
                             <label>Datos Producto</label>
                         </div>
@@ -184,28 +176,30 @@
 
 								<thead class="table-dark">
 									<tr>
-										
-										<th>Cantidad</th>
-										<th>Subtotal</th>
-										<th>producto</th>
+										<th>ID_Producto</th>
+										<th>Nombre</th>
+										<th>Proveedor</th>
+										<th>Tamaño</th>
+										<th>Precio</th>
 										<th>Opciones</th>
-										
 										
 
 									</tr>
 								</thead>
 								<tbody>
-									<tr th:each="detalle : ${listaDetalles}">
+									<tr th:each="productos : ${Producto}">
+										<td th:text="${productos.ID_Producto}">ID_Producto</td>
+										<td th:text="${productos.Nombre}">Nombre</td>
+										<td th:text="${productos.Proveedor.nombre}">Proveedor</td>
+										<td th:text="${productos.Tamano}">Tamano</td>
+										<td th:text="${productos.Precio}">Precio</td>
 										
-										<td th:text="${detalle.Cantidad}">Nombre</td>
-										<td th:text="${detalle.SubTotal}">Proveedor</td>
-										<td th:text="${detalle.Producto.nombre}">Tamano</td>
-										 <td><a
-											th:href="@{/Solware2/home/eliminaDetalle/{id}(id=${detalle.producto.ID_Producto})}"
-											class="btn btn-danger">eliminar</a></td>
-										 
+										<td>
+											<a
+											th:href="@{/Solware2/home/PedidosA/{id}(id=${productos.ID_Producto})}"
+											class="btn btn-danger">Agregar</a>
 											
-										 
+										</td>
 									</tr>
 								</tbody>
 
@@ -216,20 +210,9 @@
 
                         </div>
                         <div class="form-group">
-                           <a
-											th:href="@{/Solware2/home/agregarProducto}"
-											class="btn btn-info">agregar</a> 
+                            <input type="submit" name="accion" value="Agregar" class="btn btn-outline-info">
                         </div>
-                        <div class="form-group">
-                          <input type="submit" value="Guardar" class="btn btn-info">
-                        </div>
-                        
-                          
-                       
                     </div>
-<div class="form-group">
-                           
-                        </div>
                 </form>
             </div>
         </div>

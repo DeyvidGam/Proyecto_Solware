@@ -1,35 +1,40 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Interfaz de administrador</title>
-    
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <script src="https://kit.fontawesome.com/babdd0dc30.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" type="text/css" href="/css/ab.css">
-    <link rel="stylesheet" type="text/css" href="/css/estiloPerfilV.css">
-    <link rel="stylesheet" type="text/css" href="/css/estilofooter.css">
-    <link rel="stylesheet" type="text/css" href="/css/estiloinventario.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Interfaz de administrador</title>
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+	crossorigin="anonymous">
+<script src="https://kit.fontawesome.com/babdd0dc30.js"
+	crossorigin="anonymous"></script>
+<link rel="stylesheet" type="text/css" href="/css/ab.css">
+<link rel="stylesheet" type="text/css" href="/css/estiloPerfilV.css">
+<link rel="stylesheet" type="text/css" href="/css/estilofooter.css">
+<link rel="stylesheet" type="text/css" href="/css/estiloinventario.css">
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="/js/Ventas.js"></script>
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+<script
+	src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
 
-  
-    
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="/js/Ventas.js"></script>
+
+
+
 </head>
 <body>
 
-    <div class="container-fluid">
+	<div class="container-fluid">
 		<div class="row justify-content-center align-content-center">
 
- <div class="col-7 barra1"style="color: white;">
-
-
-			</div>
+			<div class="col-7 barra1" style="color: white;"></div>
 
 			<div class="col-5 barra1">
 				<div class="dropdown">
@@ -157,112 +162,122 @@
 									</ul>
 				</nav>
 			</div>
-            <main class="main col">
-                <div class="row justify-content-center align-content-center text-center">
-                    <div class="columna col-lg-12" >
-                       
-                    
-                         
-                     
-                        <main class="perfiles">
-                            <link rel="stylesheet" href="css/estiloPerfilV.css">
-                       <title>Sol y Asociados</title>
-                       <h1  class="perfile"> VENTAS</h1>
-      <section class="form-register" style="margin: auto; margin-top: 20px; width: 600px; height: 400px">
-
-	<div class="row">
-	  <form th:action="@{/Solware2/home/ConsultarAdmin}" th:object="${Venta}" method="POST" >
-	<div class="row">
-	  <div class="col-sm-6">
-	    <label for="Fecha" class="form-label">Fecha</label>
-	    <input id="Fecha" type="datetime-local" class="form-control" required th:field="*{FechaYHora}">
-	  </div>
-	  <div class="col-sm-6">
-	    <label class="form-label">ID del pedido</label>
-	      <select th:field="*{IDPedido}" class="form-control" required>
-	       <option th:each="pedido:${Pedidos}" th:value="${pedido.ID_Pedido}" th:text="${pedido.ID_Pedido}"></option>
-	      </select>
-	     
-	   </div>
-	</div>
-	<div class="row"> 
-	  <div class="col-sm-6">
-	    <label for="Total" class="form-label">Total</label>
-	    <input id="Total" type="tel" class="form-control"required th:field="*{Valor_Venta}">
-	  </div>
-	  <div class="col-sm-6">
-	  <strong aria-required="true">Tipo De Pago</strong>
-	  <div class="form-check">
-	    <input  class="form-check-input" type="radio" required th:field="*{Modo_Pago}" name="flexRadioDefault" id="TipoPago" value="Nequi">
-	    <label class="form-check-label" for="small"> Nequi</label>
-	  </div>
-	  <div class="form-check">
-	    <input class="form-check-input" type="radio" th:field="*{Modo_Pago}" name="flexRadioDefault" id="TipoPago" required value="Daviplata" >
-	    <label class="form-check-label" for="small" >Daviplata</label>
-	  </div>
-	  <div class="form-check">
-	    <input class="form-check-input" type="radio"required th:field="*{Modo_Pago}" name="flexRadioDefault" id="TipoPago" value="Bancolombia" >
-	    <label class="form-check-label" for="small">Bancolombia</label>
-	  </div>
-	</div>
-	</div>
-	<div class="row">
-	<div class="col-md-12">
-	<br>
-	<br>
-	      <input type="submit" class="btn btn-primary"id="submit"
-	                onclick="validacion()" value="Enviar">   
-	       <input type="reset" name="reset"class="btn btn-danger" 
-	                value="Restablecer"> 
-	              </div>
-	</div>
-	</form>
-	</div>
-	</div>
-	</div>
-</section>
-
-            </main>
-        </div>
-    </div>
-    <footer class="pie-pagina">
-        <div class="grupo-1">
-            <div class="box">
-                <figure>
-                    <a href="#">
-                        <img src="/img/LOGO_SOL_Y_ASOCIADOS.png" alt="Logo">
-                    </a>
-                </figure>
-            </div>
-            <div class="box">
-                <h2>SOBRE NOSOTROS</h2>
-                <p>Satélite administrativo de terminaciones gráficas</p>
-                <p>BOGOTA D.C KR 90-6D 4 </p>
-                <p>3132877292</p>
-            </div>
-            <div class="box">
-                <h2>SIGUENOS</h2>
-                <div class="red-social">
-                    <a href="#" class="fa fa-facebook"></a>
-                    <a href="#" class="fa fa-instagram"></a>
-                    <a href="#" class="fa fa-twitter"></a>
-                    <a href="#" class="fa fa-youtube"></a>
-                </div>
-            </div>
-        </div>
-        <div class="grupo-2">
-            <small>&copy; 2022 <b>Sol y Asociados</b> - Todos los Derechos Reservados.</small>
-        </div>
-      </footer>
+			<main class="main col">
+				<div
+					class="row justify-content-center align-content-center text-center">
+					<div class="columna col-lg-12">
 
 
 
 
+						<main class="perfiles">
+							
+							<title>Sol y Asociados</title>
+							<h1 class="perfile">VENTAS</h1>
+							<section class="form-register" style="margin: auto; margin-top: 20px; width: 600px; height: 400px">
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
-    <script src="https://kit.fontawesome.com/646c794df3.js"></script>
-   
+								<div class="row">
+									<form th:action="@{/Solware2/home/ventas}" method="POST">
+										<div class="row">
+											<div th:if="${error}" class="alert alert-danger" role="alert">
+												<span th:text="${error}"></span>
+											</div>
+											<center>
+												<div class="col-sm-6">
+													<label class="form-label" for="idPedido">Pedido:</label> <select
+														class="form-control" name="idPedido" id="idPedido">
+														<option value="" selected disabled hidden>Seleccione
+															un pedido</option>
+														<option th:each="pedido : ${pedidos}"
+															th:value="${pedido.ID_Pedido}"
+															th:text="${pedido.ID_Pedido}" />
+													</select>
+
+												</div>
+										</div>
+										</center>
+
+										<div class="row">
+											<center>
+												<div class="col-sm-6">
+													<strong aria-required="true">Tipo De Pago</strong>
+													<div class="form-check">
+														<input class="form-check-input" type="radio" required
+															name="Modo_Pago" id="efectivo" value="Efectivo">
+														<label class="form-check-label" for="small">
+															Efectivo</label>
+													</div>
+													<div class="form-check">
+														<input class="form-check-input" type="radio"
+															name="Modo_Pago" required id="tarjeta" value="Tarjeta">
+														<label class="form-check-label" for="small">Tarjeta</label>
+													</div>
+
+												</div>
+											</center>
+										</div>
+										<div class="row">
+											<div class="col-md-12">
+												<br> <br> <input type="submit"
+													class="btn btn-primary" id="submit" onclick="validacion()"
+													value="Enviar"> <input type="reset" name="reset"
+													class="btn btn-danger" value="Restablecer">
+											</div>
+										</div>
+									</form>
+								</div>
+					</div>
+				</div>
+				</section>
+
+			</main>
+		</div>
+	</div>
+	<footer class="pie-pagina">
+		<div class="grupo-1">
+			<div class="box">
+				<figure>
+					<a href="#"> <img src="/img/LOGO_SOL_Y_ASOCIADOS.png"
+						alt="Logo">
+					</a>
+				</figure>
+			</div>
+			<div class="box">
+				<h2>SOBRE NOSOTROS</h2>
+				<p>Satélite administrativo de terminaciones gráficas</p>
+				<p>BOGOTA D.C KR 90-6D 4</p>
+				<p>3132877292</p>
+			</div>
+			<div class="box">
+				<h2>SIGUENOS</h2>
+				<div class="red-social">
+					<a href="#" class="fa fa-facebook"></a> <a href="#"
+						class="fa fa-instagram"></a> <a href="#" class="fa fa-twitter"></a>
+					<a href="#" class="fa fa-youtube"></a>
+				</div>
+			</div>
+		</div>
+		<div class="grupo-2">
+			<small>&copy; 2022 <b>Sol y Asociados</b> - Todos los
+				Derechos Reservados.
+			</small>
+		</div>
+	</footer>
+
+
+
+
+
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+		integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+		integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+		crossorigin="anonymous"></script>
+	<script src="https://kit.fontawesome.com/646c794df3.js"></script>
+
 </body>
 </html>

@@ -179,7 +179,6 @@
 										<th>Nombre</th>
 										<th>Email</th>
 										<th>telefono</th>
-										<th>Producto</th>
 										<th>Acciones</th>
 
 									</tr>
@@ -190,7 +189,6 @@
 										<td th:text="${provedores.Nombre}">Nombre</td>
 										<td th:text="${provedores.Email}">Email</td>
 										<td th:text="${provedores.telefono}">telefono</td>
-										<td th:text="${provedores.Producto.Nombre}">Producto</td>
 										<td><a
 											th:href="@{/Solware2/home/C_ProveedoresA/{ID_Proveedor}(ID_Proveedor=${provedores.ID_Proveedor})}"
 											class="btn btn-danger">eliminar</a> <a
