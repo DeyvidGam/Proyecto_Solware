@@ -44,96 +44,110 @@
 
     <div class="container-fluid">
         <div class="row">
-            <div class="barra-lateral col-12 col-sm-auto">
-                
-                <nav class="menu d-flex d-sm-block justify-content-center flex-wrap" >
-                    <img id="logo" src="/img/LOGO SOL WARE .PNG" width="140px">
-                    <a  class="option" href="/Solware2/home/Admin" ><i class="fas fa-home" title="Inicio"></i><span>Inicio</span></a>
-                    <div class="dropdown">
-                        <a class=" dropdown-toggle " type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                         usuarios
-                        </a>
-                        <ul class="dropdown-menu " aria-labelledby="dropdownMenuButton1">
-                            <a class="dropdown-item" href="/Solware2/home/ConsultarUs/nuevo">Registrar usuarios</a>
-                            <a class="dropdown-item" href="/Solware2/home/ConsultarUs">Consultar usuarios</a>
-                          </ul></div>
-                        
-                      
-                          <div class="dropdown">
-                            <a class=" dropdown-toggle " type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                           Inventarios
-                            </a>
-                            <ul class="dropdown-menu " aria-labelledby="dropdownMenuButton1">
-                           <li> <a class="dropdown-item" href="/Solware2/home/ModuloInventario">CREAR</a></li>
-                            <li><a class="dropdown-item" href="/Solware2/home/Consultar">CONSULTAR</a></li>
-                            
-                        </ul>
-                                  <div class="dropdown">
-                                    <a class=" dropdown-toggle " type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                     Proveedor
-                                    </a>
-                                    <ul class="dropdown-menu " aria-labelledby="dropdownMenuButton1">
-                                        <a class="dropdown-item" href="/Solware2/home/ProveedoresA">C_Proveedores</a>
-                                        <a class="dropdown-item" href="/Solware2/home/C_ProveedoresA">Consultar</a>
-                                      
-                                      </ul></div>
-                                      <div class="dropdown">
-                                        <a class=" dropdown-toggle " type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                         Productos
-                                        </a>
-                                        <ul class="dropdown-menu " aria-labelledby="dropdownMenuButton1">
-                                            <a class="dropdown-item" href="/Solware2/home/ProductosA">C_Productos</a>
-                                            <a class="dropdown-item" href="/Solware2/home/C_ProductosA">Consultar</a>
-                                          
-                                          </ul></div>
-                                <div class="dropdown">
-                                    <a class=" dropdown-toggle " type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                     Cliente
-                                    </a>
-                                    <ul class="dropdown-menu " aria-labelledby="dropdownMenuButton1">
-                                        <a class="dropdown-item" href="/Solware2/home/ClientesA">C_Cliente</a>
-                                        <a class="dropdown-item" href="/Solware2/home/C_ClienteA">Consultar</a>
-                                      
-                                      </ul></div>
-                                      <div class="dropdown">
-                                        <a class=" dropdown-toggle " type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                         pedido
-                                        </a>
-                                        <ul class="dropdown-menu " aria-labelledby="dropdownMenuButton1">
-                                            <a class="dropdown-item" href="/Solware2/home/PedidosA">C_Pedido</a>
-                                            <a class="dropdown-item" href="/Solware2/home/C_PedidosA">Consultar</a>
-                                          
-                                          </ul></div>
+			<div class="barra-lateral col-12 col-sm-auto">
 
-                        <div class="dropdown">
-                            <a class=" dropdown-toggle " type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                           Ventas
-                            </a>
-                            <ul class="dropdown-menu " aria-labelledby="dropdownMenuButton1">
-                                <a class="dropdown-item" href="/Solware2/home/ventasAdmin">CREAR</a>
-                                <a class="dropdown-item" href="/Solware2/home/ConsultarAdmin">CONSULTAR</a>
-                             
-                        </ul>
-                        <div class="dropdown">
-                            <a class=" dropdown-toggle " type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                         Producion
-                            </a>
-                            <ul class="dropdown-menu " aria-labelledby="dropdownMenuButton1">
-                            <a class="dropdown-item" href="/Solware2/home/ProducionAdmin">CREAR</a>
-                            <a class="dropdown-item" href="/Solware2/home/ConsultarPAdmin">CONSULTAR</a>  
-                        </ul>
-                        <div class="dropdown">
-                            <a class=" dropdown-toggle " type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Reportes
-                            </a>
-                            <ul class="dropdown-menu " aria-labelledby="dropdownMenuButton1">
-                                <a  class="option" href="/Solware2/home/ReportesVA" ><span>ReportesV</span></a>
-                            <a class="dropdown-item" href="/Solware2/home/ReportesIn">ReportesIn</a>
-                            <a class="dropdown-item" href="/Solware2/home/ReportesPro">ReportesPro</a>
-                        </ul>
-                    
-                </nav>
-            </div>
+				<nav class="menu d-flex d-sm-block justify-content-center flex-wrap">
+					<img id="logo" th:src="@{/img/LOGO SOL WARE .PNG}" width="140px">
+					<a class="option" th:href="@{/Solware2/home/Admin}"><i
+						class="fas fa-home" title="Inicio"></i><span>Inicio</span></a>
+					<div class="dropdown">
+						<a class=" dropdown-toggle " type="button"
+							data-bs-toggle="dropdown" aria-expanded="false"> usuarios </a>
+						<ul class="dropdown-menu " aria-labelledby="dropdownMenuButton1">
+							<a class="dropdown-item"
+								th:href="@{/Solware2/home/ConsultarUs/nuevo}">Registrar
+								usuarios</a>
+							<a class="dropdown-item" th:href="@{/Solware2/home/ConsultarUs}">Consutar
+								usuarios</a>
+
+						</ul>
+					</div>
+
+
+					<div class="dropdown">
+						<a class=" dropdown-toggle " type="button"
+							data-bs-toggle="dropdown" aria-expanded="false"> Inventarios
+						</a>
+						<ul class="dropdown-menu " aria-labelledby="dropdownMenuButton1">
+							<li><a class="dropdown-item"
+								th:href="@{/Solware2/home/ModuloInventario}">Crear</a></li>
+							<li><a class="dropdown-item"
+								th:href="@{/Solware2/home/Consultar}">Consultar</a></li>
+
+						</ul>
+						<div class="dropdown">
+							<a class=" dropdown-toggle " type="button"
+								data-bs-toggle="dropdown" aria-expanded="false"> Proveedor </a>
+							<ul class="dropdown-menu " aria-labelledby="dropdownMenuButton1">
+								<a class="dropdown-item"
+									th:href="@{/Solware2/home/ProveedoresA}">Crear</a>
+								<a class="dropdown-item"
+									th:href="@{/Solware2/home/C_ProveedoresA}">Consultar</a>
+
+							</ul>
+						</div>
+						<div class="dropdown">
+							<a class=" dropdown-toggle " type="button"
+								data-bs-toggle="dropdown" aria-expanded="false"> Productos </a>
+							<ul class="dropdown-menu " aria-labelledby="dropdownMenuButton1">
+								<a class="dropdown-item" th:href="@{/Solware2/home/ProductosA}">Crear</a>
+								<a class="dropdown-item"
+									th:href="@{/Solware2/home/C_ProductosA}">Consultar</a>
+
+							</ul>
+						</div>
+						<div class="dropdown">
+							<a class=" dropdown-toggle " type="button"
+								data-bs-toggle="dropdown" aria-expanded="false"> Cliente </a>
+							<ul class="dropdown-menu " aria-labelledby="dropdownMenuButton1">
+								<a class="dropdown-item" th:href="@{/Solware2/home/ClientesA}">Crear</a>
+								<a class="dropdown-item" th:href="@{/Solware2/home/C_ClienteA}">Consultar</a>
+
+							</ul>
+						</div>
+						<div class="dropdown">
+							<a class=" dropdown-toggle " type="button"
+								data-bs-toggle="dropdown" aria-expanded="false"> pedido </a>
+							<ul class="dropdown-menu " aria-labelledby="dropdownMenuButton1">
+								<a class="dropdown-item" th:href="@{/Solware2/home/PedidosA}">Crear</a>
+								<a class="dropdown-item" th:href="@{/Solware2/home/C_PedidosA}">Consultar</a>
+
+							</ul>
+						</div>
+
+						<div class="dropdown">
+							<a class=" dropdown-toggle " type="button"
+								data-bs-toggle="dropdown" aria-expanded="false"> Ventas </a>
+							<ul class="dropdown-menu " aria-labelledby="dropdownMenuButton1">
+								<a class="dropdown-item" th:href="@{/Solware2/home/ventasAdmin}">Crear</a>
+								<a class="dropdown-item"
+									th:href="@{/Solware2/home/ConsultarAdmin}">Consultar</a>
+
+							</ul>
+							<div class="dropdown">
+								<a class=" dropdown-toggle " type="button"
+									data-bs-toggle="dropdown" aria-expanded="false"> Producion
+								</a>
+								<ul class="dropdown-menu " aria-labelledby="dropdownMenuButton1">
+									<a class="dropdown-item"
+										th:href="@{/Solware2/home/ProducionAdmin}">Crear</a>
+									<a class="dropdown-item"
+										th:href="@{/Solware2/home/ConsultarPAdmin}">Consultar</a>
+								</ul>
+								<div class="dropdown">
+									<a class=" dropdown-toggle " type="button"
+										data-bs-toggle="dropdown" aria-expanded="false"> Reportes
+									</a>
+									<ul class="dropdown-menu "
+										aria-labelledby="dropdownMenuButton1">
+										<a class="option" th:href="@{/Solware2/home/ReportesVA}"><span>ReportesV</span></a>
+										<a class="dropdown-item"
+											th:href="@{/Solware2/home/ReportesIn}">ReportesIn</a>
+										<a class="dropdown-item"
+											th:href="@{/Solware2/home/ReportesPro}">ReportesPro</a>
+									</ul>
+				</nav>
+			</div>
             <main class="main col">
                 <div class="row justify-content-center align-content-center text-center">
                     <div class="columna col-lg-6">
