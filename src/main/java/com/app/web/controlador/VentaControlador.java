@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.app.web.entidad.Detalle_Pedido;
 import com.app.web.entidad.Pedido;
@@ -52,6 +53,7 @@ public class VentaControlador {
 		modelo.addAttribute("pedidos", pedidos);
 		return "ventasAdmin";
 	}
+<<<<<<< HEAD
 	@PostMapping("/ventas")
 	public String registerVenta(@RequestParam("idPedido") Long idPedido,
 			@RequestParam("Modo_Pago") String Modo_Pago,
@@ -61,6 +63,38 @@ public class VentaControlador {
 		Pedido pedido = pedidoServicio.obtenerPedidoPorId(idPedido);
 
 		List<Venta> ventas = ventaServicio.listarventas();
+=======
+	 @PostMapping("/ventas")
+	    public String registerVenta(@RequestParam("idPedido") Long idPedido,
+	                                @RequestParam("Modo_Pago") String Modo_Pago,
+	                                Model modelo,RedirectAttributes attributes) {
+	        // Retrieve the corresponding Pedido object from the database
+		 List<Pedido> listapedido = pedidoServicio.listarpedidos(); 
+	        Pedido pedido = pedidoServicio.obtenerPedidoPorId(idPedido);
+
+List<Venta> ventas = ventaServicio.listarventas();
+    
+   
+for (Venta venta : ventas) {
+        
+       
+if (venta.getiDPedido() != null && venta.getiDPedido().getID_Pedido() == pedido.getID_Pedido()) {
+            
+           
+// If a Venta object with the same Pedido already exists, set an error message and redirect back to the ventasAdmin page.
+            
+           
+	attributes.addFlashAttribute("mensaje", "El pedido ya fue vendio");
+	    
+return "redirect:/Solware2/home/ventasAdmin";
+}
+}
+	        Venta venta = new Venta();
+	        venta.setFechaYHora(LocalDateTime.now());
+	        venta.setModo_Pago(Modo_Pago);
+	        venta.setValor_Venta(pedido.getTotal());
+	        venta.setiDPedido(pedido);
+>>>>>>> Carlos
 
 
 		for (Venta venta : ventas) {

@@ -117,17 +117,16 @@
 				</nav>
 			</div>
 			<main class="main col">
-				<div
-					class="row justify-content-center align-content-center text-center">
-					<div class="columna col-lg-12">
+				<div class="row justify-content-center align-content-center text-center">
+					<div class="columna col-lg-10">
 
 						<div class="table-responsive responsive">
-							<table id="tabla" class="table table-striped table-bordered"
-								cellspacing="0" width="100%">
+							<table id="tabla" class="table table-striped table-bordered" width="100%">
 
 								<h1>Pedido</h1>
 
 								<thead class="table-dark">
+<<<<<<< HEAD
 									<tr>
 										<th>ID_Pedido</th>
 										<th>Fecha_Pedido</th>
@@ -147,13 +146,41 @@
 
 									</tr>
 								</tbody>
+=======
+                                    <tr>
+                                        <th>ID_Pedido</th>
+                                        <th>Fecha_Pedido</th>
+                                        <th>Total</th>
+                                        <th>ID_Cliente</th>
+                                        <th>Acciones</th>
 
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr th:each="pedidos : ${Pedido}">
+                                        <td th:text="${pedidos.ID_Pedido}">ID_Pedido</td>
+                                        <td th:text="${pedidos.Fecha_Pedido}">Fecha_Pedido</td>
+                                        <td th:text="${pedidos.Total}">Total</td>
+                                        <td th:text="${pedidos.Cliente.Nombres}">ID_Cliente</td>
+>>>>>>> Carlos
+
+                                        <td><a
+                                            th:href="@{/Solware2/home/C_PedidosA/{ID_Pedido}(ID_Pedido=${pedidos.ID_Pedido})}"
+                                            class="btn btn-danger">eliminar</a>
+                                            <a
+                                            th:href="@{/Solware2/home/C_PedidosA/editar/{ID_Pedido}(ID_Pedido=${pedidos.ID_Pedido})}"
+                                            class="btn btn-info">Editar</a>
+                                            
+                                            </td>
+                                    </tr>
+                                </tbody>
 
 							</table>
 						</div>
 					</div>
 
 				</div>
+				
 
 			</main>
 		</div>
