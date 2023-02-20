@@ -62,6 +62,11 @@ private final Logger log = LoggerFactory.getLogger(PedidoControlador.class);
 
 	@GetMapping("/Pedidos")
 	public String Pedidos(Model modelo) {
+		modelo.addAttribute("Pedido", pedido);
+		modelo.addAttribute("Producto", productoServicio.listarProducto());
+		modelo.addAttribute("Deatalle", detalle_PedidoServicio.listarDetalle_Pedido());
+		this.listarClientes = this.clienteServicioImp.listarclientes();
+		modelo.addAttribute("Clientes", this.listarClientes);
 		return "Pedidos";
 	}
 	@GetMapping("/C_Pedidos")

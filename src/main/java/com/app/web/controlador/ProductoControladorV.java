@@ -1,5 +1,7 @@
 package com.app.web.controlador;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,7 +14,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.app.web.entidad.Producto;
+import com.app.web.entidad.Proveedor;
 import com.app.web.servicio.ProductoServicio;
+import com.app.web.servicio.ProveedorServicio;
 
 @Controller
 @RequestMapping(path="/Solware2")
@@ -21,7 +25,8 @@ public class ProductoControladorV {
 
 	@Autowired
 	private ProductoServicio  productoServicio;
-	
+	@Autowired
+	private ProveedorServicio proveedorServicio;
 	@GetMapping("/C_Productos")
 	public String listarProducto(Model modelo) {
 		modelo.addAttribute("Producto", productoServicio.listarProducto());
@@ -31,14 +36,16 @@ public class ProductoControladorV {
 	@GetMapping("/C_Productos/nuevo")
 	public String crearProducto(Model modelo) {
 		Producto producto = new Producto();
+		List<Proveedor> listaproveedor = proveedorServicio.listarproveedores();
 		modelo.addAttribute("Producto", producto);
+		modelo.addAttribute("Proveedores", listaproveedor);
 		return "Productos";
 	}
 	
 	@PostMapping("/C_Productos")
 	public String guardarProducto(@ModelAttribute("Producto") Producto producto) {
 		productoServicio.guardarProducto(producto);
-		return "redirect:/Solware2/home/C_Productos";
+		return "redirect:/Solware2/C_Productos";
 	}
 	
 	@GetMapping("/producto/editar/{ID_Producto}")

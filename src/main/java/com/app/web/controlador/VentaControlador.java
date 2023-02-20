@@ -30,14 +30,15 @@ import com.app.web.servicio.VentaServicio;
 @RequestMapping(path="/Solware2/home")
 @CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.POST,RequestMethod.PUT})
 public class VentaControlador {
-	
+
 	@Autowired
 	private PedidoServicio pedidoServicio;
+	@Autowired
 	private PedidoRepositorio pedidoRepositorio;
 	private List<Pedido> listaDetalles= new ArrayList<Pedido>();
 	@Autowired
 	private VentaServicio ventaServicio;
-    private VentaRepositorio ventaRepositorio;
+	private VentaRepositorio ventaRepositorio;
 	@GetMapping("/ConsultarAdmin")
 
 	public String listarclientes(Model modelo) {
@@ -48,47 +49,43 @@ public class VentaControlador {
 	@GetMapping("/ventasAdmin")
 	public String crearCliente(Model modelo) {
 		List<Pedido> pedidos = (List<Pedido>) pedidoServicio.listarpedidos();
-		 modelo.addAttribute(
-			       
-				 "pedidos", pedidos);
-		 return "ventasAdmin";
+		modelo.addAttribute("pedidos", pedidos);
+		return "ventasAdmin";
 	}
-	 @PostMapping("/ventas")
-	    public String registerVenta(@RequestParam("idPedido") Long idPedido,
-	                                @RequestParam("Modo_Pago") String Modo_Pago,
-	                                Model modelo) {
-	        // Retrieve the corresponding Pedido object from the database
-		 List<Pedido> listapedido = pedidoServicio.listarpedidos(); 
-	        Pedido pedido = pedidoServicio.obtenerPedidoPorId(idPedido);
+	@PostMapping("/ventas")
+	public String registerVenta(@RequestParam("idPedido") Long idPedido,
+			@RequestParam("Modo_Pago") String Modo_Pago,
+			Model modelo) {
+		// Retrieve the corresponding Pedido object from the database
+		List<Pedido> listapedido = pedidoServicio.listarpedidos(); 
+		Pedido pedido = pedidoServicio.obtenerPedidoPorId(idPedido);
 
-List<Venta> ventas = ventaServicio.listarventas();
-    
-   
-for (Venta venta : ventas) {
-        
-       
-if (venta.getiDPedido() != null && venta.getiDPedido().getID_Pedido() == pedido.getID_Pedido()) {
-            
-           
-// If a Venta object with the same Pedido already exists, set an error message and redirect back to the ventasAdmin page.
-            
-           
-	
-	    
-return "redirect:/Solware2/home/ventasAdmin";
-}
-}
-	        Venta venta = new Venta();
-	        venta.setFechaYHora(LocalDateTime.now());
-	        venta.setModo_Pago(Modo_Pago);
-	        venta.setValor_Venta(pedido.getTotal());
-	        venta.setiDPedido(pedido);
+		List<Venta> ventas = ventaServicio.listarventas();
 
-	        // Save the new Venta object to the database
-	        ventaServicio.guardarVenta(venta);
 
-	        return "redirect:/Solware2/home/ConsultarAdmin";
-	    }
+		for (Venta venta : ventas) {
+
+
+			if (venta.getiDPedido() != null && venta.getiDPedido().getID_Pedido() == pedido.getID_Pedido()) {
+
+
+				// If a Venta object with the same Pedido already exists, set an error message and redirect back to the ventasAdmin page.
+
+
+				return "redirect:/Solware2/home/ventasAdmin";
+			}
+		}
+		Venta venta = new Venta();
+		venta.setFechaYHora(LocalDateTime.now());
+		venta.setModo_Pago(Modo_Pago);
+		venta.setValor_Venta(pedido.getTotal());
+		venta.setiDPedido(pedido);
+
+		// Save the new Venta object to the database
+		ventaServicio.guardarVenta(venta);
+
+		return "redirect:/Solware2/home/ConsultarAdmin";
+	}
 
 	@PostMapping("/ConsultarAdmin")
 	public String guardarCliente(@ModelAttribute("Venta") Venta venta) {
@@ -101,7 +98,7 @@ return "redirect:/Solware2/home/ventasAdmin";
 		modelo.addAttribute("Venta", ventaServicio.obtenerVentaPorId(ID_Venta));
 		List<Pedido> listapedido = pedidoServicio.listarpedidos(); 
 		modelo.addAttribute("Pedidos", listapedido);
-	    return "editar_venta";
+		return "editar_venta";
 	}
 
 	@PostMapping("/ConsultarAdmin/{ID_Venta}")
@@ -114,13 +111,13 @@ return "redirect:/Solware2/home/ventasAdmin";
 		ventaServicio.updateVenta(ventaExistente);
 		return "redirect:/Solware2/home/ConsultarAdmin";
 	}
-	
+
 	@GetMapping("/ConsultarAdmin/{ID_Venta}")
 	public String deleteCliente(@PathVariable Long ID_Venta) {
-		
+
 		ventaServicio.delete(ID_Venta);
 		return "redirect:/Solware2/home/ConsultarAdmin";
-		
+
 	}
 
 

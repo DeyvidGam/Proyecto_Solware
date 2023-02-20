@@ -1,5 +1,7 @@
 package com.app.web.controlador;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,7 +13,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.app.web.entidad.Producto;
 import com.app.web.entidad.Proveedor;
+import com.app.web.servicio.ProductoServicio;
 import com.app.web.servicio.ProveedorServicio;
 @Controller
 @RequestMapping(path="/Solware2")
@@ -20,9 +24,12 @@ public class ProveedorControldarV {
 	
 	@Autowired
 	private ProveedorServicio proveedorServicio;
+	@Autowired
+	private ProductoServicio productoServicio;
+	
 	
 	@GetMapping("/C_Proveedores")
-	public String listarproveedores(Model modelo) {
+	public String listarproveedor(Model modelo) {
 		modelo.addAttribute("Proveedor", proveedorServicio.listarproveedores());
 		return "C_Proveedores";
 	}
@@ -30,9 +37,11 @@ public class ProveedorControldarV {
 	
 
 	@GetMapping("/C_Proveedores/nuevo")
-	public String crearCliente(Model modelo) {
+	public String crearProveedor(Model modelo) {
 		Proveedor proveedor = new Proveedor();
+		List<Producto> listaproducto = productoServicio.listarProducto();
 		modelo.addAttribute("Proveedor", proveedor);
+		modelo.addAttribute("Productos", listaproducto);
 		return "Proveedores";
 
 	}
@@ -40,7 +49,7 @@ public class ProveedorControldarV {
 	@PostMapping("/C_Proveedores")
 	public String guardarCliente(@ModelAttribute("Proveedor") Proveedor proveedor) {
 		proveedorServicio.guardarProveedor(proveedor);
-		return "redirect:/Solware2/home/C_Proveedores";
+		return "redirect:/Solware2/C_Proveedores";
 	}
 
 	@GetMapping("/C_Proveedores/editar/{ID_Proveedor}")
@@ -65,7 +74,7 @@ public class ProveedorControldarV {
 	public String deleteProveedor(@PathVariable Long ID_Proveedor) {
 		
 		proveedorServicio.delete(ID_Proveedor);
-		return "redirect:/Solware2/home/C_Proveedores";
+		return "redirect:/Solware2/C_Proveedores";
 		
 	}
 

@@ -1,5 +1,9 @@
 package com.app.web.controlador;
 
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,8 +14,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import com.app.web.entidad.Pedido;
 import com.app.web.entidad.Venta;
+import com.app.web.repositorio.PedidoRepositorio;
+import com.app.web.repositorio.VentaRepositorio;
+import com.app.web.servicio.PedidoServicio;
 import com.app.web.servicio.VentaServicio;
 
 
@@ -20,10 +29,16 @@ import com.app.web.servicio.VentaServicio;
 @RequestMapping(path="/Solware2")
 @CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.POST,RequestMethod.PUT})
 public class VentaControladorV {
-	
+
 
 	@Autowired
+	private PedidoServicio pedidoServicio;
+	@Autowired
+	private PedidoRepositorio pedidoRepositorio;
+	private List<Pedido> listaDetalles= new ArrayList<Pedido>();
+	@Autowired
 	private VentaServicio ventaServicio;
+	private VentaRepositorio ventaRepositorio;
 
 	@GetMapping("/ConsultarV")
 
@@ -34,42 +49,50 @@ public class VentaControladorV {
 
 	@GetMapping("/ConsultarV/nuevo")
 	public String crearCliente(Model modelo) {
-		Venta venta = new Venta();
-		modelo.addAttribute("Venta", venta);
+		List<Pedido> pedidos = (List<Pedido>) pedidoServicio.listarpedidos();
+		modelo.addAttribute("pedidos", pedidos);
 		return "ventas";
 
 	}
+	@PostMapping("/ventas")
+	public String registerVenta(@RequestParam("idPedido") Long idPedido,
+			@RequestParam("Modo_Pago") String Modo_Pago,
+			Model modelo) {
+		// Retrieve the corresponding Pedido object from the database
+		List<Pedido> listapedido = pedidoServicio.listarpedidos(); 
+		Pedido pedido = pedidoServicio.obtenerPedidoPorId(idPedido);
 
+		List<Venta> ventas = ventaServicio.listarventas();
+
+
+		for (Venta venta : ventas) {
+
+
+			if (venta.getiDPedido() != null && venta.getiDPedido().getID_Pedido() == pedido.getID_Pedido()) {
+
+
+				// If a Venta object with the same Pedido already exists, set an error message and redirect back to the ventasAdmin page.
+
+
+				return "redirect:/Solware2/ConsultarV/nuevo";
+			}
+		}
+		Venta venta = new Venta();
+		venta.setFechaYHora(LocalDateTime.now());
+		venta.setModo_Pago(Modo_Pago);
+		venta.setValor_Venta(pedido.getTotal());
+		venta.setiDPedido(pedido);
+
+		// Save the new Venta object to the database
+		ventaServicio.guardarVenta(venta);
+		return "redirect:/Solware2/ConsultarV";
+	}
 	@PostMapping("/ConsultarV")
 	public String guardarCliente(@ModelAttribute("Venta") Venta venta) {
 		ventaServicio.guardarVenta(venta);
-		return "redirect:/Solware2/home/ConsultarV";
+		return "redirect:/Solware2/ConsultarV";
 	}
 
-	@GetMapping("/venta/editar/{ID_Venta}")
-	public String Editar(@PathVariable Long ID_Venta,Model modelo ) {
-		modelo.addAttribute("Cliente", ventaServicio.obtenerVentaPorId(ID_Venta));
-	    return "editar_venta";
-	}
-
-	@PostMapping("/venta/{ID_Venta}")
-	public String updateCliente(@PathVariable Long ID_Venta, @ModelAttribute("Venta") Venta venta, Model modelo) {
-		Venta ventaExistente = ventaServicio.obtenerVentaPorId(ID_Venta);
-		ventaExistente.setID_Venta(ID_Venta);
-		ventaExistente.setFechaYHora(venta.getFechaYHora());
-		ventaExistente.setModo_Pago(venta.getModo_Pago());
-		ventaExistente.setValor_Venta(venta.getValor_Venta());
-		ventaServicio.updateVenta(ventaExistente);
-		return "redirect:/index";
-	}
-	
-	@GetMapping("/ConsultarV/{ID_Venta}")
-	public String deleteCliente(@PathVariable Long ID_Venta) {
-		
-		ventaServicio.delete(ID_Venta);
-		return "redirect:/Solware2/home/ConsultarV";
-		
-	}
 
 
 }

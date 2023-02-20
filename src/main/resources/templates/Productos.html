@@ -4,17 +4,19 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Interfaz de Vendedor</title>
+    
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/babdd0dc30.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="/css/ab.css">
     <link rel="stylesheet" type="text/css" href="/css/estilofooter.css">
-    <link rel="stylesheet" type="text/css" href="/css/Pedido.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="css/estiloinventario.css">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="js/Producto.js"></script>
+    <link rel="stylesheet" type="text/css" href="/css/estiloPerfilV.css">
+        <link rel="stylesheet" type="text/css" href="/css/estiloinventario.css">
+        <script src="/js/Producto.js"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+    
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
 
@@ -93,114 +95,63 @@
             <style type="text/css">
 
             </style>
-            <main class="main col">
-                <div class="row justify-content-center align-content-center text-center">
-                    <div class="columna col-lg-12">
-           <form th:action="@{/Solware2/C_Productos}" th:object="${Producto}" method="POST" >
-                            <main class="perfiles">
-                                
-                           <title>Sol y Asociados</title>
-                           <h1  class="perfile"> Productos</h1>
-                            <section class="form-register" style="margin-top: 30px;">
-                           
-                        <br>
-                                <label for="Caja">Nombre</label>
-                                <input type="text" name="Caja" id="nombre" class="input" th:field="*{Nombre}" required maxlength="10" minlength="1" pattern="[aA-zZ]+">
-                        
-                               
-                         <br>
-                        
-                              <div>
-                                
-                              <label for="Caja">Proveedor </label>
-                              <input type="text" name="Caja" id="CodigoProveedor" class="input" th:field="*{Proveedor}" placeholder="Codigo proveedor" required maxlength="10" minlength="1" pattern="[0-9]+">
-                              <button type="button" class="btn btn" data-toggle="modal" data-target="#myModal"><i class="fa-solid fa-plus"></i></button>
-                                    <!-- The Modal -->
-                            <div class="modal" id="myModal">
-                                <div class="modal-dialog modal-xl">
-                                  <div class="modal-content a">
-                    
-                                    <!-- Modal Header -->
-                                    <div class="modal-header">
-                                      <h4 style="text-align: center;">ID Proveedor</h4>
-                                      <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                    </div>
-                    
-                                    <!-- Modal body -->
-                                    <div class="modal-body" >
-                                        <div  id="tabla1" class="container tableizer-table" style="margin-top: 10px;padding: 5px">
-                                            <table id="tabla" class="table table-striped table-bordered " >
-                           
-                                               
-                                 
-                                                <thead>
-                                                    <tr ><th>ID_Proveedor</th><th>Nombre</th><th>Email</th><th>Telefono</th><th>Tipo_Producto</th><th>Producto</th></tr></thead><tbody>
-                                                     <tr><td>1</td><td>Ramo</td><td>ramo@gmail.com</td><td>12345678</td><td>Caja simple</td><td>1</td></tr>
-                                                     <tr><td>2</td><td>Colcafe</td><td>colcafe@gmail.com</td><td>12345679</td><td>Caja pequeña</td><td>2</td></tr>
-                                                     <tr><td>3</td><td>Saludtotal</td><td>Saludtotal@gmail.com</td><td>12345680</td><td>Caja Grande</td><td>3</td></tr>
-                                                     <tr><td>4</td><td>Navidad</td><td>navidad@gmail.com</td><td>12345681</td><td>caja borrador</td><td>4</td></tr>
-                                                     <tr><td>5</td><td>Herpin</td><td>herpin@gmail.com</td><td>7235157</td><td>Caja almendras</td><td>5</td></tr>
-                                                     <tr><td>6</td><td>Italo</td><td>Italocaja@hotmail.com</td><td>845474954</td><td>Caja Pelikan</td><td>6</td></tr>
-                                                     <tr><td>7</td><td>Mockup</td><td>Mockuprr@gmail.com</td><td>3124160612</td><td>Sobres</td><td>7</td></tr>
-                                                     <tr><td>8</td><td>System Pack LTDA</td><td>System15pack@gmail.com</td><td>12546987</td><td>Sobre de papel</td><td>8</td></tr>
-                                                     <tr><td>9</td><td>Pelikan</td><td>pelikanproductos14@hotmail.com</td><td>3145169876</td><td>Ristras</td><td>9</td></tr>
-                                                     <tr><td>10</td><td>Genfar</td><td>Genfarmeicinal1@gmail.com</td><td>3124166948</td><td>Inserto</td><td>10</td></tr>
-                                                     <tr><td>11</td><td>Colsubsidio</td><td>colsubsidio@gmail.com</td><td>5894351791</td><td>Collarin</td><td>11</td></tr>
-                                                     <tr><td>12</td><td>Cajas</td><td>cajas@gmail.com</td><td>4132116</td><td>Collar metalico</td><td>12</td></tr>
-                                                     <tr><td>13</td><td>Cajas Auto</td><td>CajasAuto@gmail.com</td><td>4894894</td><td>Carpeta</td><td>13</td></tr>
-                                                     <tr><td>14</td><td>Concordia Cajas</td><td>ConcordiaCajas@gmail.com</td><td>9498541</td><td>Caja herpin</td><td>14</td></tr>
-                                                     <tr><td>15</td><td>Cajas Riqueza</td><td>CajasRiqueza@gmail.com</td><td>8948941</td><td>Caja Medicamientos</td><td>15</td></tr>
-                                                     <tr><td>16</td><td>Pirata Cajas</td><td>PirataCajas@gmail.com</td><td>1981981</td><td>Caja Perro</td><td>16</td></tr>
-                                                     <tr><td>17</td><td>Poco Cajas</td><td>PocoCajas@gmail.com</td><td>5615212</td><td>Bolsa cafe</td><td>17</td></tr>
-                                                     <tr><td>18</td><td>Válvula Cajas</td><td>VálvulaCajas@gmail.com</td><td>3146165891</td><td>Bolsa de papel</td><td>18</td></tr>
-                                                    </tbody>  
-                                                
-                                                
-                                            </table>
-                            
-                        </table>
-                        </div>
-                                      
-                                    
-                                    <!-- Modal footer -->
-                                    <div class="modal-footer">
-                                      <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
-                                    </div>
-                        
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                        
-                        <br>
-                        <main >
-                            <label for="Caja">Tamaño </label>
-                            <input type="text" name="Caja" id="Tamaño" th:field="*{Tamano}" class="input" required maxlength="10" minlength="1" pattern="[0-9]+"></main>
-                        <br>
-                            <main >
-                            <label for="Caja">Precio </label>
-                            <input type="text" name="Caja" id="Total" th:field="*{Precio}" class="input" required maxlength="10" minlength="1" pattern="[0-9]+"></main>
-                        
-                          
-                           <br>
-                            <div class="col-12 "><br>
-                            
-                           <input type="submit" class="btn btn-info"id="submit"
-                            onclick="validacion()" value="Enviar">
-                            <input type="reset" name="reset"class="btn btn-danger" 
-                            value="Restablecer"> 
-                            
-                        </div>
-     
+           <main class="main col">
+				<div
+					class="row justify-content-center align-content-center text-center">
+					<div class="columna col-lg-6">
 
-                      
+						<main class="perfiles">
+							<h1 class="perfile">Productos</h1>
 
+							<section class="form-register"
+								style="margin: auto; margin-top: 20px; width: auto; height: 400px">
 
-                    </div>
+								<div class="row">
+									<form th:action="@{/Solware2/C_Productos}"
+										th:object="${Producto}" method="POST">
+										<div class="row">
+											<div class="col-sm-6">
+												<label for="Nombre" class="form-label">Nombre</label> <input
+													id="Nombre" type="text" class="form-control" required
+													th:field="*{Nombre}">
+											</div>
+											<div class="col-sm-6">
+												<label class="form-label">Proveedor</label> <select
+													th:field="*{Proveedor}" class="form-control">
+													<option th:each="proveedor:${Proveedores}"
+														th:value="${proveedor.ID_Proveedor}"
+														th:text="${proveedor.Nombre}"></option>
+												</select>
+											</div>
 
-                </div>
+										</div>
+										<div class="row">
+											<div class="col-sm-6">
+												<label for="Tamaño" class="form-label">Tamaño</label> <input
+													id="Tamaño" type="text" class="form-control" required
+													th:field="*{Tamano}">
+											</div>
+											<div class="col-sm-6">
+												<label for="Precio" class="form-label">Precio</label> <input
+													id="Precio" type="number" class="form-control" required
+													th:field="*{Precio}">
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-12">
+												<br> <br> <input type="submit"
+													class="btn btn-primary" id="submit" onclick="validacion()"
+													value="Enviar"> <input type="reset" name="reset"
+													class="btn btn-danger" value="Restablecer">
+											</div>
+										</div>
+									</form>
+								</div>
+					</div>
+				</div>
+				</section>
 
-            </main>
+			</main>
         </div>
     </div>
 
