@@ -17,10 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-<<<<<<< HEAD
-=======
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
->>>>>>> Carlos
 import org.slf4j.*;
 import com.app.web.entidad.Cliente;
 import com.app.web.entidad.Detalle_Pedido;
@@ -168,16 +165,13 @@ private final Logger log = LoggerFactory.getLogger(PedidoControlador.class);
 	}
 	
 	@PostMapping("/GuardarPedido")
-<<<<<<< HEAD
-	public String  GuardarPedido(@ModelAttribute("Pedido") Pedido pedido) {
-=======
+
 	public String  GuardarPedido(@ModelAttribute("Pedido") Pedido pedido,RedirectAttributes attributes,Model modelo) {
 		if (listaDetalles.isEmpty()) {
 	        attributes.addFlashAttribute("mensaje", " No se puede guardar un pedido sin detalles");
 	        
 	        return "redirect:/Solware2/home/PedidosA";
 	    }
->>>>>>> Carlos
 		Date fechacreacion= new Date();
 		pedido.setFecha_Pedido(fechacreacion);
 		int sumaTotal =0;

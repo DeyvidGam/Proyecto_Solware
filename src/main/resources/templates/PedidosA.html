@@ -189,7 +189,7 @@
 								<div class="row">
 									<div class="col-sm-12">
 										<h2>Cliente</h2>
-										<select th:field="*{cliente}" class="form-control">
+										<select autofocus="autofocus" th:field="*{cliente}" class="form-control">
 											<option th:each="cliente:${Clientes}"
 												th:value="${cliente.Identificacion}"
 												th:text="${cliente.Nombres}+' '+${cliente.Apellidos}"></option>
