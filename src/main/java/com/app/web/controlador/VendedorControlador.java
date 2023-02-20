@@ -28,16 +28,9 @@ public class VendedorControlador {
 		return "Proveedores";
 	}
 	
-	
-	
 	@GetMapping("/Productos")
 	public String Productos(Model modelo) {
 		return "Productos";
-	}
-	
-	@GetMapping("/Pedidos")
-	public String Pedidos(Model modelo) {
-		return "Pedidos";
 	}
 
 	@GetMapping("/ReportesV")
