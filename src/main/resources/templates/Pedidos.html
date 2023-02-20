@@ -126,6 +126,11 @@
 					<div class="columna col-lg-10">
 					<center>
 					<h1>CREAR PEDIDO</h1>
+										<div th:if="${mensaje}">
+    <div class="alert alert-danger" role="alert">
+        <span th:text="${mensaje}"></span>
+    </div>
+</div>
 					</center>
 						<form th:action="@{/Solware2/GuardarPedido}"
 							th:object="${Pedido}" method="POST">

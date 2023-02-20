@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.app.web.entidad.Detalle_Pedido;
 import com.app.web.entidad.Pedido;
@@ -56,7 +57,7 @@ public class VentaControlador {
 	 @PostMapping("/ventas")
 	    public String registerVenta(@RequestParam("idPedido") Long idPedido,
 	                                @RequestParam("Modo_Pago") String Modo_Pago,
-	                                Model modelo) {
+	                                Model modelo,RedirectAttributes attributes) {
 	        // Retrieve the corresponding Pedido object from the database
 		 List<Pedido> listapedido = pedidoServicio.listarpedidos(); 
 	        Pedido pedido = pedidoServicio.obtenerPedidoPorId(idPedido);
@@ -73,7 +74,7 @@ if (venta.getiDPedido() != null && venta.getiDPedido().getID_Pedido() == pedido.
 // If a Venta object with the same Pedido already exists, set an error message and redirect back to the ventasAdmin page.
             
            
-	
+	attributes.addFlashAttribute("mensaje", "El pedido ya fue vendio");
 	    
 return "redirect:/Solware2/home/ventasAdmin";
 }

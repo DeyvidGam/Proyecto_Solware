@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.slf4j.*;
 import com.app.web.entidad.Cliente;
 import com.app.web.entidad.Detalle_Pedido;
@@ -105,36 +106,38 @@ public class PedidoControlador {
 	}
 	
 	@PostMapping("/detalle")
-	public String agregarDetalle(@RequestParam Long id, @RequestParam Integer cantidad, Model modelo ) {
-		Detalle_Pedido detalle = new Detalle_Pedido();
-		Producto producto =new Producto();
-		double sumaTotal = 0;
-		Producto productoOptional = this.productoServicio.obtenerProductoPorId(id);
-		
-		producto = productoOptional;
-		detalle.setCantidad(cantidad);
-		detalle.setSubTotal(producto.getPrecio()*cantidad);
-		detalle.setProducto(producto);
-		
-		Long idProducto = producto.getID_Producto();
-		boolean insertado = listaDetalles.stream().anyMatch(m->m.getProducto().getID_Producto() ==idProducto);
-		
-		if (!insertado) {
-			listaDetalles.add(detalle);
-		}
-		
-		this.listarClientes= this.clienteServicio.listarclientes();
-		
-		modelo.addAttribute("Pedido", pedido);
-		
-		modelo.addAttribute("listarClientes",this.listarClientes);
-		modelo.addAttribute("listaDetalles",this.listaDetalles);
-		modelo.addAttribute("venta",venta);
-		List<Cliente> listarCliente = clienteServicio.listarclientes();
-		modelo.addAttribute("Clientes", listarCliente);
-		
-		return "PedidosA";
-		
+	public String agregarDetalle(@RequestParam Long id, @RequestParam Integer cantidad, Model modelo) {
+	    Producto producto = this.productoServicio.obtenerProductoPorId(id);
+
+	    // Buscar un detalle existente para el mismo producto en la lista
+	    Detalle_Pedido detalleExistente = listaDetalles.stream()
+	        .filter(d -> d.getProducto().getID_Producto().equals(producto.getID_Producto()))
+	        .findFirst().orElse(null);
+
+	    if (detalleExistente != null) {
+	        // Agregar a la cantidad y recalcular subtotal para el detalle existente
+	        detalleExistente.setCantidad(detalleExistente.getCantidad() + cantidad);
+	        detalleExistente.setSubTotal(detalleExistente.getProducto().getPrecio() * detalleExistente.getCantidad());
+	    } else {
+	        // Crear un nuevo detalle para el producto
+	        Detalle_Pedido detalleNuevo = new Detalle_Pedido();
+	        detalleNuevo.setCantidad(cantidad);
+	        detalleNuevo.setSubTotal(producto.getPrecio() * cantidad);
+	        detalleNuevo.setProducto(producto);
+	        listaDetalles.add(detalleNuevo);
+	    }
+
+	    // Calcular el monto total para todos los detalles en la lista
+	    double sumaTotal = listaDetalles.stream().mapToDouble(d -> d.getSubTotal()).sum();
+
+	    modelo.addAttribute("Pedido", pedido);
+	    modelo.addAttribute("listarClientes", this.listarClientes);
+	    modelo.addAttribute("listaDetalles", listaDetalles);
+	    modelo.addAttribute("venta", venta);
+	    modelo.addAttribute("Clientes", clienteServicio.listarclientes());
+	    modelo.addAttribute("sumaTotal", sumaTotal);
+
+	    return "PedidosA";
 	}
 	
 	@GetMapping("/eliminaDetalle/{id}")
@@ -160,7 +163,12 @@ public class PedidoControlador {
 		return "PedidosA";
 	}
 	@PostMapping("/GuardarPedido")
-	public String  GuardarPedido(@ModelAttribute("Pedido") Pedido pedido) {
+	public String  GuardarPedido(@ModelAttribute("Pedido") Pedido pedido,RedirectAttributes attributes,Model modelo) {
+	    if (listaDetalles.isEmpty()) {
+	        attributes.addFlashAttribute("mensaje", " No se puede guardar un pedido sin detalles");
+	        
+	        return "redirect:/Solware2/home/PedidosA";
+	    }
 		Date fechacreacion= new Date();
 		pedido.setFecha_Pedido(fechacreacion);
 		int sumaTotal =0;

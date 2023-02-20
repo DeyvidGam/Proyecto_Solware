@@ -171,11 +171,16 @@
 
 
 						<main class="perfiles">
-							
+
 							<title>Sol y Asociados</title>
 							<h1 class="perfile">VENTAS</h1>
-							<section class="form-register" style="margin: auto; margin-top: 20px; width: 600px; height: 400px">
-
+							<section class="form-register"
+								style="margin: auto; margin-top: 20px; width: 600px; height: 400px">
+								<div th:if="${mensaje}">
+									<div class="alert alert-danger" role="alert">
+										<span th:text="${mensaje}"></span>
+									</div>
+								</div>
 								<div class="row">
 									<form th:action="@{/Solware2/home/ventas}" method="POST">
 										<div class="row">
