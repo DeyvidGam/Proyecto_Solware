@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -18,8 +18,14 @@
 	crossorigin="anonymous"></script>
 <link rel="stylesheet" type="text/css" href="/css/ab.css">
 <link rel="stylesheet" type="text/css" href="/css/estilofooter.css">
-<link rel="stylesheet" type="text/css" href="/css/Pedido.css">
-<script th:src="@{/js/eliminarr.js}"></script>
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+<script
+	src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+<link rel="stylesheet" type="text/css" href="/css/estiloinventario.css">
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="/js/Ventas.js"></script>
 <!-- Bootstrap CSS -->
 <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
 <!-- CSS personalizado -->
@@ -31,7 +37,6 @@
 <!--datables estilo bootstrap 4 CSS-->
 <link rel="stylesheet" type="text/css"
 	href="/datatables/DataTables-1.10.18/css/dataTables.bootstrap4.min.css">
-
 </head>
 <body>
 
@@ -117,53 +122,60 @@
 				</nav>
 			</div>
 			<main class="main col">
-				<div
-					class="row justify-content-center align-content-center text-center">
-					<div class="columna col-lg-12">
+				<div class="row justify-content-center align-content-center text-center">
+					<div class="columna col-lg-10">
+						<div class="col-sm-10" style="text-align: center;">
+							<div class="form-group">
+								<h1>Datos del producto</h1>
+							</div>
+							<form th:action="@{/Solware2/detalle}" method="post">
+								<input type="hidden" th:value="${producto.ID_Producto}"
+									name="id">
+								<table id="tabla" class="table table-striped table-bordered"
+									cellspacing="0" width="30%">
+									<thead class="table-dark">
+										<tr th:object="${producto}">
+											<th>ID_Producto</th>
+											<th>Nombre</th>
+											<th>Cantidad</th>
+											<th>Precio</th>
 
-						<div class="table-responsive responsive">
-							<table id="tabla" class="table table-striped table-bordered"
-								cellspacing="0" width="100%">
-
-								<h1>Pedido</h1>
-
-								<thead class="table-dark">
-									<tr>
-										<th>ID_Pedido</th>
-										<th>Fecha_Pedido</th>
-										<th>Total</th>
-										<th>ID_Cliente</th>
-
-
-									</tr>
-								</thead>
-								<tbody>
-									<tr th:each="pedidos : ${Pedido}">
-										<td th:text="${pedidos.ID_Pedido}">ID_Pedido</td>
-										<td th:text="${pedidos.Fecha_Pedido}">Fecha_Pedido</td>
-										<td th:text="${pedidos.Total}">Total</td>
-										<td th:text="${pedidos.Cliente.nombres}">ID_Cliente</td>
-
-
-									</tr>
-								</tbody>
-
-
-							</table>
+											<th>Proveedor</th>
+											<th>Tamaño</th>
+										</tr>
+									</thead>
+									<tbody>
+										<td th:text="${producto.ID_Producto}">ID_Producto</td>
+										<td th:text="${producto.Nombre}">Nombre</td>
+										<td><input type="number"
+											style="width: 30%; font-size: 14px" minlength="1"
+											maxlength="3" min="1" required name="cantidad" id="cantidad">
+										</td>
+										<td th:text="${producto.Precio}">Precio</td>
+										<td th:text="${producto.Proveedor.nombre}">Proveedor</td>
+										<td th:text="${producto.Tamano}">Tamano</td>
+										</tr>
+									</tbody>
+								</table>
+								<div class="form-group">
+									<input type="submit" name="accion" value="Agregar"
+										class="btn btn-success">
+								</div>
+							</form>
 						</div>
 					</div>
-
 				</div>
-
 			</main>
 		</div>
+			
 	</div>
+
 
 	<footer class="pie-pagina">
 		<div class="grupo-1">
 			<div class="box">
 				<figure>
-					<a href="#"> <img src="/img/LOGO_SOL_Y_ASOCIADOS.png"
+					<a href="#"> <img th:src="@{/img/LOGO_SOL_Y_ASOCIADOS.png}"
 						alt="Logo">
 					</a>
 				</figure>
@@ -194,6 +206,18 @@
 
 
 
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+		integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+		integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+		crossorigin="anonymous"></script>
+	<script src="https://kit.fontawesome.com/646c794df3.js"></script>
+
+
 
 	<script
 		src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
@@ -222,59 +246,57 @@
 	<script src="/datatables/pdfmake-0.1.36/vfs_fonts.js"></script>
 	<script src="/datatables/Buttons-1.5.6/js/buttons.html5.min.js"></script>
 	<script>
-    $(document).ready(function(filename = '') {    
-$('#tabla').DataTable({        
-    language: {
-            lengthMenu: "Mostrar _MENU_ registros",
-            zeroRecords: "No se encontraron resultados",
-            "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-            "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
-            "infoFiltered": "(filtrado de un total de _MAX_ registros)",
-            "sSearch": "Buscar:",
-            "oPaginate": {
-                "sFirst": "Primero",
-                "sLast":"Último",
-                "sNext":"Siguiente",
-                "sPrevious": "Anterior"
-             },
-             "sProcessing":"Procesando...",
-            },
-            scrollY: 500,
-            lengthMenu: [ [5,10, 25, -1], [5,10, 25, "All"] ],
-    //para usar los botones   
-    responsive: "true",
-    dom: 'lBfrtip',       
-    buttons:[ 
-        {
-            extend:    'excelHtml5',
-            text:      '<i class="fas fa-file-excel"></i> ',
-            titleAttr: 'Exportar a Excel',
-            className: 'btn btn-success ',
-            filename: 'ventas'
-         
-    
-        },
-        {
-            extend:    'pdfHtml5',
-            text:      '<i class="fas fa-file-pdf"></i> ',
-            titleAttr: 'Exportar a PDF',
-            className: 'btn btn-danger '
-        
+      $(document).ready(function(filename = '') {    
+  $('#tabla').DataTable({        
+      language: {
+              lengthMenu: "Mostrar _MENU_ registros",
+              zeroRecords: "No se encontraron resultados",
+              "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+              "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+              "infoFiltered": "(filtrado de un total de _MAX_ registros)",
+              "sSearch": "Buscar:",
+              "oPaginate": {
+                  "sFirst": "Primero",
+                  "sLast":"Último",
+                  "sNext":"Siguiente",
+                  "sPrevious": "Anterior"
+               },
+               "sProcessing":"Procesando...",
+              },
+              scrollY: 200,
+              lengthMenu: [ [5,10, 25, -1], [5,10, 25, "All"] ],
+      //para usar los botones   
+      responsive: "true",
+      dom: 'lBfrtip',       
+      buttons:[ 
+          {
+              extend:    'excelHtml5',
+              text:      '<i class="fas fa-file-excel"></i> ',
+              titleAttr: 'Exportar a Excel',
+              className: 'btn btn-success ',
             
-            
-        },
-        {
-            extend:    'print',
-            text:      '<i class="fa fa-print"></i> ',
-            titleAttr: 'Imprimir',
-            className: 'btn btn-info'
-        },
-    ]	        
-});     
-});
-
-</script>
-
+      
+          },
+          {
+              extend:    'pdfHtml5',
+              text:      '<i class="fas fa-file-pdf"></i> ',
+              titleAttr: 'Exportar a PDF',
+              className: 'btn btn-danger '
+          
+              
+              
+          },
+          {
+              extend:    'print',
+              text:      '<i class="fa fa-print"></i> ',
+              titleAttr: 'Imprimir',
+              className: 'btn btn-info'
+          },
+      ]	        
+  });     
+  });
+  
+  </script>
 
 </body>
 </html>

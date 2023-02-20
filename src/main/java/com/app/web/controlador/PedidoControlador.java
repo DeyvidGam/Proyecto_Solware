@@ -93,10 +93,7 @@ public class PedidoControlador {
 		modelo.addAttribute("Deatalle", detalle_PedidoServicio.listarDetalle_Pedido());
 		return "agregarPedido";
 
-	}
-	
-	
-	
+	}	
 	@GetMapping("/PedidosA/{id}")
 	public String pedidoNuevo(@PathVariable("id") Long id,Model modelo) {
 		
@@ -150,10 +147,6 @@ public class PedidoControlador {
 		}
 		
 	}
-	
-	
-
-	
 	listaDetalles= listanuevoDetalle;
 		log.info("@@@ detalle id:{}",id );
 		
@@ -176,9 +169,6 @@ public class PedidoControlador {
 		for (Detalle_Pedido detalle_Pedido : listaDetalles) {
 			detalle_Pedido.setPedido(pedido);
 			this.detalle_PedidoServicio.guardarDetalle_Pedido(detalle_Pedido);
-			
-			
-			
 		}
 		pedido = new Pedido();
 		listaDetalles.clear();
