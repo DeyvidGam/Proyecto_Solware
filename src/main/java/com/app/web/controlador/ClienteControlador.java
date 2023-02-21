@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.app.web.entidad.Cliente;
 import com.app.web.servicio.ClienteServicio;
@@ -37,9 +38,10 @@ public class ClienteControlador {
 	}
 
 	@PostMapping("/C_ClienteA")
-	public String guardarCliente(@ModelAttribute("Cliente") Cliente cliente) {
+	public String guardarCliente(@ModelAttribute("Cliente") Cliente cliente, RedirectAttributes Atrributes) {
+		Atrributes.addFlashAttribute("exitoso", "Registro Exitoso");
 		clienteServicio.guardarCliente(cliente);
-		return "redirect:/Solware2/home/C_ClienteA";
+		return "redirect:/Solware2/home/ClientesA";
 	}
 
 	@GetMapping("/C_ClienteA/editar/{Identificacion}")
