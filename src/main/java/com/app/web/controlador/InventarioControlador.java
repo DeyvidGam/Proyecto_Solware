@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.app.web.entidad.Inventario;
 import com.app.web.entidad.Movimiento;
@@ -55,25 +56,41 @@ public class InventarioControlador {
 	}
 
 	public void MovimientoInventario(Inventario inventario) {
-		inventarioServicio.guardarInventario(inventario);
-		Inventario inventarioExistente = inventarioServicio.obtenerInventarioPorId(inventario.getID_Inventario());
-		Insumo insumo = insumoServicio.obtenerInsumoPorId(inventarioExistente.getInsumo().getID_Insumo());
-		int disponible = insumo.getDisponible();
-		
-		if (inventario.getMovimiento().getNombre().equalsIgnoreCase("Entrada")) {
-			insumo.setDisponible(inventarioExistente.getCantidad() + disponible);
-		}else if(inventario.getMovimiento().getNombre().equalsIgnoreCase("Salida") && (disponible>=inventarioExistente.getCantidad())) {
-			insumo.setDisponible(disponible - inventarioExistente.getCantidad() );
-		}
-		insumoServicio.guardarInsumo(insumo);
+	    inventarioServicio.guardarInventario(inventario);
+	    Inventario inventarioExistente = inventarioServicio.obtenerInventarioPorId(inventario.getID_Inventario());
+	    Insumo insumo = insumoServicio.obtenerInsumoPorId(inventarioExistente.getInsumo().getID_Insumo());
+	    int disponible = insumo.getDisponible();
+
+	    if (inventario.getMovimiento().getNombre().equalsIgnoreCase("Entrada")) {
+	        insumo.setDisponible(inventarioExistente.getCantidad() + disponible);
+	    } else if (inventario.getMovimiento().getNombre().equalsIgnoreCase("Salida")) {
+	        if (disponible >= inventarioExistente.getCantidad()) {
+	            insumo.setDisponible(disponible - inventarioExistente.getCantidad());
+	        } else {
+	            throw new RuntimeException("No hay suficientes insumos disponibles");
+	        }
+	    }
+	    insumoServicio.guardarInsumo(insumo);
 	}
 
 	@PostMapping("/Consultar")
-	public String guardarInventario(@ModelAttribute("Inventario") Inventario inventario) {
-		inventarioServicio.guardarInventario(inventario);
-		MovimientoInventario(inventario);
-		return "redirect:/Solware2/home/Consultar";
+	public String guardarInventario(@ModelAttribute("Inventario") Inventario inventario, Model modelo, RedirectAttributes attributes) {
+		try {
+	        MovimientoInventario(inventario);
+	        attributes.addFlashAttribute("exitoso", "Registro Exitoso");
+	        return "redirect:/Solware2/home/ModuloInventario";
+	    } catch (RuntimeException e) {
+	        modelo.addAttribute("mensaje", e.getMessage());
+	        List<Insumo> listainsumos = insumoServicio.listarinsumo();
+	        List<Movimiento> listamovimientos = movimientoServicio.listarmovimiento();
+	        modelo.addAttribute("Inventario", inventario);
+	        modelo.addAttribute("insumos", listainsumos);
+	        modelo.addAttribute("movimientos", listamovimientos);
+	        return "ModuloInventario";
+	    }
+		
 	}
+
 
 	@GetMapping("/Consultar/editar/{ID_Inventario}")
 	public String Editar(@PathVariable Long ID_Inventario,Model modelo ) {
