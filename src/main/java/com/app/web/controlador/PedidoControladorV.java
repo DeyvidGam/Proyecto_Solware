@@ -17,7 +17,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
 import org.slf4j.*;
 import com.app.web.entidad.Cliente;
 import com.app.web.entidad.Detalle_Pedido;
@@ -63,11 +65,15 @@ private final Logger log = LoggerFactory.getLogger(PedidoControlador.class);
 
 	@GetMapping("/Pedidos")
 	public String Pedidos(Model modelo) {
+
+
 		modelo.addAttribute("Pedido", pedido);
 		modelo.addAttribute("Producto", productoServicio.listarProducto());
 		modelo.addAttribute("Deatalle", detalle_PedidoServicio.listarDetalle_Pedido());
 		this.listarClientes = this.clienteServicioImp.listarclientes();
 		modelo.addAttribute("Clientes", this.listarClientes);
+
+
 		return "Pedidos";
 	}
 	@GetMapping("/C_Pedidos")
@@ -172,6 +178,8 @@ private final Logger log = LoggerFactory.getLogger(PedidoControlador.class);
 	        
 	        return "redirect:/Solware2/home/PedidosA";
 	    }
+
+
 		Date fechacreacion= new Date();
 		pedido.setFecha_Pedido(fechacreacion);
 		int sumaTotal =0;
