@@ -284,8 +284,9 @@
 
 
 											<div class="col-sm-5">
-												<label for="Cantidad" class="form-label">Cantidad</label> <input
-													id="Cantidad" type="number" class="form-control" required
+												<label for="Cantidad" class="form-label">Cantidad</label> <input minlength="1"min="1" required 
+												name="cantidad"
+													id="Cantidad" type="number" class="form-control" 
 													th:field="*{Cantidad}">
 
 											</div>

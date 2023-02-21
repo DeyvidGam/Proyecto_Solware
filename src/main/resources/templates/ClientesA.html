@@ -163,7 +163,7 @@
 								<div class="row">
 									<form th:action="@{/Solware2/home/C_ClienteA}"
 										th:object="${Cliente}" method="POST">
-										<div th:if="${exitoso}">
+									<div th:if="${exitoso}">
 									<div class="alert alert-success alert-dismissible">
 									  <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 										<span th:text="${exitoso}"></span>

@@ -2,6 +2,8 @@ package com.app.web.controlador;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -72,7 +74,7 @@ public class InventarioControlador {
 	    }
 	    insumoServicio.guardarInsumo(insumo);
 	}
-
+	@Transactional
 	@PostMapping("/Consultar")
 	public String guardarInventario(@ModelAttribute("Inventario") Inventario inventario, Model modelo, RedirectAttributes attributes) {
 		try {
