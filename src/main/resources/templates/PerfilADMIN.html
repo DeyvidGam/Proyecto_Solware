@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html5 xmlns:th="http://www.thymeleaf.org">
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -156,11 +156,11 @@
 	          <div class="row">
 	            <div class="col-sm-6">
 	              <label for="Nombres" class="form-label">Nombres</label>
-	              <input id="Nombres" type="text" class="form-control" required th:field="*{Nombre}">
+	              <input id="Nombres" type="text" class="form-control" required th:field="*{Nombre}" pattern="[a-zA-ZñÑ\s\.,;:\-_¡!¿\?]+" inputmode="text">
 	            </div>
 	            <div class="col-sm-6">
 	              <label for="Apellidos" class="form-label">Apellidos</label>
-	              <input id="Apellidos" type="text" class="form-control"required th:field="*{Apellido}">  
+	              <input id="Apellidos" type="text" class="form-control"required th:field="*{Apellido}" pattern="[a-zA-ZñÑ\s\.,;:\-_¡!¿\?]+">  
 	            </div>
 	          </div>
 	          <div class="row">
@@ -180,11 +180,11 @@
 	          <div class="row">
 	                <div class="col-sm-6">
 	                    <label for="Telefono"class="form-label">Telefono</label>
-	                    <input id="Telefono" name="Telefono"  type="tel" class="form-control" required th:field="*{Telefono}">    
+	                    <input id="Telefono" name="Telefono"  type="tel" class="form-control" required th:field="*{Telefono}" pattern="[0-9]+">    
 	                </div>
 	                <div class="col-sm-6">
 	                  <label for="Contrasena"class="form-label">Contraseña</label>
-	                  <input id="Contrasena" type="password" class="form-control"required th:field="*{Contrasena}">
+	                  <input id="Contrasena" type="password" class="form-control"required th:field="*{Contrasena}" pattern="[0-9]+">
 	                </div>     
 	          </div>
 	          <div class="row">

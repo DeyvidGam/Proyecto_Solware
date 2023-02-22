@@ -162,7 +162,7 @@
 <div class="row">
   <div class="col-sm-6">
     <label for="Nombre" class="form-label">Nombre</label>
-    <input id="Nombre" type="text" class="form-control" required th:field="*{Nombre}">
+    <input id="Nombre" type="text" class="form-control" required th:field="*{Nombre}" pattern="[a-zA-ZñÑ\s\.,;:\-_¡!¿\?]+" >
   </div>
   <div class="col-sm-6">
     <label class="form-label">Proveedor</label>
@@ -179,7 +179,7 @@
   </div>
   <div class="col-sm-6">
     <label for="Precio" class="form-label">Precio</label>
-    <input id="Precio" type="number" class="form-control"required th:field="*{Precio}">
+    <input id="Precio" type="number" class="form-control"required th:field="*{Precio}" pattern="[0-9]+">
   </div>
 </div>
 <div class="row">
