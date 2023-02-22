@@ -166,14 +166,14 @@
 					class="row justify-content-center align-content-center text-center">
 					<div class="columna col-lg-6">
 
-				<section class="form-register"
-					style="margin: auto; margin-top: 20px; width: auto; height: 400px">
+							<section class="form-register"
+								style="margin: auto; margin-top: 20px; width: auto; height: 400px">
 
-					<div class="row">
-						<form th:action="@{/Solware2/home/C_ProductosA}"
-							th:object="${Producto}" method="POST">
-							<div class="row">
-							<div th:if="${exitoso}">
+								<div class="row">
+									<form th:action="@{/Solware2/home/C_ProductosA}"
+										th:object="${Producto}" method="POST">
+										<div class="row">
+										<div th:if="${exitoso}">
 										<div class="alert alert-success alert-dismissible">
 											 <span th:text="${exitoso}"></span>
 											 <a href="#" class="close" data-dismiss="alert"
