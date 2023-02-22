@@ -27,7 +27,7 @@ import com.app.web.servicio.MovimientoServicio;
 @CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.POST,RequestMethod.PUT})
 
 public class InventarioControlador {
-	private a;
+
 	@Autowired
 	private InventarioServicio inventarioServicio;
 	@Autowired
