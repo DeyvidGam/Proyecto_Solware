@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.app.web.entidad.Pedido;
 import com.app.web.entidad.Venta;
@@ -57,7 +58,7 @@ public class VentaControladorV {
 	@PostMapping("/ventas")
 	public String registerVenta(@RequestParam("idPedido") Long idPedido,
 			@RequestParam("Modo_Pago") String Modo_Pago,
-			Model modelo) {
+			Model modelo, RedirectAttributes attributes) {
 		// Retrieve the corresponding Pedido object from the database
 		List<Pedido> listapedido = pedidoServicio.listarpedidos(); 
 		Pedido pedido = pedidoServicio.obtenerPedidoPorId(idPedido);
@@ -73,7 +74,7 @@ public class VentaControladorV {
 
 				// If a Venta object with the same Pedido already exists, set an error message and redirect back to the ventasAdmin page.
 
-
+				attributes.addFlashAttribute("mensaje", "El pedido ya fue vendio");
 				return "redirect:/Solware2/ConsultarV/nuevo";
 			}
 		}
@@ -85,7 +86,8 @@ public class VentaControladorV {
 
 		// Save the new Venta object to the database
 		ventaServicio.guardarVenta(venta);
-		return "redirect:/Solware2/ConsultarV";
+		attributes.addFlashAttribute("exitoso", " Registro Exitoso");
+		return "redirect:/Solware2/ConsultarV/nuevo";
 	}
 	@PostMapping("/ConsultarV")
 	public String guardarCliente(@ModelAttribute("Venta") Venta venta) {

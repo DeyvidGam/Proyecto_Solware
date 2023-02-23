@@ -17,6 +17,14 @@
 <link rel="stylesheet" type="text/css" href="/css/estiloinventario.css">
 <link rel="stylesheet" type="text/css" href="/css/estiloPerfilV.css">
 <script src="/js/Clientes.js"></script>
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+<script
+	src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="/js/Ventas.js"></script>
 </head>
 <body>
 
@@ -111,9 +119,15 @@
 								style="margin: auto; margin-top: 20px; width: 600px; height: 350px">
 
 								<div class="row">
-									<form th:action="@{/Solware2/C_Cliente}"
-										th:object="${Cliente}" method="POST">
+									<form th:action="@{/Solware2/C_Cliente}" th:object="${Cliente}"
+										method="POST">
 										<div class="row">
+											<div th:if="${exitoso}">
+												<div class="alert alert-success alert-dismissible">
+													<span th:text="${exitoso}"></span> <a href="#"
+														class="close" data-dismiss="alert" aria-label="close">&times;</a>
+												</div>
+											</div>
 											<div class="col-sm-6">
 												<label for="Nombres" class="form-label">Nombres</label> <input
 													id="Nombres" type="text" class="form-control" required
@@ -122,7 +136,8 @@
 											<div class="col-sm-6">
 												<label for="Apellidos" class="form-label">Apellidos</label>
 												<input id="Apellidos" type="text" class="form-control"
-													required th:field="*{Apellidos}" pattern="[a-zA-ZñÑ\s\.,;:\-_¡!¿\?]+">
+													required th:field="*{Apellidos}"
+													pattern="[a-zA-ZñÑ\s\.,;:\-_¡!¿\?]+">
 											</div>
 
 										</div>
@@ -135,7 +150,7 @@
 											<div class="col-sm-6">
 												<label for="Telefono" class="form-label">Telefono</label> <input
 													id="Telefono" type="tel" class="form-control" required
-													th:field="*{Telefono}"  pattern="[0-9]+">
+													th:field="*{Telefono}" pattern="[0-9]+">
 											</div>
 										</div>
 										<div class="row">

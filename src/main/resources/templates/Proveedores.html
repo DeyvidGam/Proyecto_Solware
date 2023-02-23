@@ -16,6 +16,14 @@
 <link rel="stylesheet" type="text/css" href="/css/estilofooter.css">
 <link rel="stylesheet" type="text/css" href="/css/estiloPerfilV.css">
 <script src="/js/Proveedores.js"></script>
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+<script
+	src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="/js/Ventas.js"></script>
 </head>
 <body>
 
@@ -109,17 +117,24 @@
 						<main class="inicios">
 							<h1 class="perfil">Registrar Proveedor</h1>
 							<section class="form-register"
-								style="margin: auto; margin-top: 20px; width: 600px; height: 400px">
+								style="margin: auto; margin-top: 20px; width: 600px; height: 500px">
 
 								<div class="row">
 									<form th:action="@{/Solware2/C_Proveedores}"
 										th:object="${Proveedor}" method="POST">
 										<div class="row">
+											<div th:if="${exitoso}">
+												<div class="alert alert-success alert-dismissible">
+													<span th:text="${exitoso}"></span> <a href="#"
+														class="close" data-dismiss="alert" aria-label="close">&times;</a>
+												</div>
+											</div>
 											<div class="col-sm-2"></div>
 											<div class="col-sm-8">
 												<label for="Nombre" class="form-label">Nombre</label> <input
 													id="Nombre" type="text" class="form-control" required
-													th:field="*{Nombre}" placeholder="Nombre" pattern="[a-zA-ZñÑ\s\.,;:\-_¡!¿\?]+">
+													th:field="*{Nombre}" placeholder="Nombre"
+													pattern="[a-zA-ZñÑ\s\.,;:\-_¡!¿\?]+">
 											</div>
 											<div class="col-sm-2"></div>
 										</div>
@@ -137,7 +152,8 @@
 											<div class="col-sm-8" style="margin-top: 20px;">
 												<label for="Telefono" class="form-label">Telefono</label> <input
 													id="Telefono" type="tel" class="form-control" required
-													th:field="*{telefono}" placeholder="Telefono" pattern="[0-9]+">
+													th:field="*{telefono}" placeholder="Telefono"
+													pattern="[0-9]+">
 											</div>
 											<div class="col-sm-2"></div>
 

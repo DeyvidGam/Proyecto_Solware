@@ -126,33 +126,12 @@
 								<h1>Pedido</h1>
 
 								<thead class="table-dark">
-<<<<<<< HEAD
-									<tr>
-										<th>ID_Pedido</th>
-										<th>Fecha_Pedido</th>
-										<th>Total</th>
-										<th>ID_Cliente</th>
 
-
-									</tr>
-								</thead>
-								<tbody>
-									<tr th:each="pedidos : ${Pedido}">
-										<td th:text="${pedidos.ID_Pedido}">ID_Pedido</td>
-										<td th:text="${pedidos.Fecha_Pedido}">Fecha_Pedido</td>
-										<td th:text="${pedidos.Total}">Total</td>
-										<td th:text="${pedidos.Cliente.nombres}">ID_Cliente</td>
-
-
-									</tr>
-								</tbody>
-=======
                                     <tr>
                                         <th>ID_Pedido</th>
                                         <th>Fecha_Pedido</th>
                                         <th>Total</th>
                                         <th>ID_Cliente</th>
-                                        <th>Acciones</th>
 
                                     </tr>
                                 </thead>
@@ -162,16 +141,7 @@
                                         <td th:text="${pedidos.Fecha_Pedido}">Fecha_Pedido</td>
                                         <td th:text="${pedidos.Total}">Total</td>
                                         <td th:text="${pedidos.Cliente.Nombres}">ID_Cliente</td>
->>>>>>> Carlos
-
-                                        <td><a
-                                            th:href="@{/Solware2/home/C_PedidosA/{ID_Pedido}(ID_Pedido=${pedidos.ID_Pedido})}"
-                                            class="btn btn-danger">eliminar</a>
-                                            <a
-                                            th:href="@{/Solware2/home/C_PedidosA/editar/{ID_Pedido}(ID_Pedido=${pedidos.ID_Pedido})}"
-                                            class="btn btn-info">Editar</a>
-                                            
-                                            </td>
+                            
                                     </tr>
                                 </tbody>
 

@@ -176,7 +176,7 @@ private final Logger log = LoggerFactory.getLogger(PedidoControlador.class);
 		if (listaDetalles.isEmpty()) {
 	        attributes.addFlashAttribute("mensaje", " No se puede guardar un pedido sin detalles");
 	        
-	        return "redirect:/Solware2/home/PedidosA";
+	        return "redirect:/Solware2/Pedidos";
 	    }
 
 
@@ -191,8 +191,8 @@ private final Logger log = LoggerFactory.getLogger(PedidoControlador.class);
 		}
 		pedido = new Pedido();
 		listaDetalles.clear();
-		
-		return "redirect:/Solware2/C_Pedidos";
+		attributes.addFlashAttribute("exitoso", " Registro Exitoso");
+		return "redirect:/Solware2/Pedidos";
 	}
 	@PostMapping("/Solware2/C_Pedidos")
 	public String guardarCliente(@ModelAttribute("Pedido") Pedido pedido) {

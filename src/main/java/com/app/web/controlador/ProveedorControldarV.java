@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.app.web.entidad.Producto;
 import com.app.web.entidad.Proveedor;
@@ -47,9 +48,10 @@ public class ProveedorControldarV {
 	}
 
 	@PostMapping("/C_Proveedores")
-	public String guardarCliente(@ModelAttribute("Proveedor") Proveedor proveedor) {
+	public String guardarCliente(@ModelAttribute("Proveedor") Proveedor proveedor, RedirectAttributes attributes) {
+		attributes.addFlashAttribute("exitoso", " Registro Exitoso");
 		proveedorServicio.guardarProveedor(proveedor);
-		return "redirect:/Solware2/C_Proveedores";
+		return "redirect:/Solware2/C_Proveedores/nuevo";
 	}
 
 	@GetMapping("/C_Proveedores/editar/{ID_Proveedor}")
