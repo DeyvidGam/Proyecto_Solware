@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html5 xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -161,81 +161,77 @@
 					class="row justify-content-center align-content-center text-center">
 					<div class="columna col-lg-6 ">
 						<h1 class="perfil">Registrar Usuario</h1>
-						<br>
 
 
-						<section class="form-register"
-							style="margin: auto; margin-top: 20px; width: auto; height: 400px">
+		<section class="form-register"
+			style="margin: auto; margin-top: 20px; width: auto; height: 400px">
 
 
-							<form class="col" th:action="@{/Solware2/home/ConsultarUs}"
-								th:object="${Usuario}" method="POST">
-								<div class="row">
-								
-									<div th:if="${exitoso}">
-										<div class="alert alert-success alert-dismissible">
-											 <span th:text="${exitoso}"></span>
-											 <a href="#" class="close" data-dismiss="alert"
-												aria-label="close">&times;</a>
-										</div>
-									</div>
-									<div class="row">
-										<div class="col-sm-6">
-											<label for="Nombres" class="form-label">Nombres</label> <input
-												id="Nombres" type="text" class="form-control" required
-												th:field="*{Nombre}">
-										</div>
-										<div class="col-sm-6">
-											<label for="Apellidos" class="form-label">Apellidos</label> <input
-												id="Apellidos" type="text" class="form-control" required
-												th:field="*{Apellido}">
-										</div>
-									</div>
-									<div class="row">
-										<div class="col-sm-6">
-											<label class="form-label">Rol</label> <select
-												th:field="*{Rol}" class="form-control">
-												<option th:each="rol:${roles}" th:value="${rol.ID_Rol}"
-													th:text="${rol.Nombre_Rol}"></option>
-											</select>
-
-										</div>
-										<div class="col-sm-6">
-											<label for="Correo" class="form-label">Correo</label> <input
-												id="Correo" type="email" class="form-control" required
-												th:field="*{Correo}">
-
-										</div>
-									</div>
-									<div class="row">
-										<div class="col-sm-6">
-											<label for="Telefono" class="form-label">Telefono</label> <input
-												id="Telefono" name="Telefono" type="tel"
-												class="form-control" required th:field="*{Telefono}">
-										</div>
-										<div class="col-sm-6">
-											<label for="Contrasena" class="form-label">Contraseña</label>
-											<input id="Contrasena" type="password" class="form-control"
-												required th:field="*{Contrasena}">
-										</div>
-									</div>
-									<div class="row">
-										<div class="col-md-12">
-											<br> <br> <input type="submit"
-												class="btn btn-primary" id="submit"
-												value="Enviar"> <input type="reset" name="reset"
-												class="btn btn-danger" value="Restablecer">
-										</div>
-									</div>
-								</div>
-							</form>
-
-						</section>
+			<form class="col" th:action="@{/Solware2/home/ConsultarUs}"
+				th:object="${Usuario}" method="POST">
+				<div class="row">
+					<div th:if="${exitoso}">
+						<div class="alert alert-success alert-dismissible">
+							<span th:text="${exitoso}"></span> <a href="#" class="close"
+								data-dismiss="alert" aria-label="close">&times;</a>
+						</div>
 					</div>
-
+					<div class="col-sm-6">
+						<label for="Nombres" class="form-label">Nombres</label> <input
+							id="Nombres" type="text" class="form-control" required
+							th:field="*{Nombre}" pattern="[a-zA-ZñÑ\s\.,;:\-_¡!¿\?]+"
+							inputmode="text">
+					</div>
+					<div class="col-sm-6">
+						<label for="Apellidos" class="form-label">Apellidos</label> <input
+							id="Apellidos" type="text" class="form-control" required
+							th:field="*{Apellido}" pattern="[a-zA-ZñÑ\s\.,;:\-_¡!¿\?]+">
+					</div>
 				</div>
-			</main>
-		</div>
+				<div class="row">
+					<div class="col-sm-6">
+						<label class="form-label">Rol</label> <select th:field="*{Rol}"
+							class="form-control">
+							<option th:each="rol:${roles}" th:value="${rol.ID_Rol}"
+								th:text="${rol.Nombre_Rol}"></option>
+						</select>
+
+					</div>
+					<div class="col-sm-6">
+						<label for="Correo" class="form-label">Correo</label> <input
+							id="Correo" type="email" class="form-control" required
+							th:field="*{Correo}">
+
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-6">
+						<label for="Telefono" class="form-label">Telefono</label> <input
+							id="Telefono" name="Telefono" type="tel" class="form-control"
+							required th:field="*{Telefono}" pattern="[0-9]+">
+					</div>
+					<div class="col-sm-6">
+						<label for="Contrasena" class="form-label">Contraseña</label> <input
+							id="Contrasena" type="password" class="form-control" required
+							th:field="*{Contrasena}" pattern="[0-9]+">
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<br> <br> <input type="submit" class="btn btn-primary"
+							id="submit" onclick="validacion()" value="Enviar"> <input
+							type="reset" name="reset" class="btn btn-danger"
+							value="Restablecer">
+					</div>
+				</div>
+			</form>
+
+		</section>
+	</div>
+
+	</div>
+	</main>
+	</div>
 	</div>
 
 

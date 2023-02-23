@@ -166,68 +166,63 @@
 					class="row justify-content-center align-content-center text-center">
 					<div class="columna col-lg-6">
 
-						<main class="perfiles">
-							<h1 class="perfile">Productos</h1>
+				<section class="form-register"
+					style="margin: auto; margin-top: 20px; width: auto; height: 400px">
 
-							<section class="form-register"
-								style="margin: auto; margin-top: 20px; width: auto; height: 400px">
-
-								<div class="row">
-									<form th:action="@{/Solware2/home/C_ProductosA}"
-										th:object="${Producto}" method="POST">
-										<div class="row">
-										<div th:if="${exitoso}">
+					<div class="row">
+						<form th:action="@{/Solware2/home/C_ProductosA}"
+							th:object="${Producto}" method="POST">
+							<div class="row">
+							<div th:if="${exitoso}">
 										<div class="alert alert-success alert-dismissible">
 											 <span th:text="${exitoso}"></span>
 											 <a href="#" class="close" data-dismiss="alert"
 												aria-label="close">&times;</a>
 										</div>
-										</div>
-
-											<div class="col-sm-6">
-												<label for="Nombre" class="form-label">Nombre</label> <input
-													id="Nombre" type="text" class="form-control" required
-													th:field="*{Nombre}">
-											</div>
-											<div class="col-sm-6">
-												<label class="form-label">Proveedor</label> <select
-													th:field="*{Proveedor}" class="form-control">
-													<option th:each="proveedor:${Proveedores}"
-														th:value="${proveedor.ID_Proveedor}"
-														th:text="${proveedor.Nombre}"></option>
-												</select>
-											</div>
-
-										</div>
-										<div class="row">
-											<div class="col-sm-6">
-												<label for="Tamaño" class="form-label">Tamaño</label> <input
-													id="Tamaño" type="text" class="form-control" required
-													th:field="*{Tamano}">
-											</div>
-											<div class="col-sm-6">
-												<label for="Precio" class="form-label">Precio</label> <input
-													id="Precio" type="number" class="form-control" required
-													th:field="*{Precio}">
-											</div>
-										</div>
-										<div class="row">
-											<div class="col-md-12">
-												<br> <br> <input type="submit"
-													class="btn btn-primary" id="submit" onclick="validacion()"
-													value="Enviar"> <input type="reset" name="reset"
-													class="btn btn-danger" value="Restablecer">
-											</div>
-										</div>
-									</form>
+									</div>
+								<div class="col-sm-6">
+									<label for="Nombre" class="form-label">Nombre</label> <input
+										id="Nombre" type="text" class="form-control" required
+										th:field="*{Nombre}" pattern="[a-zA-ZñÑ\s\.,;:\-_¡!¿\?]+">
 								</div>
-						</section>
-								
+								<div class="col-sm-6">
+									<label class="form-label">Proveedor</label> <select
+										th:field="*{Proveedor}" class="form-control">
+										<option th:each="proveedor:${Proveedores}"
+											th:value="${proveedor.ID_Proveedor}"
+											th:text="${proveedor.Nombre}"></option>
+									</select>
+								</div>
+
+							</div>
+							<div class="row">
+								<div class="col-sm-6">
+									<label for="Tamaño" class="form-label">Tamaño</label> <input
+										id="Tamaño" type="text" class="form-control" required
+										th:field="*{Tamano}">
+								</div>
+								<div class="col-sm-6">
+									<label for="Precio" class="form-label">Precio</label> <input
+										id="Precio" type="number" class="form-control" required
+										th:field="*{Precio}" min="1" pattern="[0-9]+">
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-12">
+									<br> <br> <input type="submit"
+										class="btn btn-primary" id="submit" onclick="validacion()"
+										value="Enviar"> <input type="reset" name="reset"
+										class="btn btn-danger" value="Restablecer">
+								</div>
+							</div>
+						</form>
 					</div>
-				</div>
-				
-			</main>
+				</section>
 		</div>
+	</div>
+
+	</main>
+	</div>
 	</div>
 	<footer class="pie-pagina">
 		<div class="grupo-1">
@@ -280,46 +275,55 @@
 	<script src="https://code.jquery.com/jquery-3.4.1.js"
 		integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
 		crossorigin="anonymous">
-                        </script>
+		
+	</script>
 	<!-- DATATABLES -->
 	<script
 		src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js">
-                    </script>
+		
+	</script>
 	<!-- BOOTSTRAP -->
 	<script
 		src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js">
-                    </script>
+		
+	</script>
 
 	<script>
-                        $(document).ready(function () {
-                            $('#tabla').DataTable({
-                                language: {
-                                    processing: "Tratamiento en curso...",
-                                    search: "Buscar&nbsp;:",
-                                    lengthMenu: "Agrupar de _MENU_ items",
-                                    info: "Mostrando del item _START_ al _END_ de un total de _TOTAL_ items",
-                                    infoEmpty: "No existen datos.",
-                                    infoFiltered: "(filtrado de _MAX_ elementos en total)",
-                                    infoPostFix: "",
-                                    loadingRecords: "Cargando...",
-                                    zeroRecords: "No se encontraron datos con tu busqueda",
-                                    emptyTable: "No hay datos disponibles en la tabla.",
-                                    paginate: {
-                                        first: "Primero",
-                                        previous: "Anterior",
-                                        next: "Siguiente",
-                                        last: "Ultimo"
-                                    },
-                                    aria: {
-                                        sortAscending: ": active para ordenar la columna en orden ascendente",
-                                        sortDescending: ": active para ordenar la columna en orden descendente"
-                                    }
-                                },
-                                scrollY: 300,
-                                lengthMenu: [ [5,10, 25, -1], [5,10, 25, "All"] ],
-                            });
-                        });
-                    </script>
+		$(document)
+				.ready(
+						function() {
+							$('#tabla')
+									.DataTable(
+											{
+												language : {
+													processing : "Tratamiento en curso...",
+													search : "Buscar&nbsp;:",
+													lengthMenu : "Agrupar de _MENU_ items",
+													info : "Mostrando del item _START_ al _END_ de un total de _TOTAL_ items",
+													infoEmpty : "No existen datos.",
+													infoFiltered : "(filtrado de _MAX_ elementos en total)",
+													infoPostFix : "",
+													loadingRecords : "Cargando...",
+													zeroRecords : "No se encontraron datos con tu busqueda",
+													emptyTable : "No hay datos disponibles en la tabla.",
+													paginate : {
+														first : "Primero",
+														previous : "Anterior",
+														next : "Siguiente",
+														last : "Ultimo"
+													},
+													aria : {
+														sortAscending : ": active para ordenar la columna en orden ascendente",
+														sortDescending : ": active para ordenar la columna en orden descendente"
+													}
+												},
+												scrollY : 300,
+												lengthMenu : [
+														[ 5, 10, 25, -1 ],
+														[ 5, 10, 25, "All" ] ],
+											});
+						});
+	</script>
 
 
 </body>
