@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.app.web.entidad.Rol;
 import com.app.web.entidad.Usuario;
@@ -53,9 +54,10 @@ public class UsuarioControlador {
 	}
 
 	@PostMapping("/ConsultarUs")
-	public String guardarUsuario(@ModelAttribute("Usuario") Usuario usuario) {
+	public String guardarUsuario(@ModelAttribute("Usuario") Usuario usuario, RedirectAttributes attributes) {
+		attributes.addFlashAttribute("exitoso", "Registro Exitoso");
 		usuarioServicio.guardarUsuario(usuario);
-		return "redirect:/Solware2/home/ConsultarUs";
+		return "redirect:/Solware2/home/ConsultarUs/nuevo";
 	}
 
 	@GetMapping("/ConsultarUs/editar/{ID_Usuario}")

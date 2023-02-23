@@ -181,6 +181,13 @@
 										<span th:text="${mensaje}"></span>
 									</div>
 								</div>
+								<div th:if="${exitoso}">
+										<div class="alert alert-success alert-dismissible">
+											 <span th:text="${exitoso}"></span>
+											 <a href="#" class="close" data-dismiss="alert"
+												aria-label="close">&times;</a>
+										</div>
+									</div>	
 								<div class="row">
 									<form th:action="@{/Solware2/home/ventas}" method="POST">
 										<div class="row">

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.app.web.entidad.Producto;
 import com.app.web.entidad.Proveedor;
@@ -43,9 +44,10 @@ public class ProductoControlador {
 	}
 	
 	@PostMapping("/C_ProductosA")
-	public String guardarProducto(@ModelAttribute("Producto") Producto producto) {
+	public String guardarProducto(@ModelAttribute("Producto") Producto producto, RedirectAttributes attributes) {
+		attributes.addFlashAttribute("exitoso", "Registro Exitoso");
 		productoServicio.guardarProducto(producto);
-		return "redirect:/Solware2/home/C_ProductosA";
+		return "redirect:/Solware2/home/ProductosA";
 	}
 	
 	@GetMapping("/C_ProductosA/editar/{ID_Producto}")

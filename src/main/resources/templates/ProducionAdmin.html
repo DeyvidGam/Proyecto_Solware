@@ -33,10 +33,7 @@
 	<div class="container-fluid">
 		<div class="row justify-content-center align-content-center">
 
-		 <div class="col-7 barra1"style="color: white;">
-
-
-			</div>
+			<div class="col-7 barra1" style="color: white;"></div>
 
 			<div class="col-5 barra1">
 				<div class="dropdown">
@@ -165,79 +162,94 @@
 				</nav>
 			</div>
 			<main class="main col">
-    <div class="row justify-content-center align-content-center text-center">
-        <div class="columna col-lg-6">
-            <h1  class="perfil">CREAR PLAN DE PRODUCCIÓN</h1><br>
-			
-	<section class="form-register" style="margin: auto; margin-top: 20px; width: auto; height: auto">
+				<div
+					class="row justify-content-center align-content-center text-center">
+					<div class="columna col-lg-6">
+						<h1 class="perfil">CREAR PLAN DE PRODUCCIÓN</h1>
+						<br>
 
-		<div class="row">
-			  <form th:action="@{/Solware2/home/ConsultarPAdmin}" th:object="${Produccion}" method="POST" >
-			<div class="row">
-			  <div class="col-sm-12">
-			    <label class="form-label">Empleado</label>
-			      <select th:field="*{Operario}" class="form-control">
-			       <option th:each="usuario : ${Usuarios}" th:value="${usuario.ID_Usuario}" th:text="${usuario.Nombre}+' '+ ${usuario.Apellido}"></option>
-			      </select>
-			     
-			   </div>
-			   <div style="margin-left: 10px ;">
-			    <strong aria-required="true" style="margin-right: 20px">Estado</strong><br>
-			    <label>Proceso</label>
-			    <input type="radio" required th:field="*{estado_Produccion}" name="size" id="1" value="1"><br>
-			    <label>Terminado</label>
-			    <input type="radio" th:field="*{estado_Produccion}" name="size" id="2" required value="2" >	                     
-			        <br>
-			      </div>
-			</div>
-			<div class="row">
-			  <div class="col-sm-12">
-			    <label for="Correo" class="form-label">Fecha Inicio</label>
-			    <input id="Correo" type="datetime-local" class="form-control"required th:field="*{Fecha_Inicio}">
-			   
-			  </div>
-			  <div class="col-sm-12">
-			    <label for="Correo" class="form-label">Cantidad</label>
-			    <input id="Correo" type="number" class="form-control"required th:field="*{Cantidad}">
-			   
-			  </div>
-			  <div class="col-sm-12">
-			    <label for="Correo" class="form-label">Fecha Fin</label>
-			    <input id="Correo" type="datetime-local" class="form-control"required th:field="*{Fecha_Fin}">
-			   
-			  </div>
-			</div>
-			<div class="row">
-			  <div class="col-sm-12">
-			    <label class="form-label">ID Pedido</label>
-			      <select th:field="*{pedido}" class="form-control">
-			       <option th:each="pedido : ${Pedidos}" th:value="${pedido.ID_Pedido}" th:text="${pedido.ID_Pedido}"></option>
-			      </select>
-			     
-			   </div>
-			   <div class="col-sm-12">
-			    <label class="form-label">ID Inventario</label>
-			      <select th:field="*{id_Inventario}" class="form-control">
-			       <option th:each="inventario : ${Inventarios}" th:value="${inventario.ID_Inventario}" th:text="${inventario.ID_Inventario}"></option>
-			      </select>
-			     
-			   </div>
-			</div>
-			<div class="row">
-			<div class="col-md-12">
-			<br>
-			<br>
-			      <input type="submit" class="btn btn-primary"id="submit"
-			                onclick="validacion()" value="Enviar">   
-			       <input type="reset" name="reset"class="btn btn-danger" 
-			                value="Restablecer"> </div>
-			</div>
-			</form>
-			</div>	
-	</section>
+						<section class="form-register"
+							style="margin: auto; margin-top: 20px; width: 600px; height: 650px">
 
-	</main>
-	</div>
+							<div class="row">
+								<form th:action="@{/Solware2/home/ConsultarPAdmin}"
+									th:object="${Produccion}" method="POST">
+									<div class="row">
+									<div th:if="${exitoso}">
+										<div class="alert alert-success alert-dismissible">
+											 <span th:text="${exitoso}"></span>
+											 <a href="#" class="close" data-dismiss="alert"
+												aria-label="close">&times;</a>
+										</div>
+									</div>										
+										<div class="col-sm-12">
+											<label class="form-label">Empleado</label> <select
+												th:field="*{Operario}" class="form-control">
+												<option th:each="usuario : ${Usuarios}"
+													th:value="${usuario.ID_Usuario}"
+													th:text="${usuario.Nombre}+' '+ ${usuario.Apellido}"></option>
+											</select>
+
+										</div>
+										<div style="margin-left: 10px;">
+											<strong aria-required="true" style="margin-right: 20px">Estado</strong><br>
+											<label>Proceso</label> <input type="radio" required
+												th:field="*{estado_Produccion}" name="size" id="1" value="1"><br>
+											<label>Terminado</label> <input type="radio"
+												th:field="*{estado_Produccion}" name="size" id="2" required
+												value="2"> <br>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-sm-12">
+											<label for="Correo" class="form-label">Fecha Inicio</label> <input
+												id="Correo" type="datetime-local" class="form-control"
+												required th:field="*{Fecha_Inicio}">
+
+										</div>
+										
+										<div class="col-sm-12">
+											<label for="Correo" class="form-label">Fecha Fin</label> <input
+												id="Correo" type="datetime-local" class="form-control"
+												required th:field="*{Fecha_Fin}">
+
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-sm-12">
+											<label class="form-label">ID Pedido</label> <select
+												th:field="*{pedido}" class="form-control">
+												<option th:each="pedido : ${Pedidos}"
+													th:value="${pedido.ID_Pedido}"
+													th:text="${pedido.ID_Pedido}"></option>
+											</select>
+
+										</div>
+										<div class="col-sm-12">
+											<label class="form-label">ID Inventario</label> <select
+												th:field="*{id_Inventario}" class="form-control">
+												<option th:each="inventario : ${Inventarios}"
+													th:value="${inventario.ID_Inventario}"
+													th:text="${inventario.ID_Inventario}"></option>
+											</select>
+
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-12">
+											<br> <br> <input type="submit"
+												class="btn btn-primary" id="submit" onclick="validacion()"
+												value="Enviar"> <input type="reset" name="reset"
+												class="btn btn-danger" value="Restablecer">
+										</div>
+									</div>
+								</form>
+							</div>
+						</section>
+			</div>
+			</div></main>
+				
+		
 	</div>
 	<footer class="pie-pagina">
 		<div class="grupo-1">

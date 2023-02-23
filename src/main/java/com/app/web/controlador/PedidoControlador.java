@@ -180,8 +180,8 @@ public class PedidoControlador {
 		}
 		pedido = new Pedido();
 		listaDetalles.clear();
-		
-		return "redirect:/Solware2/home/C_PedidosA";
+		attributes.addFlashAttribute("exitoso", " Registro Exitoso");
+		return "redirect:/Solware2/home/PedidosA";
 	}
     
 	@PostMapping("/Solware2/home/C_PedidosA")

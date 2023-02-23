@@ -88,14 +88,15 @@ return "redirect:/Solware2/home/ventasAdmin";
 
 		// Save the new Venta object to the database
 		ventaServicio.guardarVenta(venta);
-
-		return "redirect:/Solware2/home/ConsultarAdmin";
+		attributes.addFlashAttribute("exitoso", "Registro Exitoso");
+		return "redirect:/Solware2/home/ventasAdmin";
 	}
 
 	@PostMapping("/ConsultarAdmin")
-	public String guardarCliente(@ModelAttribute("Venta") Venta venta) {
+	public String guardarCliente(@ModelAttribute("Venta") Venta venta, RedirectAttributes attributes) {
+		
 		ventaServicio.guardarVenta(venta);
-		return "redirect:/Solware2/home/ConsultarAdmin";
+		return "redirect:/Solware2/home/ventasAdmin";
 	}
 
 	@GetMapping("/ConsultarAdmin/editar/{ID_Venta}")
