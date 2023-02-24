@@ -1,33 +1,30 @@
 package com.app.web.servicio;
-
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Map;
-
 import javax.sql.DataSource;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.app.web.Enum.TipoReporteEnum;
 import com.app.web.commons.JasperReportManager;
-import com.app.web.entidad.ReporteVentas;
+import com.app.web.entidad.ReporteInventario;
 
 import net.sf.jasperreports.engine.JRException;
 @Service
-public class ReporteVentasServicioImp implements ReporteVentasServicio{
+public class ReporteInventarioServicioImp implements ReporteInventarioServicio{
 	@Autowired
 	private JasperReportManager reportManager;
 
 	@Autowired
 	private DataSource dataSource;
 
-	public ReporteVentas obtenerReporteVentas(Map<String, Object> params)
+	@Override
+	public ReporteInventario obtenerReporteInventario(Map<String, Object> params)
 			throws JRException, IOException, SQLException {
-		String fileName = "Reportes_Ventas";
-		ReporteVentas dto = new ReporteVentas();
+		String fileName = "Reportes_Inventario";
+		ReporteInventario dto = new ReporteInventario();
 		String extension = params.get("tipo").toString().equalsIgnoreCase(TipoReporteEnum.EXCEL.name()) ? ".xlsx"
 				: ".pdf";
 		dto.setFileName(fileName + extension);
