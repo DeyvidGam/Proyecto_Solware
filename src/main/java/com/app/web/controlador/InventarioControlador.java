@@ -1,9 +1,6 @@
 package com.app.web.controlador;
 
 import java.util.List;
-
-import javax.transaction.Transactional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -58,28 +55,35 @@ public class InventarioControlador {
 
 	}
 
-	public void MovimientoInventario(Inventario inventario) {
-	    inventarioServicio.guardarInventario(inventario);
-	    Inventario inventarioExistente = inventarioServicio.obtenerInventarioPorId(inventario.getID_Inventario());
-	    Insumo insumo = insumoServicio.obtenerInsumoPorId(inventarioExistente.getInsumo().getID_Insumo());
-	    int disponible = insumo.getDisponible();
 
-	    if (inventario.getMovimiento().getNombre().equalsIgnoreCase("Entrada")) {
-	        insumo.setDisponible(inventarioExistente.getCantidad() + disponible);
-	    } else if (inventario.getMovimiento().getNombre().equalsIgnoreCase("Salida")) {
-	        if (disponible >= inventarioExistente.getCantidad()) {
-	            insumo.setDisponible(disponible - inventarioExistente.getCantidad());
-	        } else {
-	            throw new RuntimeException("No hay suficientes insumos disponibles");
-	        }
-	    }
-	    insumoServicio.guardarInsumo(insumo);
-	}
-	@Transactional
 	@PostMapping("/Consultar")
 	public String guardarInventario(@ModelAttribute("Inventario") Inventario inventario, Model modelo, RedirectAttributes attributes) {
-		try {
-	        MovimientoInventario(inventario);
+	    try {
+	        Insumo insumo = insumoServicio.obtenerInsumoPorId(inventario.getInsumo().getID_Insumo());
+	        int disponible = insumo.getDisponible();
+
+	        if (inventario.getMovimiento().getNombre().equalsIgnoreCase("Entrada")) {
+	            insumo.setDisponible(inventario.getCantidad() + disponible);
+	        } else if (inventario.getMovimiento().getNombre().equalsIgnoreCase("Salida")) {
+	            if (disponible >= inventario.getCantidad()) {
+	                insumo.setDisponible(disponible - inventario.getCantidad());
+	            } else {
+	                throw new RuntimeException("No hay suficientes insumos disponibles");
+	            }
+	        }
+	        insumoServicio.guardarInsumo(insumo);
+	        
+	        if (inventario.getID_Inventario() == null) {
+	            inventarioServicio.guardarInventario(inventario);
+	        } else {
+	            Inventario inventarioExistente = inventarioServicio.obtenerInventarioPorId(inventario.getID_Inventario());
+	            inventarioExistente.setInsumo(inventario.getInsumo());
+	            inventarioExistente.setMovimiento(inventario.getMovimiento());
+	            inventarioExistente.setCantidad(inventario.getCantidad());
+	            inventarioExistente.setFecha(inventario.getFecha());
+	            inventarioServicio.updateInventario(inventarioExistente);
+	        }
+
 	        attributes.addFlashAttribute("exitoso", "Registro Exitoso");
 	        return "redirect:/Solware2/home/ModuloInventario";
 	    } catch (RuntimeException e) {
@@ -91,8 +95,8 @@ public class InventarioControlador {
 	        modelo.addAttribute("movimientos", listamovimientos);
 	        return "ModuloInventario";
 	    }
-		
 	}
+
 
 
 	@GetMapping("/Consultar/editar/{ID_Inventario}")
