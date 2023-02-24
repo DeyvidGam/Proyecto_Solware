@@ -90,20 +90,11 @@ public class Pedido {
 	public void setTotal(double sumaTotal) {
 		Total = (int) sumaTotal;
 	}
+	
 	@Override
 	public String toString() {
 		return "Pedido [ID_Pedido=" + ID_Pedido + ", cliente=" + cliente + ", Fecha_Pedido=" + Fecha_Pedido + ", Total="
 				+ Total + "]";
 	}
 	
-	
-	
-	
-    
-    
-    
-    
-	
-	
-
 }
