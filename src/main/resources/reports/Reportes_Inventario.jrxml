@@ -113,7 +113,7 @@ ORDER BY TotalSalida DESC]]>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Arial Black" size="24"/>
 				</textElement>
-				<text><![CDATA[Reportes Ventas]]></text>
+				<text><![CDATA[Reportes Inventario]]></text>
 			</staticText>
 			<textField pattern="MMMMM dd, yyyy">
 				<reportElement x="430" y="60" width="100" height="30" uuid="d186dba0-231d-4ece-a599-66a32a4f47ac"/>
@@ -196,13 +196,13 @@ ORDER BY TotalSalida DESC]]>
 		</band>
 	</detail>
 	<pageFooter>
-		<band height="40" splitType="Stretch"/>
+		<band height="55" splitType="Stretch"/>
 	</pageFooter>
 	<summary>
-		<band height="210" splitType="Stretch">
+		<band height="266" splitType="Stretch">
 			<barChart>
 				<chart isShowLegend="true" evaluationTime="Report">
-					<reportElement key="" x="150" y="10" width="200" height="200" uuid="b0923a18-a3ce-4113-b9c8-252aa2817e38"/>
+					<reportElement key="" x="150" y="50" width="200" height="200" uuid="b0923a18-a3ce-4113-b9c8-252aa2817e38"/>
 					<chartTitle/>
 					<chartSubtitle/>
 					<chartLegend position="Bottom"/>
@@ -233,6 +233,13 @@ ORDER BY TotalSalida DESC]]>
 					</valueAxisFormat>
 				</barPlot>
 			</barChart>
+			<staticText>
+				<reportElement x="-20" y="5" width="555" height="60" uuid="cd03463d-7e7d-434d-8ffa-019b4c6d8571"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial Black" size="24"/>
+				</textElement>
+				<text><![CDATA[Insumos Mas Utilizados]]></text>
+			</staticText>
 		</band>
 	</summary>
 </jasperReport>
