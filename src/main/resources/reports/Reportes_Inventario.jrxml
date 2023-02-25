@@ -84,8 +84,7 @@ INNER JOIN Insumos ins ON i.Insumo = ins.ID_Insumo
 INNER JOIN Movimiento mov ON i.Movimiento = mov.ID_Movimiento 
 WHERE mov.Nombre = 'Salida' 
 GROUP BY Nombre_Material 
-ORDER BY TotalSalida DESC 
-]]>
+ORDER BY TotalSalida DESC]]>
 		</queryString>
 		<field name="Nombre_Material" class="java.lang.String">
 			<property name="com.jaspersoft.studio.field.name" value="Nombre_Material"/>
