@@ -14,8 +14,7 @@
 			<![CDATA[SELECT DATE(FechaYHora) AS Dia, SUM(Valor_Venta) AS TotalVentas
 FROM Ventas where FechaYHora  between   $P{FechaInicio}  and   $P{FechaFin} 
  GROUP BY Dia
-ORDER BY TotalVentas DESC
-]]>
+ORDER BY TotalVentas DESC]]>
 		</queryString>
 		<field name="Dia" class="java.sql.Date">
 			<property name="com.jaspersoft.studio.field.name" value="Dia"/>
