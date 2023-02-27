@@ -200,7 +200,7 @@ FROM Produccion]]>
 							<staticText>
 								<reportElement x="0" y="0" width="150" height="30" uuid="555ffcd5-68d8-4741-a3e8-669b49e9d7b5"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
-								<text><![CDATA[Pentientes]]></text>
+								<text><![CDATA[Pendientes]]></text>
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="Table_TD" height="30">
@@ -236,51 +236,23 @@ FROM Produccion]]>
 		<band height="54" splitType="Stretch"/>
 	</pageFooter>
 	<summary>
-		<band height="305" splitType="Stretch">
+		<band height="358" splitType="Stretch">
 			<xyBarChart>
 				<chart evaluationTime="Report">
-					<reportElement x="30" y="80" width="200" height="200" uuid="474e64ca-a694-40c5-b81c-7fa72e254a5e"/>
+					<reportElement x="279" y="80" width="200" height="200" uuid="d2ac0177-2b0a-4e77-9b91-410271baca5d"/>
 					<chartTitle/>
 					<chartSubtitle/>
 					<chartLegend/>
 				</chart>
 				<xyDataset>
 					<dataset resetType="Report">
-						<datasetRun subDataset="Producciones" uuid="e35663cd-2d1a-42a4-9ac8-b70321a35bab">
+						<datasetRun subDataset="Nuevo" uuid="399b2296-ec88-45ae-88c8-37420906db1b">
 							<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 						</datasetRun>
 					</dataset>
 					<xySeries autoSort="true">
-						<seriesExpression><![CDATA[$F{Nombre}]]></seriesExpression>
-						<xValueExpression><![CDATA[$F{Pendientes}]]></xValueExpression>
-						<yValueExpression><![CDATA[$F{Pendientes}]]></yValueExpression>
-					</xySeries>
-				</xyDataset>
-				<barPlot>
-					<plot/>
-					<itemLabel/>
-					<categoryAxisFormat>
-						<axisFormat labelColor="#000000" tickLabelColor="#000000" axisLineColor="#000000"/>
-					</categoryAxisFormat>
-					<valueAxisFormat>
-						<axisFormat labelColor="#000000" tickLabelColor="#000000" axisLineColor="#000000"/>
-					</valueAxisFormat>
-				</barPlot>
-			</xyBarChart>
-			<xyBarChart>
-				<chart evaluationTime="Report">
-					<reportElement x="279" y="80" width="200" height="200" uuid="8c024e12-0601-4f7f-887f-e1b71a291540"/>
-					<chartTitle/>
-					<chartSubtitle/>
-					<chartLegend/>
-				</chart>
-				<xyDataset>
-					<dataset resetType="Report">
-						<datasetRun subDataset="Nuevo" uuid="20a4a616-fdc2-48dd-9c9b-cfbdb0d42c19"/>
-					</dataset>
-					<xySeries autoSort="true">
 						<seriesExpression><![CDATA[$F{Estado}]]></seriesExpression>
-						<xValueExpression><![CDATA[0]]></xValueExpression>
+						<xValueExpression><![CDATA[$F{Cantidad}]]></xValueExpression>
 						<yValueExpression><![CDATA[$F{Cantidad}]]></yValueExpression>
 					</xySeries>
 				</xyDataset>
@@ -309,6 +281,36 @@ FROM Produccion]]>
 				</textElement>
 				<text><![CDATA[Terminados]]></text>
 			</staticText>
+			<barChart>
+				<chart evaluationTime="Report">
+					<reportElement x="40" y="79" width="200" height="200" uuid="f0511818-07c6-4d7c-99e1-948ecd57cc89"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<categoryDataset>
+					<dataset resetType="Report">
+						<datasetRun subDataset="Produccion" uuid="dda06a39-200a-4a3a-9c53-dbb3ce83507e">
+							<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+						</datasetRun>
+					</dataset>
+					<categorySeries>
+						<seriesExpression><![CDATA[$F{Nombre}]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{ID_Usuario}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{Pendientes}]]></valueExpression>
+					</categorySeries>
+				</categoryDataset>
+				<barPlot>
+					<plot/>
+					<itemLabel/>
+					<categoryAxisFormat>
+						<axisFormat labelColor="#000000" tickLabelColor="#000000" axisLineColor="#000000"/>
+					</categoryAxisFormat>
+					<valueAxisFormat>
+						<axisFormat labelColor="#000000" tickLabelColor="#000000" axisLineColor="#000000"/>
+					</valueAxisFormat>
+				</barPlot>
+			</barChart>
 		</band>
 	</summary>
 </jasperReport>
