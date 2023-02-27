@@ -68,16 +68,16 @@ public class ProduccionControlador {
 	
 	@PostMapping("/ConsultarPAdmin")
 	public String guardarProduccion(@ModelAttribute("Produccion") Produccion produccion, RedirectAttributes attributes) {
-	    Long idPedido = produccion.getPedido().getID_Pedido();
-	    List<Detalle_Pedido> detallesPedido = detalle_PedidoServicio.listarDetalle_Pedido();
-	    int cantidad = 0;
-	    for (Detalle_Pedido detallePedido : detallesPedido) {
-	        if (detallePedido.getPedido().getID_Pedido().equals(idPedido)) {
-	            cantidad = detallePedido.getCantidad();
-	            break;
-	        }
-	    }
-	    produccion.setCantidad(cantidad);
+		Long idPedido = produccion.getPedido().getID_Pedido();
+		List<Detalle_Pedido> detallesPedido = detalle_PedidoServicio.listarDetalle_Pedido();
+		int cantidad = 0;
+		for (Detalle_Pedido detallePedido : detallesPedido) {
+		    if (detallePedido.getPedido().getID_Pedido().equals(idPedido)  ) 
+		    {
+		        cantidad += detallePedido.getCantidad();
+		    }
+		}
+		produccion.setCantidad(cantidad);
 	    attributes.addFlashAttribute("exitoso", "Registro Exitoso");
 	    produccionServicio.guardarProduccion(produccion);
 	    return "redirect:/Solware2/home/ProducionAdmin";
