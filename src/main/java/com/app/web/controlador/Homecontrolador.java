@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 
 @Controller
-@RequestMapping(path="/Solware2/home")
+@RequestMapping(path="/Solware2/homme")
 @CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.POST,RequestMethod.PUT})
 public class Homecontrolador {
 	
