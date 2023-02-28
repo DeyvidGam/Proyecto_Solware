@@ -181,12 +181,12 @@
 											<div class="col-sm-6">
 												<label for="Nombres" class="form-label">Nombres</label> <input
 													id="Nombres" type="text" class="form-control" required
-													th:field="*{Nombres}" pattern="[a-zA-ZñÑ\s\.,;:\-_¡!¿\?]+" >
+													th:field="*{Nombres}" pattern="[a-zA-ZñÑ\s\.,;:\-_¡!¿\?]+" placeholder="Nombres">
 											</div>
 											<div class="col-sm-6">
 												<label for="Apellidos" class="form-label">Apellidos</label>
 												<input id="Apellidos" type="text" class="form-control"
-													required th:field="*{Apellidos}" pattern="[a-zA-ZñÑ\s\.,;:\-_¡!¿\?]+" >
+													required th:field="*{Apellidos}" pattern="[a-zA-ZñÑ\s\.,;:\-_¡!¿\?]+" placeholder="Apellidos">
 											</div>
 
 										</div>
@@ -194,12 +194,12 @@
 											<div class="col-sm-6">
 												<label for="Email" class="form-label">Email</label> <input
 													id="Email" type="email" class="form-control" required
-													th:field="*{Email}">
+													th:field="*{Email}" placeholder="Email">
 											</div>
 											<div class="col-sm-6">
 												<label for="Telefono" class="form-label">Telefono</label> <input
 													id="Telefono" type="tel" class="form-control" required
-													th:field="*{Telefono}" pattern="[0-9]+">
+													th:field="*{Telefono}" pattern="[0-9]+" placeholder="Telefono">
 											</div>
 										</div>
 										<div class="row">

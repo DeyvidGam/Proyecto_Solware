@@ -53,37 +53,37 @@ public class VentaControlador {
 		modelo.addAttribute("pedidos", pedidos);
 		return "ventasAdmin";
 	}
-	
-	 @PostMapping("/ventas")
-	    public String registerVenta(@RequestParam("idPedido") Long idPedido,
-	                                @RequestParam("Modo_Pago") String Modo_Pago,
-	                                Model modelo,RedirectAttributes attributes) {
-	        // Retrieve the corresponding Pedido object from the database
-		 List<Pedido> listapedido = pedidoServicio.listarpedidos(); 
-	        Pedido pedido = pedidoServicio.obtenerPedidoPorId(idPedido);
 
-List<Venta> ventas = ventaServicio.listarventas();
-    
-   
-for (Venta venta : ventas) {
-        
-       
-if (venta.getiDPedido() != null && venta.getiDPedido().getID_Pedido() == pedido.getID_Pedido()) {
-            
-           
-// If a Venta object with the same Pedido already exists, set an error message and redirect back to the ventasAdmin page.
-            
-           
-	attributes.addFlashAttribute("mensaje", "El pedido ya fue vendio");
-	    
-return "redirect:/Solware2/home/ventasAdmin";
-}
-}
-	        Venta venta = new Venta();
-	        venta.setFechaYHora(LocalDateTime.now());
-	        venta.setModo_Pago(Modo_Pago);
-	        venta.setValor_Venta(pedido.getTotal());
-	        venta.setiDPedido(pedido);
+	@PostMapping("/ventas")
+	public String registerVenta(@RequestParam("idPedido") Long idPedido,
+			@RequestParam("Modo_Pago") String Modo_Pago,
+			Model modelo,RedirectAttributes attributes) {
+		// Retrieve the corresponding Pedido object from the database
+		List<Pedido> listapedido = pedidoServicio.listarpedidos(); 
+		Pedido pedido = pedidoServicio.obtenerPedidoPorId(idPedido);
+
+		List<Venta> ventas = ventaServicio.listarventas();
+
+
+		for (Venta venta : ventas) {
+
+
+			if (venta.getiDPedido() != null && venta.getiDPedido().getID_Pedido() == pedido.getID_Pedido()) {
+
+
+				// If a Venta object with the same Pedido already exists, set an error message and redirect back to the ventasAdmin page.
+
+
+				attributes.addFlashAttribute("mensaje", "El pedido ya fue vendio");
+
+				return "redirect:/Solware2/home/ventasAdmin";
+			}
+		}
+		Venta venta = new Venta();
+		venta.setFechaYHora(LocalDateTime.now());
+		venta.setModo_Pago(Modo_Pago);
+		venta.setValor_Venta(pedido.getTotal());
+		venta.setiDPedido(pedido);
 
 
 		// Save the new Venta object to the database
@@ -94,7 +94,7 @@ return "redirect:/Solware2/home/ventasAdmin";
 
 	@PostMapping("/ConsultarAdmin")
 	public String guardarCliente(@ModelAttribute("Venta") Venta venta, RedirectAttributes attributes) {
-		
+
 		ventaServicio.guardarVenta(venta);
 		return "redirect:/Solware2/home/ventasAdmin";
 	}
@@ -109,11 +109,23 @@ return "redirect:/Solware2/home/ventasAdmin";
 
 	@PostMapping("/ConsultarAdmin/{ID_Venta}")
 	public String updateVenta(@PathVariable Long ID_Venta, @ModelAttribute("Venta") Venta venta, Model modelo) {
+		Long idPedido = venta.getID_Venta();
+		List<Pedido> pedidos = pedidoServicio.listarpedidos();
+		    int cantidadTotal = 0;
+		    for (Pedido pedido : pedidos) {
+		    	if (pedido.getID_Pedido().equals(idPedido)  ) 
+			    {
+		    		cantidadTotal += pedido.getTotal();
+			    }
+		        
+		    }
+		   
 		Venta ventaExistente = ventaServicio.obtenerVentaPorId(ID_Venta);
-		ventaExistente.setID_Venta(ID_Venta);
-		ventaExistente.setFechaYHora(venta.getFechaYHora());
+		Pedido pedido = pedidoServicio.obtenerPedidoPorId(ID_Venta);
+		ventaExistente.setFechaYHora(LocalDateTime.now());
 		ventaExistente.setModo_Pago(venta.getModo_Pago());
-		ventaExistente.setValor_Venta(venta.getValor_Venta());
+		ventaExistente.setValor_Venta(cantidadTotal);
+		ventaExistente.setiDPedido(venta.getiDPedido());
 		ventaServicio.updateVenta(ventaExistente);
 		return "redirect:/Solware2/home/ConsultarAdmin";
 	}

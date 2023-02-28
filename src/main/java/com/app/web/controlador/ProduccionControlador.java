@@ -38,7 +38,7 @@ public class ProduccionControlador {
 	@Autowired
 	private InventarioServicio inventarioServicio; 
 	@Autowired
-	private Detalle_PedidoServicio detalle_PedidoServicio; 
+	private Detalle_PedidoServicio detalle_PedidoServicio;
 	
 	@GetMapping("/InicioP")
 	public String InicioP(Model modelo) {
@@ -98,11 +98,20 @@ public class ProduccionControlador {
 	@PostMapping("/ConsultarPAdmin/{ID_Produccion}")
 	public String updateProduccion(@PathVariable Long ID_Produccion, @ModelAttribute("Produccion") Produccion produccion, Model modelo) {
 		Produccion produccionExistente = produccionServicio.obtenerProduccionPorId(ID_Produccion);
+		Long idPedido = produccion.getPedido().getID_Pedido();
+		List<Detalle_Pedido> detallesPedido = detalle_PedidoServicio.listarDetalle_Pedido();
+		int cantidad = 0;
+		for (Detalle_Pedido detallePedido : detallesPedido) {
+		    if (detallePedido.getPedido().getID_Pedido().equals(idPedido)  ) 
+		    {
+		        cantidad += detallePedido.getCantidad();
+		    }
+		}
 		produccionExistente.setID_Produccion(ID_Produccion);
 		produccionExistente.setOperario(produccion.getOperario());
 		produccionExistente.setEstado_Produccion(produccion.getEstado_Produccion());
 		produccionExistente.setFecha_Inicio(produccion.getFecha_Inicio());
-		produccionExistente.setCantidad(produccion.getCantidad());
+		produccionExistente.setCantidad(cantidad);
 		produccionExistente.setFecha_Fin(produccion.getFecha_Fin());
 		produccionExistente.setPedido(produccion.getPedido());
 		
