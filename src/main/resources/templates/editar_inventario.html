@@ -33,8 +33,7 @@
 	<div class="container-fluid">
 		<div class="row justify-content-center align-content-center">
 
-			 <div class="col-7 barra1"style="color: white;">
-			</div>
+			<div class="col-7 barra1" style="color: white;"></div>
 
 			<div class="col-5 barra1">
 				<div class="dropdown">
@@ -161,74 +160,73 @@
 									</ul>
 				</nav>
 			</div>
-	<div class="container">
-		<div Class="row">
-		<center>
-			<h1 style="padding-top: 20px">Editar</h1>
-			</center>
-		</div>
-	
-<section class="form-register" style="margin: auto; margin-top: 20px; width: auto; height: 400px">
+			<div class="container">
+				<div Class="row">
+					<center>
+						<h1 style="padding-top: 20px">Editar</h1>
+					</center>
+				</div>
 
-<div class="row">
-     <form th:action="@{/Solware2/home/Consultar/{ID_Inventario}(ID_Inventario=${Inventario.ID_Inventario})} " th:object="${Inventario}" method="POST" >
-  
-<div class="row">
-  <div class="col-sm-6">
-    <label for="Fecha" class="form-label">Fecha</label>
-    <input id="Fecha" type="date" class="form-control" required th:field="*{Fecha}">
-  </div>
-  <div class="col-sm-6">
-    <label class="form-label">Insumo</label>
-      <select th:field="*{Insumo}" class="form-control">
-       <option th:each="insumo:${insumos}" th:value="${insumo.ID_Insumo}" th:text="${insumo.Nombre_Material}"></option>
-      </select>
-     
-   </div>
-</div>
-<div class="row">
-  <div class="col-sm-6">
-	             <label class="form-label">Movimiento</label>
-	               <select th:field="*{Movimiento}" class="form-control">
-	                <option th:each="movimiento:${movimientos}" th:value="${movimiento.ID_Movimiento}" th:text="${movimiento.Nombre}"></option>
-	               </select>
-	              
-	            </div>
-  <div class="col-sm-6">
-    <label for="Entrada" class="form-label">Entrada</label>
-    <input id="Entrada" type="number" class="form-control"required th:field="*{Entrada}">
-   
-  </div>
-</div>
-<div class="row">
-    <div class="col-sm-6">
-        <label for="Salida" class="form-label">Salida</label>
-        <input id="Salida" type="number" class="form-control"required th:field="*{Salida}">
-       
-      </div>
-      <div class="col-sm-6">
-        <label for="Disponible" class="form-label">Disponible</label>
-        <input id="Disponible" type="number" class="form-control"required th:field="*{Disponible}">
-       
-      </div>  
-</div>
-<div class="row">
-<div class="col-md-12">
-<br>
-<br>
-      <input type="submit" class="btn btn-primary"id="submit"
-                onclick="validacion()" value="Enviar">   
-       <input type="reset" name="reset"class="btn btn-danger" 
-                value="Restablecer"> </div>
-</div>
-</form>
-</div>
-</div>
-</div>
-</section>
+				<section class="form-register"
+					style="margin: auto; margin-top: 20px; width: 400; height: 350px">
+
+					<div class="row">
+						<form
+							th:action="@{/Solware2/home/Consultar/{ID_Inventario}(ID_Inventario=${Inventario.ID_Inventario})} "
+							th:object="${Inventario}" method="POST">
+
+							<div class="row">
+								<div class="col-sm-6">
+									<label for="Fecha" class="form-label">Fecha</label> <input
+										id="Fecha" type="date" class="form-control" required
+										th:field="*{Fecha}">
+								</div>
+								<div class="col-sm-6">
+									<label class="form-label">Insumo</label> <select
+										th:field="*{Insumo}" class="form-control">
+										<option th:each="insumo:${insumos}"
+											th:value="${insumo.ID_Insumo}"
+											th:text="${insumo.Nombre_Material}"></option>
+									</select>
+
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-sm-6">
+									<label class="form-label">Movimiento</label> <select
+										th:field="*{Movimiento}" class="form-control">
+										<option th:each="movimiento:${movimientos}"
+											th:value="${movimiento.ID_Movimiento}"
+											th:text="${movimiento.Nombre}"></option>
+									</select>
+
+								</div>
+
+								<div class="col-sm-6">
+									<label for="Cantidad" class="form-label">Cantidad</label> <input
+										id="Cantidad" type="number" class="form-control" required
+										th:field="*{Cantidad}">
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-12">
+									<br> <br> <input type="submit"
+										class="btn btn-primary" id="submit" value="Enviar"> <input
+										type="reset" name="reset" class="btn btn-danger"
+										value="Restablecer">
+
+								</div>
+
+							</div>
+						</form>
+					</div>
+				</section>
+			</div>
+		</div>
+
 
 	</div>
-		<footer class="pie-pagina">
+	<footer class="pie-pagina">
 		<div class="grupo-1">
 			<div class="box">
 				<figure>
@@ -269,6 +267,6 @@
 		integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
 		crossorigin="anonymous"></script>
 	<script src="https://kit.fontawesome.com/646c794df3.js"></script>
-	
+
 </body>
 </html>

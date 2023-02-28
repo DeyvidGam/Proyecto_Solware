@@ -184,12 +184,12 @@
 										<label for="Nombres" class="form-label">Nombres</label> <input
 											id="Nombres" type="text" class="form-control" required
 											th:field="*{Nombre}" pattern="[a-zA-ZñÑ\s\.,;:\-_¡!¿\?]+"
-											inputmode="text">
+											inputmode="text" placeholder="Nombres">
 									</div>
 									<div class="col-sm-6">
 										<label for="Apellidos" class="form-label">Apellidos</label> <input
 											id="Apellidos" type="text" class="form-control" required
-											th:field="*{Apellido}" pattern="[a-zA-ZñÑ\s\.,;:\-_¡!¿\?]+">
+											th:field="*{Apellido}" pattern="[a-zA-ZñÑ\s\.,;:\-_¡!¿\?]+" placeholder="Apellidos" >
 									</div>
 								</div>
 								<div class="row">
@@ -204,7 +204,7 @@
 									<div class="col-sm-6">
 										<label for="Correo" class="form-label">Correo</label> <input
 											id="Correo" type="email" class="form-control" required
-											th:field="*{Correo}">
+											th:field="*{Correo}" placeholder="Correo">
 
 									</div>
 								</div>
@@ -212,12 +212,12 @@
 									<div class="col-sm-6">
 										<label for="Telefono" class="form-label">Telefono</label> <input
 											id="Telefono" name="Telefono" type="tel" class="form-control"
-											required th:field="*{Telefono}" pattern="[0-9]+">
+											required th:field="*{Telefono}" pattern="[0-9]+" placeholder="Telefono">
 									</div>
 									<div class="col-sm-6">
 										<label for="Contrasena" class="form-label">Contraseña</label>
 										<input id="Contrasena" type="password" class="form-control"
-											required th:field="*{Contrasena}" pattern="[0-9]+">
+											required th:field="*{Contrasena}" pattern="[0-9]+" placeholder="Contraseña">
 									</div>
 								</div>
 								<div class="row">

@@ -138,7 +138,7 @@
 											<div class="col-sm-6">
 												<label for="Nombre" class="form-label">Nombre</label> <input
 													id="Nombre" type="text" class="form-control" required
-													th:field="*{Nombre}" pattern="[a-zA-ZñÑ\s\.,;:\-_¡!¿\?]+">
+													th:field="*{Nombre}" pattern="[a-zA-ZñÑ\s\.,;:\-_¡!¿\?]+" placeholder="Nombre">
 											</div>
 											<div class="col-sm-6">
 												<label class="form-label">Proveedor</label> <select
@@ -154,13 +154,13 @@
 											<div class="col-sm-6">
 												<label for="Tamaño" class="form-label">Tamaño</label> <input
 													id="Tamaño" type="text" class="form-control" required
-													th:field="*{Tamano}">
+													th:field="*{Tamano}" placeholder="Tamaño">
 											</div>
 											<div class="col-sm-6">
 												<label for="Precio" class="form-label">Precio</label> <input
 													id="Precio" type="number" class="form-control" required
 
-													th:field="*{Precio}" min="1" pattern="[0-9]+">
+													th:field="*{Precio}" min="1" pattern="[0-9]+" placeholder="Precio">
 											</div>
 										</div>
 										<div class="row">

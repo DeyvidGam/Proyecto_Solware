@@ -194,7 +194,7 @@
 										<div style="margin-left: 10px;">
 											<strong aria-required="true" style="margin-right: 20px">Estado</strong><br>
 											<label>Proceso</label> <input type="radio" required
-												th:field="*{estado_Produccion}" name="size" id="1" value="1"><br>
+												th:field="*{estado_Produccion}" name="size" id="1" value="1" checked="checked"><br>
 											<label>Terminado</label> <input type="radio"
 												th:field="*{estado_Produccion}" name="size" id="2" required
 												value="2"> <br>
@@ -202,9 +202,9 @@
 									</div>
 									<div class="row">
 										<div class="col-sm-12">
-											<label for="Correo" class="form-label">Fecha Inicio</label> <input
-												id="Correo" type="datetime-local" class="form-control"
-												required th:field="*{Fecha_Inicio}">
+											<label for="Fecha" class="form-label">Fecha Inicio</label> <input
+												id="Fecha" name="Fecha" type="datetime-local" class="form-control"
+												required th:field="*{Fecha_Inicio}" >
 
 										</div>
 										
@@ -284,7 +284,22 @@
 	</footer>
 
 
+<script>
+//Crear un objeto Date para la hora actual en UTC
+const ahoraUTC = new Date();
 
+// Obtener la hora actual en Colombia ajustando la zona horaria
+const ahoraColombia = new Date(ahoraUTC.getTime() - (5 * 60 * 60 * 1000));
+
+// Formatear la hora actual en Colombia en el formato requerido por datetime-local
+const fechaHoraActual = ahoraColombia.toISOString().slice(0, 16);
+
+// Establecer el valor predeterminado del elemento datetime-local
+const elementoDateTimeLocal = document.getElementById("Fecha");
+elementoDateTimeLocal.value = fechaHoraActual;
+
+
+</script>
 
 
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

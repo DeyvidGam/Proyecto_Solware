@@ -69,7 +69,6 @@ public class ProveedorControldar {
 		proveedorExistente.setNombre(proveedor.getNombre());
 		proveedorExistente.setEmail(proveedor.getEmail());
 		proveedorExistente.setTelefono(proveedor.getTelefono());
-		
 		proveedorServicio.updateProveedor(proveedorExistente);
 		return "redirect:/Solware2/home/C_ProveedoresA";
 	}

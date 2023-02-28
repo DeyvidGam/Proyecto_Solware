@@ -35,7 +35,7 @@ public class InsumoControlador {
 	public String crearInsumo(Model modelo) {
 		Insumo insumo = new Insumo();
 		modelo.addAttribute("Insumo", insumo);
-		return "crearInsumo";
+		return "CrearInsumo";
 
 	}
 	  @GetMapping("/consultar-stock")
@@ -48,11 +48,12 @@ public class InsumoControlador {
 	@PostMapping("/insumo")
 	public String guardarInsumo(@ModelAttribute("Insumo") Insumo insumo) {
 		insumoServicio.guardarInsumo(insumo);
-		return "redirect:/insumo";
+		return "redirect:/Solware2/home/ModuloInventario";
 	}
 	@GetMapping("/insumo/editar/{ID_Insumo}")
 	public String Editar(@PathVariable Long ID_Insumo,Model modelo ) {
 		modelo.addAttribute("Insumo", insumoServicio.obtenerInsumoPorId(ID_Insumo));
+		
 	    return "editar_insumo";
 	}
 	
@@ -67,11 +68,10 @@ public class InsumoControlador {
 		return "redirect:/insumo";
 	}
 	
-	@GetMapping("/ruta/{ID_Insumo}")
-	public String deleteInsumo(@PathVariable Long ID_Insumo) {
-		
+	@GetMapping("/eliminarinsumo/{ID_Insumo}")
+	public String deleteInsumo(@PathVariable Long ID_Insumo) {	
 		insumoServicio.delete(ID_Insumo);
-		return "redirect:/insumo";
+		return "redirect:/Solware2/home/ModuloInventario";
 		
 	}
 	

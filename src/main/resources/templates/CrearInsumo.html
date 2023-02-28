@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Interfaz de administrador</title>
+<title>Crear Insumo</title>
 
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
@@ -24,9 +24,7 @@
 
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
-<script src="/js/Ventas.js"></script>
-
-
+<script src="/js/ModuloInv.js"></script>
 
 </head>
 <body>
@@ -45,7 +43,6 @@
 					</a>
 					<ul class="dropdown-menu boton"
 						aria-labelledby="dropdownMenuButton1">
-
 						<div class="dropdown-divider"></div>
 						<a class="dropdown-item" href="/Solware2/home/index">Cerrar
 							sesión</a>
@@ -167,69 +164,50 @@
 					class="row justify-content-center align-content-center text-center">
 					<div class="columna col-lg-12">
 
+						<div class="col-mx-12 medio" style="margin: auto;">
+							<div class="col-md-12">
+								<h1>INSUMOS</h1>
+							</div>
 
-
-
-						<main class="perfiles">
-							<link rel="stylesheet" href="css/estiloPerfilV.css">
-							<title>Sol y Asociados</title>
-							<h1 class="perfile">EDITAR VENTA</h1>
 							<section class="form-register"
-								style="margin: auto; margin-top: 20px; width: 600px; height: 400px">
+								style="margin: auto; margin-top: 20px; width: 600px; height: 350px">
 
-								<div class="row">
-									<form
-										th:action="@{/Solware2/home/ConsultarAdmin/{ID_Venta}(ID_Venta=${Venta.ID_Venta})} "
-										th:object="${Venta}" method="POST">
-										<div class="row">
-										<div class="col-sm-2">
+								<form th:action="@{/Solware2/home/insumo}" th:object="${Insumo}"
+									method="POST">
+									<div class="row">
+										<div class="col-sm-2"></div>
+										<div class="col-sm-8">
+											<label for="Nombre_Insumo" class="form-label">Nombre
+												Insumo</label> <input id="Nombre_Insumo" type="text"
+												class="form-control" required th:field="*{Nombre_Material}"
+												placeholder="Nombre Insumo"
+												pattern="[a-zA-ZñÑ\s\.,;:\-_¡!¿\?]+">
 										</div>
-											<div class="col-sm-8">
-												<label class="form-label">ID del pedido</label> <select
-													th:field="*{IDPedido}" class="form-control" required>
-													<option th:each="pedido:${Pedidos}"
-														th:value="${pedido.ID_Pedido}"
-														th:text="${pedido.ID_Pedido}"></option>
-												</select>
+										<div class="col-sm-2"></div>
+									</div>
 
-											</div>
-											<div class="col-sm-2">
-											</div>
+									<div class="row">
+										<div class="col-md-12">
+											<br> <br> <input type="submit"
+												class="btn btn-primary" id="submit" onclick="validacion()"
+												value="Enviar"> <input type="reset" name="reset"
+												class="btn btn-danger" value="Restablecer">
 										</div>
-										<div class="row">
-											<div class="col-sm-12">
-												<strong aria-required="true">Tipo De Pago</strong>
-												<div class="form-check">
-													<input class="form-check-input" type="radio"
-														th:field="*{Modo_Pago}" name="flexRadioDefault"
-														id="TipoPago" required value="Tarjeta"> <label
-														class="form-check-label" for="small">Tarjeta</label>
-												</div>
-												<div class="form-check">
-													<input class="form-check-input" type="radio" required
-														th:field="*{Modo_Pago}" name="flexRadioDefault"
-														id="TipoPago" value="Efectivo"> <label
-														class="form-check-label" for="small">Efectivo</label>
-												</div>
-											</div>
-										</div>
-										<div class="row">
-											<div class="col-md-12">
-												<br> <br> <input type="submit"
-													class="btn btn-primary" id="submit" onclick="validacion()"
-													value="Enviar"> <input type="reset" name="reset"
-													class="btn btn-danger" value="Restablecer">
-											</div>
-										</div>
-									</form>
-								</div>
+									</div>
+								</form>
+
+							</section>
+
+						</div>
 					</div>
+
 				</div>
-				</section>
 
 			</main>
 		</div>
 	</div>
+
+
 	<footer class="pie-pagina">
 		<div class="grupo-1">
 			<div class="box">
@@ -260,11 +238,11 @@
 			</small>
 		</div>
 	</footer>
+	<script>
+		var fechaActual = new Date().toISOString().slice(0, 10);
 
-
-
-
-
+		document.getElementById("Fecha").value = fechaActual;
+	</script>
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 	<script
 		src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
@@ -275,5 +253,7 @@
 		integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
 		crossorigin="anonymous"></script>
 	<script src="https://kit.fontawesome.com/646c794df3.js"></script>
+
 </body>
 </html>
+

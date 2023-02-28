@@ -165,25 +165,48 @@
 										th:action="@{/Solware2/home/C_ProveedoresA/{ID_Proveedor}(ID_Proveedor=${Proveedor.ID_Proveedor})} "
 										th:object="${Proveedor}" method="POST">
 										<div class="row">
-											<div class="col-sm-6">
+											<div class="row">
+										<div th:if="${exitoso}">
+										<div class="alert alert-success alert-dismissible">
+											 <span th:text="${exitoso}"></span>
+											 <a href="#" class="close" data-dismiss="alert"
+												aria-label="close">&times;</a>
+										</div>
+										</div>
+										<div class="col-sm-2">
+										</div>
+											<div class="col-sm-8">
 												<label for="Nombre" class="form-label">Nombre</label> <input
 													id="Nombre" type="text" class="form-control" required
-													th:field="*{Nombre}">
+													th:field="*{Nombre}"placeholder="Nombre" pattern="[a-zA-ZñÑ\s\.,;:\-_¡!¿\?]+">
 											</div>
-											<div class="col-sm-6">
-												<label for="Email" class="form-label">Email</label> <input
-													id="Email" type="email" class="form-control" required
-													th:field="*{Email}">
-											</div>
+											<div class="col-sm-2">
+										</div>
 										</div>
 										<div class="row">
-											<div class="col-sm-6">
+										<div class="col-sm-2">
+										</div>
+											<div class="col-sm-8"style="margin-top: 20px;">
+												<label for="Email" class="form-label">Email</label> <input
+													id="Email" type="email" class="form-control" required
+													th:field="*{Email}" placeholder="Email">
+											</div>
+											<div class="col-sm-2">
+										</div>
+										</div>
+										<div class="row">
+										<div class="col-sm-2">
+										</div>
+											<div class="col-sm-8"style="margin-top: 20px;">
 												<label for="Telefono" class="form-label">Telefono</label> <input
 													id="Telefono" type="tel" class="form-control" required
-													th:field="*{telefono}">
+													th:field="*{telefono}"placeholder="Telefono" pattern="[0-9]+">
 											</div>
-										
+											<div class="col-sm-2">
 										</div>
+
+										</div>
+
 										<div class="row">
 											<div class="col-md-12">
 												<br> <br> <input type="submit"
@@ -194,12 +217,14 @@
 										</div>
 									</form>
 								</div>
-					</div>
+							</section>
+					
+					</main></div>
 				</div>
-				</section>
+
 			</main>
 
-			</section>
+
 
 		</div>
 		<footer class="pie-pagina">

@@ -1,5 +1,4 @@
 package com.app.web.controlador;
-
 import java.awt.Menu;
 import java.util.ArrayList;
 import java.util.Date;
@@ -31,11 +30,6 @@ import com.app.web.servicio.Detalle_PedidoServicioImp;
 import com.app.web.servicio.PedidoServicio;
 import com.app.web.servicio.ProductoServicio;
 import com.fasterxml.jackson.annotation.JsonCreator.Mode;
-
-
-
-
-
 
 @Controller
 @RequestMapping(path="/Solware2/home")
