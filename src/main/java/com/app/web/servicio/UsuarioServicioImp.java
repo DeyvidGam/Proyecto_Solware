@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.app.web.entidad.Usuario;
 import com.app.web.repositorio.UsuarioRepositorio;
+
 @Service
 public class UsuarioServicioImp implements UsuarioServicio{
 	 @Autowired
@@ -33,6 +34,12 @@ public class UsuarioServicioImp implements UsuarioServicio{
 		@Override
 		public void delete(Long ID_Usuario) {
 			usuarioRepositorio.deleteById(ID_Usuario);
+		}
+
+		@Override
+		public Usuario obtenerUsuarioPorCorreo(String Correo) {
+			
+			return usuarioRepositorio.findByCorreo(Correo);
 		}
 
 }
