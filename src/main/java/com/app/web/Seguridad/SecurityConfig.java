@@ -34,10 +34,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/Solware2/homme/index", "/Solware2/homme/inicioSesion", 
                 		"/Solware2/homme/Nosotros", "/Solware2/homme/Servicios", "/Solware2/homme/Quienesmos", 
                 		"/Solware2/homme/vision", "/Solware2/homme/mision", "/Solware2/homme/Recordarcontra", 
-                		"/Solware2/homme/Contactenos","/js/**","/css/**","/img/**","/bootstrap/**","/manualC/**","/css/**","/manualC/Manual Corporativo SOL-WARE.pdf").permitAll()
-                .antMatchers("/Solware2/home/**").hasRole("ADMIN")
-                .antMatchers("/Solware2/Operario/**").hasRole("OPERARIO")
-                .antMatchers("/Solware2/**").hasRole("VENDEDOR")
+                		"/Solware2/homme/Contactenos","/js/**","/css/**","/img/**","/bootstrap/**","/manualC/**","/css/**","/manualC/Manual Corporativo SOL-WARE.pdf"
+                		,"/Solware2/home/**","/Solware2/**").permitAll()
+                
                 .anyRequest().authenticated()
                 .and()
                 .formLogin().loginPage("/Solware2/homme/inicioSesion")
