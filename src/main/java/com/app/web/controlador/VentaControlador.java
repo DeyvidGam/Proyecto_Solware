@@ -56,40 +56,41 @@ public class VentaControlador {
 
 	@PostMapping("/ventas")
 	public String registerVenta(@RequestParam("idPedido") Long idPedido,
-			@RequestParam("Modo_Pago") String Modo_Pago,
-			Model modelo,RedirectAttributes attributes) {
-		// Retrieve the corresponding Pedido object from the database
-		List<Pedido> listapedido = pedidoServicio.listarpedidos(); 
-		Pedido pedido = pedidoServicio.obtenerPedidoPorId(idPedido);
+	                            @RequestParam("Modo_Pago") String Modo_Pago,
+	                            Model modelo, RedirectAttributes attributes) {
+		// Recuperar el objeto Pedido correspondiente de la base de datos
+	    Pedido pedido = pedidoServicio.obtenerPedidoPorId(idPedido);
 
-		List<Venta> ventas = ventaServicio.listarventas();
+	    List<Venta> ventas = ventaServicio.listarventas();
 
+	    boolean ventaExistenteActiva = false;
 
-		for (Venta venta : ventas) {
+	    for (Venta venta : ventas) {
+	        if (venta.getiDPedido() != null && venta.getiDPedido().getID_Pedido() == pedido.getID_Pedido() && venta.isEstado()) {
+	        	// Si ya existe un objeto Venta con el mismo Pedido y estado "activo",
+	            // establece la bandera en true
+	            ventaExistenteActiva = true;
+	            break;
+	        }
+	    }
 
+	 // Si existe un objeto Venta con el mismo estado Pedido y "activo", establece un mensaje de error y redirige de nuevo a la página ventasAdmin.
+	    if (ventaExistenteActiva) {
+	        attributes.addFlashAttribute("mensaje", "El pedido ya fue vendido");
+	        return "redirect:/Solware2/home/ventasAdmin";
+	    } else {
+	    	// Crear un nuevo objeto Venta y guardarlo en la base de datos
+	        Venta venta = new Venta();
+	        venta.setFechaYHora(LocalDateTime.now());
+	        venta.setModo_Pago(Modo_Pago);
+	        venta.setValor_Venta(pedido.getTotal());
+	        venta.setEstado(true);
+	        venta.setiDPedido(pedido);
+	        ventaServicio.guardarVenta(venta);
 
-			if (venta.getiDPedido() != null && venta.getiDPedido().getID_Pedido() == pedido.getID_Pedido()) {
-
-
-				// If a Venta object with the same Pedido already exists, set an error message and redirect back to the ventasAdmin page.
-
-
-				attributes.addFlashAttribute("mensaje", "El pedido ya fue vendio");
-
-				return "redirect:/Solware2/home/ventasAdmin";
-			}
-		}
-		Venta venta = new Venta();
-		venta.setFechaYHora(LocalDateTime.now());
-		venta.setModo_Pago(Modo_Pago);
-		venta.setValor_Venta(pedido.getTotal());
-		venta.setiDPedido(pedido);
-
-
-		// Save the new Venta object to the database
-		ventaServicio.guardarVenta(venta);
-		attributes.addFlashAttribute("exitoso", "Registro Exitoso");
-		return "redirect:/Solware2/home/ventasAdmin";
+	        attributes.addFlashAttribute("exitoso", "Registro Exitoso");
+	        return "redirect:/Solware2/home/ventasAdmin";
+	    }
 	}
 
 	@PostMapping("/ConsultarAdmin")
@@ -100,12 +101,17 @@ public class VentaControlador {
 	}
 
 	@PostMapping("/ventas/estado")
-	public String cambiarEstadoVenta(@RequestParam("idVenta") Long idVenta) {
-	Venta venta = ventaServicio.obtenerVentaPorId(idVenta);
-	
-	venta.setEstado(!venta.isEstado()); // Cambia el estado actual de la venta
-	ventaServicio.guardarVenta(venta); // Actualiza la venta en la base de datos
-	return "redirect:/Solware2/home/ConsultarAdmin"; // Redirige a la página de lista de ventas
+	public String cambiarEstadoVenta(@RequestParam("idVenta") Long idVenta, Model modelo, RedirectAttributes attributes) {
+	    Venta venta = ventaServicio.obtenerVentaPorId(idVenta);
+	    
+	    if (!venta.isEstado()) {
+	    	attributes.addFlashAttribute("mensaje", "No se puede volver a cambiar el estado, tiene que crear una nueva venta ");
+	        return "redirect:/Solware2/home/ConsultarAdmin"; // Si la venta ya está inactiva, redirige a la página de lista de ventas
+	    }
+	    
+	    venta.setEstado(false); // Cambia el estado actual de la venta a inactivo
+	    ventaServicio.guardarVenta(venta); // Actualiza la venta en la base de datos
+	    return "redirect:/Solware2/home/ConsultarAdmin"; // Redirige a la página de lista de ventas
 	}
 	
 	@GetMapping("/ConsultarAdmin/editar/{ID_Venta}")
