@@ -26,6 +26,9 @@ public class Venta {
     private String Modo_Pago;
     @Column(name = "Valor_Venta")
     private double Valor_Venta;
+    @Column(name = "Estado")
+    private boolean Estado;
+
     @ManyToOne
 	 @JoinColumn (name="IDPedido")
 	 Pedido iDPedido;
@@ -45,7 +48,13 @@ public class Venta {
 	}
 
 
+	public boolean isEstado() {
+	    return Estado;
+	}
 
+	public void setEstado(boolean estado) {
+	    Estado = estado;
+	}
 	public Long getID_Venta() {
 		return ID_Venta;
 	}

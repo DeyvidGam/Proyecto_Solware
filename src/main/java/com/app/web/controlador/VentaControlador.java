@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.app.web.entidad.Detalle_Pedido;
+
 import com.app.web.entidad.Pedido;
 import com.app.web.entidad.Venta;
 import com.app.web.repositorio.PedidoRepositorio;
@@ -99,6 +99,15 @@ public class VentaControlador {
 		return "redirect:/Solware2/home/ventasAdmin";
 	}
 
+	@PostMapping("/ventas/estado")
+	public String cambiarEstadoVenta(@RequestParam("idVenta") Long idVenta) {
+	Venta venta = ventaServicio.obtenerVentaPorId(idVenta);
+	
+	venta.setEstado(!venta.isEstado()); // Cambia el estado actual de la venta
+	ventaServicio.guardarVenta(venta); // Actualiza la venta en la base de datos
+	return "redirect:/Solware2/home/ConsultarAdmin"; // Redirige a la página de lista de ventas
+	}
+	
 	@GetMapping("/ConsultarAdmin/editar/{ID_Venta}")
 	public String Editar(@PathVariable Long ID_Venta,Model modelo ) {
 		modelo.addAttribute("Venta", ventaServicio.obtenerVentaPorId(ID_Venta));
