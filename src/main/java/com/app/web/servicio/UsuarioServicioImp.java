@@ -36,10 +36,5 @@ public class UsuarioServicioImp implements UsuarioServicio{
 			usuarioRepositorio.deleteById(ID_Usuario);
 		}
 
-		@Override
-		public Usuario obtenerUsuarioPorCorreo(String Correo) {
-			
-			return usuarioRepositorio.findByCorreo(Correo);
-		}
-
+		
 }

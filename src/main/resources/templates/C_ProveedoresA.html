@@ -179,6 +179,7 @@
 										<th>Nombre</th>
 										<th>Email</th>
 										<th>telefono</th>
+										<th>Estado</th>
 										<th>Acciones</th>
 
 									</tr>
@@ -189,11 +190,29 @@
 										<td th:text="${provedores.Nombre}">Nombre</td>
 										<td th:text="${provedores.Email}">Email</td>
 										<td th:text="${provedores.telefono}">telefono</td>
-										<td><a
-											th:href="@{/Solware2/home/C_ProveedoresA/{ID_Proveedor}(ID_Proveedor=${provedores.ID_Proveedor})}"
-											class="btn btn-danger">eliminar</a> <a
+										<td>
+												<!-- Muestra el estado actual de la venta --> <span
+												th:text="${provedores.estado ? 'Activo' : 'Inactiva'}"
+												th:class="${provedores.estado ? 'bg-success' : 'bg-danger'}"></span>
+											</td>
+										<td> 
+										
+										 <a
 											th:href="@{/Solware2/home/C_ProveedoresA/editar/{ID_Proveedor}(ID_Proveedor=${provedores.ID_Proveedor})}"
-											class="btn btn-info">Editar</a></td>
+											class="btn btn-info">Editar</a>
+											<a><form
+														th:action="@{/Solware2/home/Proveedor/estado}" method="post">
+														<input type="hidden" name="idProveedor"
+															th:value="${provedores.ID_Proveedor}" />
+														<button type="submit"
+															th:class="${provedores.estado ? 'btn btn-success' : 'btn btn-danger'}">
+															
+															<span
+																th:text="${provedores.estado ? 'Desactivar' : 'Activar'}"></span>
+														</button>
+														</form>
+														</a>
+											</td>
 									</tr>
 								</tbody>
 

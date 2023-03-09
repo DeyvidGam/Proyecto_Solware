@@ -26,6 +26,8 @@ public class Proveedor {
     private String Email;
     @Column(name = "telefono")
     private int  telefono;
+    @Column(name = "Estado")
+    private boolean Estado;
     @OneToMany(mappedBy = "proveedor",cascade = CascadeType.ALL)
     List<Producto>listaProducto;
 	public Proveedor() {
@@ -37,6 +39,14 @@ public class Proveedor {
 		Nombre = nombre;
 		Email = email;
 		this.telefono = telefono;
+	}
+	
+	public boolean isEstado() {
+	    return Estado;
+	}
+
+	public void setEstado(boolean estado) {
+	    Estado = estado;
 	}
 	public Long getID_Proveedor() {
 		return ID_Proveedor;

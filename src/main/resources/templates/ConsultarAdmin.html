@@ -15,7 +15,7 @@
 <link rel="stylesheet" type="text/css" href="/css/ab.css">
 <link rel="stylesheet" type="text/css" href="/css/estiloPerfilV.css">
 <link rel="stylesheet" type="text/css" href="/css/estilofooter.css">
-
+<link rel="stylesheet" type="text/css" href="/css/Pedido.css">
 
 <!-- Bootstrap CSS -->
 <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
@@ -173,10 +173,10 @@
 						<div class="col-mx-12">
 							<h1>Ventas</h1>
 							<div th:if="${mensaje}">
-									<div class="alert alert-danger" role="alert">
-										<span th:text="${mensaje}"></span>
-									</div>
+								<div class="alert alert-danger" role="alert">
+									<span th:text="${mensaje}"></span>
 								</div>
+							</div>
 							<div class="table-responsive responsive">
 								<table id="tabla" class="table table-striped table-bordered"
 									cellspacing="0" width="100%">
@@ -197,28 +197,26 @@
 											<td th:text="${ventas.ID_Venta}">ID_Venta</td>
 											<td th:text="${ventas.FechaYHora}">FechaYHora</td>
 											<td th:text="${ventas.Modo_Pago}">Modo_Pago</td>
-											<td th:text="${ventas.Valor_Venta}">Valor_Venta</td>
+											<td
+												th:text="'$ ' + ${#numbers.formatDecimal(ventas.Valor_Venta, 0, 'COMMA', 0, 'POINT')}">Valor_Venta</td>
+
 											<td th:text="${ventas.iDPedido.ID_Pedido}">IDPedido</td>
 											<td>
 												<!-- Muestra el estado actual de la venta --> <span
 												th:text="${ventas.estado ? 'Activa' : 'Inactiva'}"
 												th:class="${ventas.estado ? 'bg-success' : 'bg-danger'}"></span>
 											</td>
-											<td><a
-												th:href="@{/Solware2/home/ConsultarAdmin/{ID_Venta}(ID_Venta=${ventas.ID_Venta})}"
-												class="btn btn-danger">eliminar</a> 
-												<a
-												th:href="@{/Solware2/home/ConsultarAdmin/editar/{ID_Venta}(ID_Venta=${ventas.ID_Venta})}"
-												class="btn btn-info">Editar</a> 
-												<a><form
+											<td><a><form
 														th:action="@{/Solware2/home/ventas/estado}" method="post">
 														<input type="hidden" name="idVenta"
 															th:value="${ventas.ID_Venta}" />
-														<button type="submit" class="btn btn-sm btn-estado-{{ventas.estado ? 'activo' : 'inactivo'}}" th:text="${ventas.estado ? 'Desactivar' : 'Activar'}"></button>
-														</form>
-														</a>
-												
-												</td>
+														<button type="submit"
+															th:class="${ventas.estado ? 'btn btn-success' : 'btn btn-danger'}">
+															
+															<span
+																th:text="${ventas.estado ? 'Desactivar' : 'Activar'}"></span>
+														</button>
+													</form> </a></td>
 										</tr>
 									</tbody>
 

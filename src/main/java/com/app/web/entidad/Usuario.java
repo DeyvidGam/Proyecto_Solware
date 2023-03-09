@@ -25,11 +25,14 @@ public class Usuario {
 	    @Column(name="Apellido")
 	    private String Apellido;
 	    @Column(name="Correo")
-	    private String correo;
+	    private String Correo;
 	    @Column(name="telefono")
 	    private int telefono;
 	    @Column(name="Contrasena")
 	    private String Contrasena;
+	    
+	    @Column(name = "Estado")
+	    private boolean Estado;
 	    @ManyToOne
 		 @JoinColumn (name="Rol")
 		 private Rol rol;
@@ -48,7 +51,7 @@ public class Usuario {
 			this.rol = rol;
 			Nombre = nombre;
 			Apellido = apellido;
-			correo = correo;
+			Correo = correo;
 			this.telefono = telefono;
 			Contrasena = contrasena;
 		}
@@ -57,6 +60,14 @@ public class Usuario {
 			return ID_Usuario;
 		}
 
+		
+		public boolean isEstado() {
+		    return Estado;
+		}
+
+		public void setEstado(boolean estado) {
+		    Estado = estado;
+		}
 		public void setID_Usuario(Long iD_Usuario) {
 			ID_Usuario = iD_Usuario;
 		}
@@ -86,11 +97,11 @@ public class Usuario {
 		}
 
 		public String getCorreo() {
-			return correo;
+			return Correo;
 		}
 
 		public void setCorreo(String correo) {
-			correo = correo;
+			Correo = correo;
 		}
 
 		public int getTelefono() {
@@ -112,8 +123,10 @@ public class Usuario {
 		@Override
 		public String toString() {
 			return "Usuario [ID_Usuario=" + ID_Usuario + ", rol=" + rol + ", Nombre=" + Nombre + ", Apellido="
-					+ Apellido + ", Correo=" + correo + ", telefono=" + telefono + ", Contrasena=" + Contrasena + "]";
+					+ Apellido + ", Correo=" + Correo + ", telefono=" + telefono + ", Contrasena=" + Contrasena + "]";
 		}
+
+		
 	    
 	    
 	}

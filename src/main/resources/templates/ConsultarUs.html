@@ -183,6 +183,7 @@
 									<th>Telefono</th>
 									<th>Contraseña</th>
 									<th>Rol</th>
+									<th>Estado</th>
 									<th>Acciones</th>
 								</thead>
 								<tbody>
@@ -195,10 +196,21 @@
 										<td th:text="${usuario.Contrasena}"></td>
 										<td th:text="${usuario.Rol.Nombre_Rol}"></td>
 										<td>
-										<a th:href="@{/Solware2/home/ConsultarUs/{ID_Usuario}(ID_Usuario=${usuario.ID_Usuario})}"
-										class="btn btn-danger">eliminar</a>
+												<!-- Muestra el estado actual de la venta --> <span
+												th:text="${usuario.estado ? 'Activo' : 'Inactiva'}"
+												th:class="${usuario.estado ? 'bg-success' : 'bg-danger'}"></span>
+											</td>
+										<td>
+										
 										<a th:href="@{/Solware2/home/ConsultarUs/editar/{ID_Usuario}(ID_Usuario=${usuario.ID_Usuario})}"
 										class="btn btn-info">Editar</a>
+										<a><form
+														th:action="@{/Solware2/home/Usuario/estado}" method="post">
+														<input type="hidden" name="idUsuario"
+															th:value="${usuario.ID_Usuario}" />
+														<button type="submit" class="btn btn-sm btn-estado-{{usuario.estado ? 'activo' : 'inactivo'}}" th:text="${usuario.estado ? 'Desactivar' : 'Activar'}"></button>
+														</form>
+														</a>
 										</td>
 									</tr>
 
@@ -269,57 +281,52 @@
       <script src="/datatables/Buttons-1.5.6/js/buttons.html5.min.js"></script>
 
 	<script>
-      $(document).ready(function(filename = '') {    
-  $('#tabla').DataTable({        
+  $(document).ready(function(filename = '') {    
+    $('#tabla').DataTable({        
       language: {
-              lengthMenu: "Mostrar _MENU_ registros",
-              zeroRecords: "No se encontraron resultados",
-              "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
-              "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
-              "infoFiltered": "(filtrado de un total de _MAX_ registros)",
-              "sSearch": "Buscar:",
-              "oPaginate": {
-                  "sFirst": "Primero",
-                  "sLast":"Último",
-                  "sNext":"Siguiente",
-                  "sPrevious": "Anterior"
-               },
-               "sProcessing":"Procesando...",
-              },
-              scrollY: 500,
-              lengthMenu: [ [5,10, 25, -1], [5,10, 25, "All"] ],
+        lengthMenu: "Mostrar _MENU_ registros",
+        zeroRecords: "No se encontraron resultados",
+        "info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+        "infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+        "infoFiltered": "(filtrado de un total de _MAX_ registros)",
+        "sSearch": "Buscar:",
+        "oPaginate": {
+          "sFirst": "Primero",
+          "sLast":"Último",
+          "sNext":"Siguiente",
+          "sPrevious": "Anterior"
+        },
+        "sProcessing":"Procesando...",
+      },
+      scrollY: 500,
+      lengthMenu: [ [5,10, 25, -1], [5,10, 25, "All"] ],
       //para usar los botones   
       responsive: "true",
       dom: 'lBfrtip',       
       buttons:[ 
-          {
-              extend:    'excelHtml5',
-              text:      '<i class="fas fa-file-excel"></i> ',
-              titleAttr: 'Exportar a Excel',
-              className: 'btn btn-success ',
-              filename: 'ventas'
-           
-      
-          },
-          {
-              extend:    'pdfHtml5',
-              text:      '<i class="fas fa-file-pdf"></i> ',
-              titleAttr: 'Exportar a PDF',
-              className: 'btn btn-danger '
-          
-              
-              
-          },
-          {
-              extend:    'print',
-              text:      '<i class="fa fa-print"></i> ',
-              titleAttr: 'Imprimir',
-              className: 'btn btn-info'
-          },
+        {
+          extend:    'excelHtml5',
+          text:      '<i class="fas fa-file-excel"></i> ',
+          titleAttr: 'Exportar a Excel',
+          className: 'btn btn-success ',
+          filename: 'ventas'
+        },
+        {
+          extend:    'pdfHtml5',
+          text:      '<i class="fas fa-file-pdf"></i> ',
+          titleAttr: 'Exportar a PDF',
+          className: 'btn btn-danger '
+        },
+        {
+          extend:    'print',
+          text:      '<i class="fa fa-print"></i> ',
+          titleAttr: 'Imprimir',
+          className: 'btn btn-info',
+          autoPrint: false //Evita la impresión automática
+        },
       ]         
-  });     
+    });     
   });
-  
-  </script>
+</script>
 </body>
 </html>

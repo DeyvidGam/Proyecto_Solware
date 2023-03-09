@@ -12,10 +12,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.app.web.entidad.Rol;
 import com.app.web.entidad.Usuario;
+import com.app.web.entidad.Venta;
 import com.app.web.servicio.RolServicio;
 import com.app.web.servicio.UsuarioServicio;
 
@@ -40,31 +42,34 @@ public class UsuarioControlador {
 
 	@GetMapping("/ConsultarUs/nuevo")
 	public String crearUsuario(Model modelo) {
-		Usuario usuario = new Usuario();
-		
-		List<Rol> listaroles = rolServicio.listarrol();
-		
+	    Usuario usuario = new Usuario();
+	    usuario.setEstado(true); // establecer el estado en true
 
-		modelo.addAttribute("Usuario", usuario);
-		
-        modelo.addAttribute("roles", listaroles);
-		return "PerfilADMIN";
-		
+	    List<Rol> listaroles = rolServicio.listarrol();
 
+	    modelo.addAttribute("Usuario", usuario);
+	    modelo.addAttribute("roles", listaroles);
+
+	    return "PerfilADMIN";
 	}
 
 	@PostMapping("/ConsultarUs")
 	public String guardarUsuario(@ModelAttribute("Usuario") Usuario usuario, RedirectAttributes attributes) {
+		usuario.setEstado(true); // establecer el estado en true
 		attributes.addFlashAttribute("exitoso", "Registro Exitoso");
 		usuarioServicio.guardarUsuario(usuario);
 		return "redirect:/Solware2/home/ConsultarUs/nuevo";
 	}
 
 	@GetMapping("/ConsultarUs/editar/{ID_Usuario}")
-	public String Editar(@PathVariable Long ID_Usuario,Model modelo ) {
-		modelo.addAttribute("Usuario", usuarioServicio.obtenerUsuarioPorId(ID_Usuario));
-		List<Rol> listaroles = rolServicio.listarrol();
-		modelo.addAttribute("roles", listaroles);
+	public String Editar(@PathVariable Long ID_Usuario, Model modelo) {
+	    Usuario usuario = usuarioServicio.obtenerUsuarioPorId(ID_Usuario);
+	    if(!usuario.isEstado()) { // Verifica si el usuario está inactivo
+	        return "redirect:/Solware2/home/ConsultarUs";
+	    }
+	    modelo.addAttribute("Usuario", usuario);
+	    List<Rol> listaroles = rolServicio.listarrol();
+	    modelo.addAttribute("roles", listaroles);
 	    return "editar_usuario";
 	}
 
@@ -86,5 +91,16 @@ public class UsuarioControlador {
 		usuarioServicio.delete(ID_Usuario);
 		return "redirect:/Solware2/home/ConsultarUs";
 	}
+	
+	
+	
+	@PostMapping("/Usuario/estado")
+	public String cambiarEstadoVenta(@RequestParam("idUsuario") Long idUsuario, Model modelo, RedirectAttributes attributes) {
+		Usuario usuario = usuarioServicio.obtenerUsuarioPorId(idUsuario);
+	
+		usuario.setEstado(!usuario.isEstado()); // Cambia el estado actual de la venta
+		usuarioServicio.guardarUsuario(usuario); // Actualiza la venta en la base de datos
+		 return "redirect:/Solware2/home/ConsultarUs"; // Redirige a la página de lista de ventas
+	} 
 
 }

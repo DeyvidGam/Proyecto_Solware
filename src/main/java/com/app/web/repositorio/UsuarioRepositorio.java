@@ -9,7 +9,7 @@ import com.app.web.entidad.Usuario;
 @Repository
 public interface UsuarioRepositorio extends JpaRepository<Usuario,Long> {
      
-	 public Usuario findByCorreo(String Correo);
+	
   
    
     

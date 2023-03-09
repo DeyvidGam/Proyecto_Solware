@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.slf4j.*;
 import com.app.web.entidad.Cliente;
@@ -64,9 +65,16 @@ public class PedidoControlador {
 
 	public String listarclientes(Model modelo) {
 		modelo.addAttribute("Pedido", pedidoServicio.listarpedidos());
+		modelo.addAllAttributes(listaDetalles);
 		return "C_PedidosA";
 	}
 
+	@GetMapping("/C_PedidosA/VerDetalles")
+	public String verDetalles(Model modelo, @RequestParam("id") Long idPedido) {
+	    Pedido pedido = pedidoServicio.obtenerPedidoPorId(idPedido); // Obtener el pedido por su ID
+	    modelo.addAttribute("Pedido", pedido);
+	    return "C_PedidosA";
+	}
 	@GetMapping("/PedidosA")
 	public String crearPedido(Model modelo) {
 		

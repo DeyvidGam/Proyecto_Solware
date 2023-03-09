@@ -12,10 +12,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.app.web.entidad.Producto;
 import com.app.web.entidad.Proveedor;
+import com.app.web.entidad.Usuario;
 import com.app.web.servicio.ProductoServicio;
 import com.app.web.servicio.ProveedorServicio;
 @Controller
@@ -56,7 +58,11 @@ public class ProveedorControldar {
 
 	@GetMapping("/C_ProveedoresA/editar/{ID_Proveedor}")
 	public String Editar(@PathVariable Long ID_Proveedor,Model modelo ) {
+		Proveedor proveedor = proveedorServicio.obtenerProveedorPorId(ID_Proveedor);
 		modelo.addAttribute("Proveedor", proveedorServicio.obtenerProveedorPorId(ID_Proveedor));
+		if(!proveedor.isEstado()) { // Verifica si el usuario está inactivo
+	        return "redirect:/Solware2/home/C_ProveedoresA";
+	    }
 		List<Producto> listaproducto = productoServicio.listarProducto();
 		modelo.addAttribute("Productos", listaproducto);
 		return "editar_proveedor";
@@ -80,5 +86,14 @@ public class ProveedorControldar {
 		return "redirect:/Solware2/home/C_ProveedoresA";
 		
 	}
+	
+	@PostMapping("/Proveedor/estado")
+	public String cambiarEstadoVenta(@RequestParam("idProveedor") Long idProveedor, Model modelo, RedirectAttributes attributes) {
+		Proveedor proveedor = proveedorServicio.obtenerProveedorPorId(idProveedor);
+	
+		proveedor.setEstado(!proveedor.isEstado()); // Cambia el estado actual de la venta
+		proveedorServicio.guardarProveedor(proveedor); // Actualiza la venta en la base de datos
+		 return "redirect:/Solware2/home/C_ProveedoresA"; // Redirige a la página de lista de ventas
+	} 
 
 }

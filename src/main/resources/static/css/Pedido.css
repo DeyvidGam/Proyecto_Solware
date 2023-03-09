@@ -1,11 +1,4 @@
-form{
-    width: 900px;
-    height: 450px;
-    margin: auto;
-    background-color: gainsboro;
-    overflow: hidden;
-    border-radius: 20px;
-}
+
 th,td {
     padding: 0.4rem !important;
 }
