@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
 *{
     margin: 0;
@@ -9,8 +8,8 @@
 /*:::::Pie de Pagina*/
 .pie-pagina{
     width: 100%;
-    height: 50%;
-   background-image: linear-gradient(to right, #ffffff 0%, #00c9ff 100%);
+    height: 40%;
+   background-color: rgb(183, 184, 185)
 }
 .pie-pagina .grupo-1{
     width: 100%;
@@ -37,7 +36,7 @@
     font-size: 20px;
 }
 .pie-pagina .grupo-1 .box p{
-   
+    color: black;
     margin-bottom: 10px;
 }
 .pie-pagina .grupo-1 .red-social a{
@@ -46,9 +45,9 @@
     width: 45px;
     height: 45px;
     line-height: 45px;
-    color: #ffff;
+    color: #000000;
     margin-right: 10px;
-    background-color: #0d2033;
+    background-color: #ffffff;
     text-align: center;
     transition: all 300ms ease;
 }
@@ -56,10 +55,10 @@
     color: aqua;
 }
 .pie-pagina .grupo-2{
-    background-color: #0a1a2a;
+    background-color: #000000;
     padding: 15px 10px;
     text-align: center;
-    color: #fff;
+
 }
 .pie-pagina .grupo-2 small{
     font-size: 15px;

@@ -1,0 +1,40 @@
+.header{
+	width: 100%;
+	min-height: 100vh;
+	background-image: url(../img/bannerfondonegro.jpg);
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	background-attachment: fixed;
+}
+.navbar {
+	backdrop-filter: blur(10px);
+	-webkit-backdrop-filter: blur(10px);
+	background-color: rgba(0,0,0,0.7);
+	height: 70px;
+  }
+  
+  .navbar-brand {
+	font-size: 2rem;
+	font-weight: bold;
+  }
+  
+  .nav-link {
+	color: #fff;
+	font-size: 1.2rem;
+	margin-right: 1rem;
+  }
+  
+  .nav-link:hover {
+	color: #ccc;
+  }
+  
+  body {
+	padding-top: 70px;
+	background-image: url('path/to/background-image.jpg');
+	background-size: cover;
+	background-position: center;
+	background-attachment: fixed;
+	/* Agregue cualquier otra propiedad de fondo que desee */
+  }
+  

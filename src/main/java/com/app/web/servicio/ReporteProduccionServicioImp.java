@@ -3,12 +3,14 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.Map;
 import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.app.web.Enum.TipoReporteEnum;
 import com.app.web.commons.JasperReportManager;
+import com.app.web.entidad.ReporteInventario;
 import com.app.web.entidad.ReporteProduccion;
 
 import net.sf.jasperreports.engine.JRException;
@@ -38,4 +40,6 @@ public class ReporteProduccionServicioImp implements ReporteProduccionServicio{
 
 		return dto;
 	}
+
+
 }

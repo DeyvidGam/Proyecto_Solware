@@ -3,6 +3,7 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.Map;
 import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,5 +38,12 @@ public class ReporteInventarioServicioImp implements ReporteInventarioServicio{
 		dto.setLength(bs.length);
 
 		return dto;
+	}
+
+	@Override
+	public ReporteInventario obtenerReporteInventario(LocalDate fechaInicio, LocalDate fechaFin,
+			TipoReporteEnum tipoReporte) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

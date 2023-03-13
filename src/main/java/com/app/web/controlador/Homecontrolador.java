@@ -48,24 +48,5 @@ public class Homecontrolador {
 	public String ReportesPro(Model modelo) {
 		return "ReportesPro";
 	}
-	@GetMapping("/Quienesmos")
-	public String Quienesmos(Model modelo) {
-		return "Quienesmos";
-	}
-	@GetMapping("/vision")
-	public String vision(Model modelo) {
-		return "vision";
-	}
-	@GetMapping("/mision")
-	public String mision(Model modelo) {
-		return "mision";
-	}
-	@GetMapping("/Recordarcontra")
-	public String contraseña(Model modelo) {
-		return "Recordarcontra";
-	}
-	@GetMapping("/Contactenos")
-	public String contactenos(Model modelo) {
-		return "Contactenos";
-	}
+	
 }
