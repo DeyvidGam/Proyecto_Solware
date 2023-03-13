@@ -64,8 +64,10 @@
 	<div class="login-box content">
 
 		<div class="login-box">
-
-			<form class="form">
+ <div class="alert alert-danger" th:if="${param.error}">Nombre de usuario o contraseña
+			incorrectos.</div>
+		<div class="alert alert-success" th:if="${param.logout}">Sesión cerrada correctamente.</div>
+			<form th:action="@{/Solware2/home/inicioSesion}" method="post" class="form">
 				<div class="user-box">
 					<input type="text" name="" required="" id="Usuario"> <label>Usuario</label>
 				</div>
@@ -73,18 +75,13 @@
 					<input type="password" name="" required="" id="Contraseña"> <label>Contraseña</label>
 				</div>
 				<center>
-					<div class="user-box">
-						<select id="Rol" required class="form-select" style="width: 100%;">
-							<option value=""></option>
-							<option value="Administrador">Administrador</option>
-							<option value="Operario">Operario</option>
-							<option value="Vendedor">Vendedor</option>
-						</select>
-					</div>
+				
 					<center>
 					<br>
 					<br>
-						<input type="button" class="btn btn-danger" id="submit" onclick="validacion()" value="Enviar">
+					
+					<input type="submit" class="btn btn-danger" id="submit" value="Enviar">
+
 					</center>
 
 				</center>

@@ -15,30 +15,34 @@ import javax.persistence.Table;
 @Entity
 @Table (name="Usuarios")
 public class Usuario {
-	 
-	 @Id
-	 @GeneratedValue(strategy = GenerationType.IDENTITY)
+	  @Id
+	    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	    private Long ID_Usuario;
-	
-	    @Column(name="Nombre")
+
+	    @Column(name = "Nombre")
 	    private String Nombre;
-	    @Column(name="Apellido")
+
+	    @Column(name = "Apellido")
 	    private String Apellido;
-	    @Column(name="Correo")
-	    private String Correo;
-	    @Column(name="telefono")
+
+	    @Column(name = "correo")
+	    private String correo;
+
+	    @Column(name = "telefono")
 	    private int telefono;
-	    @Column(name="Contrasena")
+
+	    @Column(name = "Contrasena")
 	    private String Contrasena;
-	    
+
 	    @Column(name = "Estado")
 	    private boolean Estado;
+
 	    @ManyToOne
-		 @JoinColumn (name="Rol")
-		 private Rol rol;
-		 
-	    @OneToMany(mappedBy = "operario",cascade = CascadeType.ALL)
-	    List<Produccion>listaProducciones;
+	    @JoinColumn(name = "Rol")
+	    private Rol rol;
+
+	    @OneToMany(mappedBy = "operario", cascade = CascadeType.ALL)
+	    private List<Produccion> listaProducciones;
 	    
 		public Usuario() {
 			super();
@@ -51,7 +55,7 @@ public class Usuario {
 			this.rol = rol;
 			Nombre = nombre;
 			Apellido = apellido;
-			Correo = correo;
+			this.correo = correo;
 			this.telefono = telefono;
 			Contrasena = contrasena;
 		}
@@ -97,11 +101,11 @@ public class Usuario {
 		}
 
 		public String getCorreo() {
-			return Correo;
+			return correo;
 		}
 
 		public void setCorreo(String correo) {
-			Correo = correo;
+			this.correo = correo;
 		}
 
 		public int getTelefono() {
@@ -123,7 +127,7 @@ public class Usuario {
 		@Override
 		public String toString() {
 			return "Usuario [ID_Usuario=" + ID_Usuario + ", rol=" + rol + ", Nombre=" + Nombre + ", Apellido="
-					+ Apellido + ", Correo=" + Correo + ", telefono=" + telefono + ", Contrasena=" + Contrasena + "]";
+					+ Apellido + ", Correo=" + correo + ", telefono=" + telefono + ", Contrasena=" + Contrasena + "]";
 		}
 
 		

@@ -10,7 +10,7 @@ import com.app.web.entidad.Usuario;
 public interface UsuarioRepositorio extends JpaRepository<Usuario,Long> {
      
 	
-  
+	Usuario findByCorreo(String correo);
    
     
 }

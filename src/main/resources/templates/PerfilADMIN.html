@@ -41,8 +41,10 @@
 					<ul class="dropdown-menu boton"
 						aria-labelledby="dropdownMenuButton1">
 						<div class="dropdown-divider"></div>
-						<a class="dropdown-item" href="/Solware2/home/index">Cerrar
-							sesión</a>
+						 <form th:action="@{/logout}" method="post">
+                       <input type="submit" class="btn btn.success" value="Cerrar Sesion">
+                       </form>
+                       
 				</div>
 				</ul>
 			</div>
@@ -203,8 +205,8 @@
 									</div>
 									<div class="col-sm-6">
 										<label for="Correo" class="form-label">Correo</label> <input
-											id="Correo" type="email" class="form-control" required
-											th:field="*{Correo}" placeholder="Correo">
+											id="correo" type="email" class="form-control" required
+											th:field="*{correo}" placeholder="Correo">
 
 									</div>
 								</div>
