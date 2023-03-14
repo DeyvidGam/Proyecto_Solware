@@ -30,23 +30,22 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Override
-	protected void configure(HttpSecurity http) throws Exception {
-    	System.out.println("configure(HttpSecurity http) method called");
-    	http.csrf().disable()
-    	.authorizeRequests()
-                .antMatchers("/Solware2/home/index", "/Solware2/home/inicioSesion",
-                		"/Solware2/home/Contactenos","/js/**","/css/**","/img/**","/bootstrap/**","/manualC/**","/css/**","/manualC/Manual Corporativo SOL-WARE.pdf"
-                		).permitAll()
-                
-                .antMatchers("/Solware2/**").hasAnyAuthority("ADMIN","VENDEDOR")
-                .and()
-                .formLogin().loginPage("/Solware2/home/inicioSesion")
-                .defaultSuccessUrl("/Solware2/aa",true)
-                .permitAll()
-                .and()
-                .logout().permitAll();
-    } 
-    
+    protected void configure(HttpSecurity http) throws Exception {
+        System.out.println("configure(HttpSecurity http) method called");
+        http.csrf().disable()
+        .authorizeRequests()
+            .antMatchers("/Solware2/home/index", "/Solware2/home/inicioSesion",
+                    "/Solware2/home/Contactenos","/js/**","/css/**","/img/**","/bootstrap/**","/manualC/**","/css/**","/manualC/Manual Corporativo SOL-WARE.pdf"
+                    ).permitAll()
+            .antMatchers("/Solware2/**").hasAnyAuthority("ADMIN")
+            .and()
+            .formLogin().loginPage("/Solware2/home/inicioSesion")
+            .defaultSuccessUrl("/Solware2/aa",true)
+            .permitAll()
+            .and()
+            .logout().permitAll();
+    }
+
     
    
 
