@@ -69,10 +69,10 @@
 		<div class="alert alert-success" th:if="${param.logout}">Sesión cerrada correctamente.</div>
 			<form th:action="@{/Solware2/home/inicioSesion}" method="post" class="form">
 				<div class="user-box">
-					<input type="text" name="" required="" id="Usuario"> <label>Usuario</label>
+					<input type="text" name="username" required="" id="username"> <label>Usuario</label>
 				</div>
 				<div class="user-box">
-					<input type="password" name="" required="" id="Contraseña"> <label>Contraseña</label>
+					<input type="password" name="password" required="" id="password"> <label>Contraseña</label>
 				</div>
 				<center>
 				

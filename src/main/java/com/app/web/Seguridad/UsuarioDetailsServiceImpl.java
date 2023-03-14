@@ -27,10 +27,10 @@ public class UsuarioDetailsServiceImpl implements UserDetailsService{
     private UsuarioServicio  usuarioServicio;
  
     @Override
-    public UserDetails loadUserByUsername(String correo) throws UsernameNotFoundException {
-        Usuario usuario = usuarioRepository.findByCorreo(correo);
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        Usuario usuario = usuarioRepository.findByCorreo(username);
         if (usuario == null) {
-            throw new UsernameNotFoundException(correo);
+            throw new UsernameNotFoundException(username);
         }
         List<GrantedAuthority> roles = new ArrayList<>();
         roles.add(new SimpleGrantedAuthority(usuario.getRol().getNombre_Rol()));

@@ -34,9 +34,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     	System.out.println("configure(HttpSecurity http) method called");
     	http.csrf().disable()
     	.authorizeRequests()
-                .antMatchers("/Solware2/home/index", "/Solware2/home/inicioSesion", 
-                		"/Solware2/home/Nosotros", "/Solware2/home/Servicios", "/Solware2/home/Quienesmos", 
-                		"/Solware2/home/vision", "/Solware2/home/mision", "/Solware2/home/Recordarcontra", 
+                .antMatchers("/Solware2/home/index", "/Solware2/home/inicioSesion",
                 		"/Solware2/home/Contactenos","/js/**","/css/**","/img/**","/bootstrap/**","/manualC/**","/css/**","/manualC/Manual Corporativo SOL-WARE.pdf"
                 		).permitAll()
                 
