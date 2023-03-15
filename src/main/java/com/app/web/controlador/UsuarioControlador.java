@@ -3,6 +3,7 @@ package com.app.web.controlador;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -31,6 +32,8 @@ public class UsuarioControlador {
 	private  UsuarioServicio usuarioServicio;
 
 	@Autowired
+	private PasswordEncoder passwordEncoder;
+	@Autowired
 	private  RolServicio rolServicio;
 	@GetMapping("/ConsultarUs")
 
@@ -55,10 +58,11 @@ public class UsuarioControlador {
 
 	@PostMapping("/ConsultarUs")
 	public String guardarUsuario(@ModelAttribute("Usuario") Usuario usuario, RedirectAttributes attributes) {
-		usuario.setEstado(true); // establecer el estado en true
-		attributes.addFlashAttribute("exitoso", "Registro Exitoso");
-		usuarioServicio.guardarUsuario(usuario);
-		return "redirect:/Solware2/home/ConsultarUs/nuevo";
+	    usuario.setEstado(true);
+	    usuario.setContrasena(passwordEncoder.encode(usuario.getContrasena())); // encriptar la contraseña
+	    attributes.addFlashAttribute("exitoso", "Registro Exitoso");
+	    usuarioServicio.guardarUsuario(usuario);
+	    return "redirect:/Solware2/home/ConsultarUs/nuevo";
 	}
 
 	@GetMapping("/ConsultarUs/editar/{ID_Usuario}")
