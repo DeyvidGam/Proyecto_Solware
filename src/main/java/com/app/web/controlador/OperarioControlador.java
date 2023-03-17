@@ -14,7 +14,7 @@ import com.app.web.entidad.Produccion;
 import com.app.web.servicio.ProduccionServicio;
 
 @Controller
-@RequestMapping(path="/Solware2")
+@RequestMapping(path="/Solware2/Operario")
 @CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.POST,RequestMethod.PUT})
 public class OperarioControlador {
 	@Autowired

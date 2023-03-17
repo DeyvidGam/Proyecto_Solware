@@ -37,7 +37,7 @@ import com.fasterxml.jackson.annotation.JsonCreator.Mode;
 
 
 @Controller
-@RequestMapping(path="/Solware2")
+@RequestMapping(path="/Solware2/Vendedor")
 @CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.POST,RequestMethod.PUT})
 public class PedidoControladorV {
 private final Logger log = LoggerFactory.getLogger(PedidoControlador.class);

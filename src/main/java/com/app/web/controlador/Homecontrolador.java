@@ -1,4 +1,5 @@
 package com.app.web.controlador;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -17,36 +18,10 @@ public class Homecontrolador {
 	public String mostrarpagina(Model modelo) {
 		return "index";
 	}
-	
+	 
 	@GetMapping("/inicioSesion")
 	public String inicioSesion(Model modelo) {
 		return "inicioSesion";
-	}
-	
-	@GetMapping("/Nosotros")
-	public String Nosotros(Model modelo) {
-		return "Nosotros";
-	}
-	@GetMapping("/Servicios")
-	public String Servicios(Model modelo) {
-		return "Servicios";
-	}
-
-	@GetMapping("/Admin")
-	public String Admin(Model modelo) {
-		return "Admin";
-	}
-	@GetMapping("/ReportesVA")
-	public String ReportesVA(Model modelo) {
-		return "ReportesVA";
-	}
-	@GetMapping("/ReportesIn")
-	public String ReportesIn(Model modelo) {
-		return "ReportesIn";
-	}
-	@GetMapping("/ReportesPro")
-	public String ReportesPro(Model modelo) {
-		return "ReportesPro";
 	}
 	
 }

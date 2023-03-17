@@ -16,7 +16,7 @@ import com.app.web.entidad.Cliente;
 import com.app.web.servicio.ClienteServicio;
 
 @Controller
-@RequestMapping(path="/Solware2")
+@RequestMapping(path="/Solware2/Vendedor")
 @CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.POST,RequestMethod.PUT})
 public class ClienteControladorV {
 

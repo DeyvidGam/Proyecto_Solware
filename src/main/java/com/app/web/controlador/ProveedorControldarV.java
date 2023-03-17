@@ -19,7 +19,7 @@ import com.app.web.entidad.Proveedor;
 import com.app.web.servicio.ProductoServicio;
 import com.app.web.servicio.ProveedorServicio;
 @Controller
-@RequestMapping(path="/Solware2")
+@RequestMapping(path="/Solware2/Vendedor")
 @CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.POST,RequestMethod.PUT})
 public class ProveedorControldarV {
 	

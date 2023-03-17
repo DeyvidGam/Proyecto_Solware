@@ -17,7 +17,7 @@ import com.app.web.entidad.Insumo;
 import com.app.web.servicio.InsumoServicio;
 
 @Controller
-@RequestMapping(path="/Solware2/home")
+@RequestMapping(path="/Solware2/Admin")
 @CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.POST,RequestMethod.PUT})
 
 public class InsumoControlador {

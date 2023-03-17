@@ -22,7 +22,7 @@ import com.app.web.servicio.ReporteProduccionServicio;
 import net.sf.jasperreports.engine.JRException;
 
 @Controller
-@RequestMapping(path="/Solware2/home")
+@RequestMapping(path="/Solware2/Admin")
 @CrossOrigin(origins = "*", methods = {RequestMethod.GET, RequestMethod.POST,RequestMethod.PUT})
 public class ReporteProduccionControlador {
 	@Autowired
