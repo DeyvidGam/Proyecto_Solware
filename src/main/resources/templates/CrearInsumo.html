@@ -29,183 +29,53 @@
 </head>
 <body>
 
-	<div class="container-fluid">
-		<div class="row justify-content-center align-content-center">
+	<div th:insert="headerAdmin :: header"></div>
+	<div th:insert="BarraLateralAdmin:: barra"></div>
+	<main class="main col">
+		<div
+			class="row justify-content-center align-content-center text-center">
+			<div class="columna col-lg-12">
 
-			<div class="col-7 barra1" style="color: white;"></div>
-
-			<div class="col-5 barra1">
-				<div class="dropdown">
-					<a class="btn  dropdown-toggle boton text-light" type="button"
-						id="dropdownMenuButton1" data-bs-toggle="dropdown"
-						aria-expanded="false"> <i class="fas fa-user-circle user"></i>
-						Deyvid Gamboa Romero
-					</a>
-					<ul class="dropdown-menu boton"
-						aria-labelledby="dropdownMenuButton1">
-						<div class="dropdown-divider"></div>
-						<a class="dropdown-item" href="/Solware2/home/index">Cerrar
-							sesión</a>
-				</div>
-				</ul>
-			</div>
-		</div>
-	</div>
-
-
-	<div class="container-fluid">
-		<div class="row">
-			<div class="barra-lateral col-12 col-sm-auto">
-
-				<nav class="menu d-flex d-sm-block justify-content-center flex-wrap">
-					<img id="logo" th:src="@{/img/LOGO SOL WARE .PNG}" width="140px">
-					<a class="option" th:href="@{/Solware2/home/Admin}"><i
-						class="fas fa-home" title="Inicio"></i><span>Inicio</span></a>
-					<div class="dropdown">
-						<a class=" dropdown-toggle " type="button"
-							data-bs-toggle="dropdown" aria-expanded="false"> usuarios </a>
-						<ul class="dropdown-menu " aria-labelledby="dropdownMenuButton1">
-							<a class="dropdown-item"
-								th:href="@{/Solware2/home/ConsultarUs/nuevo}">Registrar
-								usuarios</a>
-							<a class="dropdown-item" th:href="@{/Solware2/home/ConsultarUs}">Consutar
-								usuarios</a>
-
-						</ul>
+				<div class="col-mx-12 medio" style="margin: auto;">
+					<div class="col-md-12">
+						<h1>INSUMOS</h1>
 					</div>
 
+					<section class="form-register"
+						style="margin: auto; margin-top: 20px; width: 600px; height: 350px">
 
-					<div class="dropdown">
-						<a class=" dropdown-toggle " type="button"
-							data-bs-toggle="dropdown" aria-expanded="false"> Inventarios
-						</a>
-						<ul class="dropdown-menu " aria-labelledby="dropdownMenuButton1">
-							<li><a class="dropdown-item"
-								th:href="@{/Solware2/home/ModuloInventario}">Crear</a></li>
-							<li><a class="dropdown-item"
-								th:href="@{/Solware2/home/Consultar}">Consultar</a></li>
-
-						</ul>
-						<div class="dropdown">
-							<a class=" dropdown-toggle " type="button"
-								data-bs-toggle="dropdown" aria-expanded="false"> Proveedor </a>
-							<ul class="dropdown-menu " aria-labelledby="dropdownMenuButton1">
-								<a class="dropdown-item"
-									th:href="@{/Solware2/home/ProveedoresA}">Crear</a>
-								<a class="dropdown-item"
-									th:href="@{/Solware2/home/C_ProveedoresA}">Consultar</a>
-
-							</ul>
-						</div>
-						<div class="dropdown">
-							<a class=" dropdown-toggle " type="button"
-								data-bs-toggle="dropdown" aria-expanded="false"> Productos </a>
-							<ul class="dropdown-menu " aria-labelledby="dropdownMenuButton1">
-								<a class="dropdown-item" th:href="@{/Solware2/home/ProductosA}">Crear</a>
-								<a class="dropdown-item"
-									th:href="@{/Solware2/home/C_ProductosA}">Consultar</a>
-
-							</ul>
-						</div>
-						<div class="dropdown">
-							<a class=" dropdown-toggle " type="button"
-								data-bs-toggle="dropdown" aria-expanded="false"> Cliente </a>
-							<ul class="dropdown-menu " aria-labelledby="dropdownMenuButton1">
-								<a class="dropdown-item" th:href="@{/Solware2/home/ClientesA}">Crear</a>
-								<a class="dropdown-item" th:href="@{/Solware2/home/C_ClienteA}">Consultar</a>
-
-							</ul>
-						</div>
-						<div class="dropdown">
-							<a class=" dropdown-toggle " type="button"
-								data-bs-toggle="dropdown" aria-expanded="false"> pedido </a>
-							<ul class="dropdown-menu " aria-labelledby="dropdownMenuButton1">
-								<a class="dropdown-item" th:href="@{/Solware2/home/PedidosA}">Crear</a>
-								<a class="dropdown-item" th:href="@{/Solware2/home/C_PedidosA}">Consultar</a>
-
-							</ul>
-						</div>
-
-						<div class="dropdown">
-							<a class=" dropdown-toggle " type="button"
-								data-bs-toggle="dropdown" aria-expanded="false"> Ventas </a>
-							<ul class="dropdown-menu " aria-labelledby="dropdownMenuButton1">
-								<a class="dropdown-item" th:href="@{/Solware2/home/ventasAdmin}">Crear</a>
-								<a class="dropdown-item"
-									th:href="@{/Solware2/home/ConsultarAdmin}">Consultar</a>
-
-							</ul>
-							<div class="dropdown">
-								<a class=" dropdown-toggle " type="button"
-									data-bs-toggle="dropdown" aria-expanded="false"> Producion
-								</a>
-								<ul class="dropdown-menu " aria-labelledby="dropdownMenuButton1">
-									<a class="dropdown-item"
-										th:href="@{/Solware2/home/ProducionAdmin}">Crear</a>
-									<a class="dropdown-item"
-										th:href="@{/Solware2/home/ConsultarPAdmin}">Consultar</a>
-								</ul>
-								<div class="dropdown">
-									<a class=" dropdown-toggle " type="button"
-										data-bs-toggle="dropdown" aria-expanded="false"> Reportes
-									</a>
-									<ul class="dropdown-menu "
-										aria-labelledby="dropdownMenuButton1">
-										<a class="option" th:href="@{/Solware2/home/ReportesVA}"><span>ReportesV</span></a>
-										<a class="dropdown-item"
-											th:href="@{/Solware2/home/ReportesIn}">ReportesIn</a>
-										<a class="dropdown-item"
-											th:href="@{/Solware2/home/ReportesPro}">ReportesPro</a>
-									</ul>
-				</nav>
-			</div>
-			<main class="main col">
-				<div
-					class="row justify-content-center align-content-center text-center">
-					<div class="columna col-lg-12">
-
-						<div class="col-mx-12 medio" style="margin: auto;">
-							<div class="col-md-12">
-								<h1>INSUMOS</h1>
+						<form th:action="@{/Solware2/Admin/insumo}" th:object="${Insumo}"
+							method="POST">
+							<div class="row">
+								<div class="col-sm-2"></div>
+								<div class="col-sm-8">
+									<label for="Nombre_Insumo" class="form-label">Nombre
+										Insumo</label> <input id="Nombre_Insumo" type="text"
+										class="form-control" required th:field="*{Nombre_Material}"
+										placeholder="Nombre Insumo"
+										pattern="[a-zA-ZñÑ\s\.,;:\-_¡!¿\?]+">
+								</div>
+								<div class="col-sm-2"></div>
 							</div>
 
-							<section class="form-register"
-								style="margin: auto; margin-top: 20px; width: 600px; height: 350px">
+							<div class="row">
+								<div class="col-md-12">
+									<br> <br> <input type="submit"
+										class="btn btn-primary" id="submit" onclick="validacion()"
+										value="Enviar"> <input type="reset" name="reset"
+										class="btn btn-danger" value="Restablecer">
+								</div>
+							</div>
+						</form>
 
-								<form th:action="@{/Solware2/home/insumo}" th:object="${Insumo}"
-									method="POST">
-									<div class="row">
-										<div class="col-sm-2"></div>
-										<div class="col-sm-8">
-											<label for="Nombre_Insumo" class="form-label">Nombre
-												Insumo</label> <input id="Nombre_Insumo" type="text"
-												class="form-control" required th:field="*{Nombre_Material}"
-												placeholder="Nombre Insumo"
-												pattern="[a-zA-ZñÑ\s\.,;:\-_¡!¿\?]+">
-										</div>
-										<div class="col-sm-2"></div>
-									</div>
-
-									<div class="row">
-										<div class="col-md-12">
-											<br> <br> <input type="submit"
-												class="btn btn-primary" id="submit" onclick="validacion()"
-												value="Enviar"> <input type="reset" name="reset"
-												class="btn btn-danger" value="Restablecer">
-										</div>
-									</div>
-								</form>
-
-							</section>
-
-						</div>
-					</div>
+					</section>
 
 				</div>
+			</div>
 
-			</main>
 		</div>
-	</div>
+
+	</main>
 
 
 	<div th:insert="footer :: foot"></div>

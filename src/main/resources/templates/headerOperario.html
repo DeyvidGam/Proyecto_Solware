@@ -13,34 +13,35 @@
 </head>
 <body>
 
-    
-     <div th:insert="headerOperario :: header"></div>
-      <div th:insert="BarraLateralOperario :: barra"></div>
+    <div class="container-fluid" th:fragment="header">
+        <div class="row justify-content-center align-content-center">
+           
+            <div class="col-7 barra1"style="color: white;">
+                <h2 style="text-align: left; font-family: fantasy;">INTERFAZ OPERARIO</h2>
+            </div>
 
-
-     <main class="main col">
-                <div class="row justify-content-center align-content-center text-center">
-                    <div class="columna col-lg-6">
-                        <h1> Bienvenido  <span>[[${nombreUsuario}]]</span>
-                        </h1>
-         <img src="/img/Admin.png" width="30%">
-                    </div>
-
-                </div>
-
-            </main>
- <div th:insert="footer :: foot"></div>
-
-
-
-
+            <div class="col-5 barra1">
+                <div class="dropdown">
+                    <a class="btn  dropdown-toggle boton text-light" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-user-circle user"></i> <span>[[${nombreUsuario}]]</span>
+                    </a>
+                    <ul class="dropdown-menu boton" aria-labelledby="dropdownMenuButton1">
+                        <a class="dropdown-item" href="/Solware2/Operario/PerfilO">Mi perfil</a>
+                        <div class="dropdown-divider"></div>
+						 <form th:action="@{/logout}" method="post">
+                       <input type="submit" class="btn btn.success" value="Cerrar Sesion">
+                       </form>
+                    </ul>
+                  </div>
+            </div>
+        </div>
+     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/646c794df3.js"></script>
-   
-              
+            
 </body>
 </html>
 

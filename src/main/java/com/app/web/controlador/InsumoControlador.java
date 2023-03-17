@@ -48,7 +48,7 @@ public class InsumoControlador {
 	@PostMapping("/insumo")
 	public String guardarInsumo(@ModelAttribute("Insumo") Insumo insumo) {
 		insumoServicio.guardarInsumo(insumo);
-		return "redirect:/Solware2/home/ModuloInventario";
+		return "redirect:/Solware2/Admin/ModuloInventario";
 	}
 	@GetMapping("/insumo/editar/{ID_Insumo}")
 	public String Editar(@PathVariable Long ID_Insumo,Model modelo ) {
@@ -71,7 +71,7 @@ public class InsumoControlador {
 	@GetMapping("/eliminarinsumo/{ID_Insumo}")
 	public String deleteInsumo(@PathVariable Long ID_Insumo) {	
 		insumoServicio.delete(ID_Insumo);
-		return "redirect:/Solware2/home/ModuloInventario";
+		return "redirect:/Solware2/Admin/ModuloInventario";
 		
 	}
 	

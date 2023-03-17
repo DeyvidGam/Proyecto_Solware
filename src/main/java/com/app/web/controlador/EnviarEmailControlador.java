@@ -57,6 +57,6 @@ public class EnviarEmailControlador {
 			
 		}
 		 
-		 return "redirect:/Solware2/home/ConsultarPAdmin";
+		 return "redirect:/Solware2/Admin/ConsultarPAdmin";
 	}
 }

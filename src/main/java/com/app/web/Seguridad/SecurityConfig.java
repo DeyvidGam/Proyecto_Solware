@@ -33,37 +33,40 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        System.out.println("configure(HttpSecurity http) method called");
         http.csrf().disable()
         .authorizeRequests()
             .antMatchers("/Solware2/home/index", "/Solware2/home/inicioSesion",
-                    "/Solware2/home/Contactenos","/js/**","/css/**","/img/**","/bootstrap/**","/manualC/**","/css/**","/manualC/Manual Corporativo SOL-WARE.pdf"
+                   "/js/**","/css/**","/img/**","/bootstrap/**","/manualC/**","/css/**","/manualC/Manual Corporativo SOL-WARE.pdf"
                     ).permitAll()
-            .antMatchers("/Solware2/home/**").hasAnyAuthority("administrador")
-            .antMatchers("/Solware2/**").hasAnyAuthority("Vendedor")
-            .antMatchers("/Solware2/**").hasAnyAuthority("Operario")
+            .antMatchers("/Solware2/admin/**").hasAuthority("Administrador")
+            .antMatchers("/Solware2/Operario/**").hasAuthority("Operario")
+            .antMatchers("/Solware2/Vendedor/**").hasAuthority("Vendedor")
             .and()
             .formLogin()
             .loginPage("/Solware2/home/inicioSesion")
-            .defaultSuccessUrl("/Solware2/home/Admin", true)
             .successHandler((req, resp, auth) -> {
-                if (req.isUserInRole("1")) {
-                    resp.sendRedirect("/Solware2/home/admin");
-                } else if (req.isUserInRole("2")) {
-                    resp.sendRedirect("/Solware2/InicioP");
-                } else if (req.isUserInRole("3")) {
-                    resp.sendRedirect("/Solware2/aa");
-                } else {
-                    resp.sendRedirect("/Solware2/home/");
+                System.out.println("User roles: " + auth.getAuthorities());
+                switch (auth.getAuthorities().iterator().next().getAuthority()) {
+                    case "Administrador":
+                        resp.sendRedirect("/Solware2/Admin/Admin");
+                        break;
+                    case "Vendedor":
+                        resp.sendRedirect("/Solware2/Vendedor/aa");
+                        break;
+                    case "Operario":
+                        resp.sendRedirect("/Solware2/Operario/InicioP");
+                        break;
+                    default:
+                        resp.sendRedirect("/Solware2/home/inicioSesion");
+                        System.out.println("User does not have a valid role!");
+                        break;
                 }
             })
+
             .permitAll()
         .and()
         .logout()
             .permitAll();
     }
-
-    
-   
 
 }

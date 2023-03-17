@@ -51,7 +51,7 @@ public class ProveedorControldarV {
 	public String guardarCliente(@ModelAttribute("Proveedor") Proveedor proveedor, RedirectAttributes attributes) {
 		attributes.addFlashAttribute("exitoso", " Registro Exitoso");
 		proveedorServicio.guardarProveedor(proveedor);
-		return "redirect:/Solware2/C_Proveedores/nuevo";
+		return "redirect:/Solware2/Vendedor/C_Proveedores/nuevo";
 	}
 
 	@GetMapping("/C_Proveedores/editar/{ID_Proveedor}")
@@ -76,7 +76,7 @@ public class ProveedorControldarV {
 	public String deleteProveedor(@PathVariable Long ID_Proveedor) {
 		
 		proveedorServicio.delete(ID_Proveedor);
-		return "redirect:/Solware2/C_Proveedores";
+		return "redirect:/Solware2/Vendedor/C_Proveedores";
 		
 	}
 

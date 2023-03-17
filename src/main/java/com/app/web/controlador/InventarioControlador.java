@@ -85,7 +85,7 @@ public class InventarioControlador {
 	        }
 
 	        attributes.addFlashAttribute("exitoso", "Registro Exitoso");
-	        return "redirect:/Solware2/home/ModuloInventario";
+	        return "redirect:/Solware2/Admin/ModuloInventario";
 	    } catch (RuntimeException e) {
 	        modelo.addAttribute("mensaje", e.getMessage());
 	        List<Insumo> listainsumos = insumoServicio.listarinsumo();
@@ -120,14 +120,14 @@ public class InventarioControlador {
 		inventarioExistente.setFecha(inventario.getFecha());
 
 		inventarioServicio.updateInventario(inventarioExistente);
-		return "redirect:/Solware2/home/Consultar";
+		return "redirect:/Solware2/Admin/Consultar";
 	}
 
 	@GetMapping("/Consultar/{ID_Inventario}")
 	public String deleteInventario(@PathVariable Long ID_Inventario) {
 
 		inventarioServicio.delete(ID_Inventario);
-		return "redirect:/Solware2/home/Consultar";
+		return "redirect:/Solware2/Admin/Consultar";
 
 	}
 

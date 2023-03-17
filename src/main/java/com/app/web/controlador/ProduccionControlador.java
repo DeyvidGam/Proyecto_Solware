@@ -80,7 +80,7 @@ public class ProduccionControlador {
 		produccion.setCantidad(cantidad);
 	    attributes.addFlashAttribute("exitoso", "Registro Exitoso");
 	    produccionServicio.guardarProduccion(produccion);
-	    return "redirect:/Solware2/home/ProducionAdmin";
+	    return "redirect:/Solware2/Admin/ProducionAdmin";
 	}
 
 	@GetMapping("/ConsultarPAdmin/editar/{ID_Produccion}")
@@ -116,14 +116,14 @@ public class ProduccionControlador {
 		produccionExistente.setPedido(produccion.getPedido());
 		
 		produccionServicio.updateProduccion(produccionExistente);
-		return "redirect:/Solware2/home/ConsultarPAdmin";
+		return "redirect:/Solware2/Admin/ConsultarPAdmin";
 	}
 	
 	@GetMapping("/ConsultarPAdmin/{ID_Produccion}")
 	public String deleteProduccion(@PathVariable Long ID_Produccion) {
 		
 		produccionServicio.delete(ID_Produccion);
-		return "redirect:/Solware2/home/ConsultarPAdmin";
+		return "redirect:/Solware2/Admin/ConsultarPAdmin";
 		
 	}
 	

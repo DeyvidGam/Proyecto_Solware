@@ -176,7 +176,7 @@ private final Logger log = LoggerFactory.getLogger(PedidoControlador.class);
 		if (listaDetalles.isEmpty()) {
 	        attributes.addFlashAttribute("mensaje", " No se puede guardar un pedido sin detalles");
 	        
-	        return "redirect:/Solware2/Pedidos";
+	        return "redirect:/Solware2/Vendedor/Pedidos";
 	    }
 
 
@@ -192,12 +192,12 @@ private final Logger log = LoggerFactory.getLogger(PedidoControlador.class);
 		pedido = new Pedido();
 		listaDetalles.clear();
 		attributes.addFlashAttribute("exitoso", " Registro Exitoso");
-		return "redirect:/Solware2/Pedidos";
+		return "redirect:/Solware2/Vendedor/Pedidos";
 	}
 	@PostMapping("/Solware2/C_Pedidos")
 	public String guardarCliente(@ModelAttribute("Pedido") Pedido pedido) {
 		pedidoServicio.guardarPedido(pedido);
-		return "redirect:/Solware2/C_Pedidos";
+		return "redirect:/Solware2/Vendedor/C_Pedidos";
 	}
 
 	@GetMapping("/C_Pedidos/editar/{ID_Pedido}")
@@ -213,14 +213,14 @@ private final Logger log = LoggerFactory.getLogger(PedidoControlador.class);
 		pedidoExistente.setFecha_Pedido(pedido.getFecha_Pedido());
 		pedidoExistente.setTotal(pedido.getTotal());
 		pedidoServicio.updatePedido(pedidoExistente);
-		return "redirect:/Solware2/C_Pedidos" ;
+		return "redirect:/Solware2/Vendedor/C_Pedidos" ;
 	}
 	
 	@GetMapping("/C_Pedidos/{ID_Pedido}")
 	public String deleteCliente(@PathVariable Long ID_Pedido) {
 		
 		pedidoServicio.delete(ID_Pedido);
-		return "redirect:/Solware2/C_Pedidos";
+		return "redirect:/Solware2/Vendedor/C_Pedidos";
 		
 	}
 

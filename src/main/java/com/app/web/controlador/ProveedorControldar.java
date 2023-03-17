@@ -52,7 +52,7 @@ public class ProveedorControldar {
 	public String guardarProveedor(@ModelAttribute("Proveedor") Proveedor proveedor,RedirectAttributes attributes) {
 		attributes.addFlashAttribute("exitoso", "Registro Exitoso");
 		proveedorServicio.guardarProveedor(proveedor);
-		return "redirect:/Solware2/home/ProveedoresA";
+		return "redirect:/Solware2/Admin/ProveedoresA";
 	}
 
 
@@ -61,7 +61,7 @@ public class ProveedorControldar {
 		Proveedor proveedor = proveedorServicio.obtenerProveedorPorId(ID_Proveedor);
 		modelo.addAttribute("Proveedor", proveedorServicio.obtenerProveedorPorId(ID_Proveedor));
 		if(!proveedor.isEstado()) { // Verifica si el usuario está inactivo
-	        return "redirect:/Solware2/home/C_ProveedoresA";
+	        return "redirect:/Solware2/Admin/C_ProveedoresA";
 	    }
 		List<Producto> listaproducto = productoServicio.listarProducto();
 		modelo.addAttribute("Productos", listaproducto);
@@ -76,14 +76,14 @@ public class ProveedorControldar {
 		proveedorExistente.setEmail(proveedor.getEmail());
 		proveedorExistente.setTelefono(proveedor.getTelefono());
 		proveedorServicio.updateProveedor(proveedorExistente);
-		return "redirect:/Solware2/home/C_ProveedoresA";
+		return "redirect:/Solware2/Admin/C_ProveedoresA";
 	}
 	
 	@GetMapping("/C_ProveedoresA/{ID_Proveedor}")
 	public String deleteProveedor(@PathVariable Long ID_Proveedor) {
 		
 		proveedorServicio.delete(ID_Proveedor);
-		return "redirect:/Solware2/home/C_ProveedoresA";
+		return "redirect:/Solware2/Admin/C_ProveedoresA";
 		
 	}
 	
@@ -93,7 +93,7 @@ public class ProveedorControldar {
 	
 		proveedor.setEstado(!proveedor.isEstado()); // Cambia el estado actual de la venta
 		proveedorServicio.guardarProveedor(proveedor); // Actualiza la venta en la base de datos
-		 return "redirect:/Solware2/home/C_ProveedoresA"; // Redirige a la página de lista de ventas
+		 return "redirect:/Solware2/Admin/C_ProveedoresA"; // Redirige a la página de lista de ventas
 	} 
 
 }

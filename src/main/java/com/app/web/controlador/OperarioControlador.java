@@ -1,5 +1,6 @@
 package com.app.web.controlador;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -21,7 +22,9 @@ public class OperarioControlador {
 	private ProduccionServicio produccionServicios; 
 	
 	@GetMapping("/InicioP")
-	public String InicioP(Model modelo) {
+	public String InicioP(Authentication authentication,Model modelo) {
+		String nombreUsuario = authentication.getName();
+        modelo.addAttribute("nombreUsuario", nombreUsuario);
 		return "InicioP";
 	}
 	@GetMapping("/PerfilO")
@@ -57,6 +60,6 @@ public class OperarioControlador {
 		produccionExistente.setPedido(produccion.getPedido());
 		
 		produccionServicios.updateProduccion(produccionExistente);
-		return "redirect:/Solware2/ConsultarProduccion";
+		return "redirect:/Solware2/Operario/ConsultarProduccion";
 	}
 }

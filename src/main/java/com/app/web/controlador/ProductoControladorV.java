@@ -47,7 +47,7 @@ public class ProductoControladorV {
 	public String guardarProducto(@ModelAttribute("Producto") Producto producto, RedirectAttributes attributes) {
 		attributes.addFlashAttribute("exitoso", " Registro Exitoso");
 		productoServicio.guardarProducto(producto);
-		return "redirect:/Solware2/C_Productos/nuevo";
+		return "redirect:/Solware2/Vendedor/C_Productos/nuevo";
 	}
 	
 	@GetMapping("/producto/editar/{ID_Producto}")
@@ -73,7 +73,7 @@ public class ProductoControladorV {
 	public String deleteCliente(@PathVariable Long ID_Producto) {
 		
 		productoServicio.delete(ID_Producto);
-		return "redirect:/Solware2/home/C_Productos";
+		return "redirect:/Solware2/Vendedor/C_Productos";
 		
 	}
 	

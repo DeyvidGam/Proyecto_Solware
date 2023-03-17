@@ -34,41 +34,9 @@
 </head>
 <body>
 
-	<div class="container-fluid">
-        <div class="row justify-content-center align-content-center">
-           
-         <div class="col-7 barra1"style="color: white;">
-                <h2 style="text-align: left; font-family: fantasy;">INTERFAZ OPERARIO</h2>
-            </div>
-
-            <div class="col-5 barra1">
-                <div class="dropdown">
-                    <a class="btn  dropdown-toggle boton text-light" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="fas fa-user-circle user"></i> Carlos Stivens Veloza
-                    </a>
-                    <ul class="dropdown-menu boton" aria-labelledby="dropdownMenuButton1">
-                        <a class="dropdown-item" href="/Solware2/PerfilO">Mi perfil</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="/Solware2/home/index">Cerrar sesión</a>
-                      </div>
-                    </ul>
-                  </div>
-            </div>
-        </div>
-    
-
-    <div class="container-fluid">
-        <div class="row">
-            <div class="barra-lateral col-12 col-sm-auto">
-                
-                <nav class="menu d-flex d-sm-block justify-content-center flex-wrap" >
-                    <img id="logo" src="/img/LOGO SOL WARE .PNG" width="140px">
-                    <a  class="option" href="/Solware2/InicioP" ><i class="fas fa-home" title="Inicio"></i><span>Inicio</span></a>
-                    <a  class="option" href="/Solware2/PerfilO" > <i class="fa-solid fa-user" title="Perfil"></i><span>Perfil</span></a>
-                    <a  class="option" href="/Solware2/ConsultarProduccion" > <i class="fa-solid fa-magnifying-glass"></i><span>Consultar Plan de Producción</span></a>
-                    
-                </nav>
-            </div>
+	     <div th:insert="headerOperario :: header"></div>
+      <div th:insert="BarraLateralOperario :: barra"></div>
+      
 			<main class="main col">
 				<div
 					class="row justify-content-center align-content-center text-center">
@@ -103,7 +71,7 @@
 										<td  th:text="${produccion.id_Inventario.ID_Inventario}"></td>
 										<td>
 										<a
-                                            th:href="@{/Solware2/ConsultarProduccion/editar/{ID_Produccion}(ID_Produccion=${produccion.ID_Produccion})}"
+                                            th:href="@{/Solware2/Operario/ConsultarProduccion/editar/{ID_Produccion}(ID_Produccion=${produccion.ID_Produccion})}"
                                             class="btn btn-info">Editar</a>
 										</td>
 									</tr>
@@ -112,9 +80,9 @@
 						</div>
 
 					</div>
+					</div>
 			</main>
-		</div>
-	</div>
+
 <div th:insert="footer :: foot"></div>
 
 

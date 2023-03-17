@@ -40,87 +40,8 @@
 </head>
 <body>
 
-	<div class="container-fluid">
-		<div class="row justify-content-center align-content-center">
-
-			<div class="col-7 barra1" style="color: white;"></div>
-
-			<div class="col-5 barra1">
-				<div class="dropdown">
-					<a class="btn  dropdown-toggle boton text-light" type="button"
-						id="dropdownMenuButton1" data-bs-toggle="dropdown"
-						aria-expanded="false"> <i class="fas fa-user-circle user"></i>
-						Carlos David Beltran
-					</a>
-					<ul class="dropdown-menu boton"
-						aria-labelledby="dropdownMenuButton1">
-						<a class="dropdown-item" href="/Solware2/PerfilV">Mi perfil</a>
-						<div class="dropdown-divider"></div>
-						<a class="dropdown-item" href="/Solware2/home/index">Cerrar
-							sesión</a>
-				</div>
-				</ul>
-			</div>
-		</div>
-	</div>
-
-
-	<div class="container-fluid">
-		<div class="row">
-			<div class="barra-lateral col-12 col-sm-auto">
-
-				<nav class="menu d-flex d-sm-block justify-content-center flex-wrap">
-					<img id="logo" th:src="@{/img/LOGO SOL WARE .PNG}" width="140px">
-					<a class="option" href="/Solware2/aa"><i class="fas fa-home"
-						title="Inicio"></i><span>Inicio</span></a> <a class="option"
-						href="/Solware2/PerfilV"> <i class="fa-solid fa-user"
-						title="Perfil"></i><span>Perfil</span></a>
-					<div class="dropdown">
-						<a class=" dropdown-toggle " type="button"
-							data-bs-toggle="dropdown" aria-expanded="false"> Proveedor </a>
-						<ul class="dropdown-menu " aria-labelledby="dropdownMenuButton1">
-							<a class="dropdown-item" href="/Solware2/C_Proveedores/nuevo">Crear</a>
-							<a class="dropdown-item" href="/Solware2/C_Proveedores">Consultar</a>
-
-						</ul>
-					</div>
-
-					<div class="dropdown">
-						<a class=" dropdown-toggle " type="button"
-							data-bs-toggle="dropdown" aria-expanded="false"> Productos </a>
-						<ul class="dropdown-menu " aria-labelledby="dropdownMenuButton1">
-							<a class="dropdown-item" href="/Solware2/C_Productos/nuevo">Crear</a>
-							<a class="dropdown-item" href="/Solware2/C_Productos">Consultar</a>
-
-						</ul>
-					</div>
-					<div class="dropdown">
-						<a class=" dropdown-toggle " type="button"
-							data-bs-toggle="dropdown" aria-expanded="false"> Cliente </a>
-						<ul class="dropdown-menu " aria-labelledby="dropdownMenuButton1">
-							<a class="dropdown-item" href="/Solware2/C_Cliente/nuevo">Crear</a>
-							<a class="dropdown-item" href="/Solware2/C_Cliente">Consultar</a>
-
-						</ul>
-					</div>
-					<div class="dropdown">
-						<a class=" dropdown-toggle " type="button"
-							data-bs-toggle="dropdown" aria-expanded="false"> pedido </a>
-						<ul class="dropdown-menu " aria-labelledby="dropdownMenuButton1">
-							<a class="dropdown-item" href="/Solware2/Pedidos">Crear</a>
-							<a class="dropdown-item" href="/Solware2/C_Pedidos">Consultar</a>
-
-						</ul>
-					</div>
-					<a class="option" href="/Solware2/ConsultarV/nuevo"><i
-						class="fas fa-dollar-sign" title="Ventas"></i><span>Crear
-							Ventas</span></a> <a class="option" href="/Solware2/ConsultarV"> <i
-						class="fa-solid fa-magnifying-glass" title="Ventas"></i><span>Consultar
-							Ventas</span></a> <a class="option" href="/Solware2/ReportesV"><i
-						class="fa-solid fa-bug"></i><span>ReportesV</span></a>
-
-				</nav>
-			</div>
+	   <div th:insert="headerVendedor:: header"></div>
+      <div th:insert="BarraLateralVendedor:: barra"></div>
 			<main class="main col">
 				<div
 					class="row justify-content-center align-content-center text-center">
@@ -134,7 +55,7 @@
 								</div>
 							</div>
 						</center>
-						<form th:action="@{/Solware2/GuardarPedido}" th:object="${Pedido}"
+						<form th:action="@{/Solware2/Vendedor/GuardarPedido}" th:object="${Pedido}"
 							method="POST">
 
 
@@ -175,7 +96,7 @@
 									<td th:text="${detalle.SubTotal}">Proveedor</td>
 									<td th:text="${detalle.Producto.nombre}">Tamano</td>
 									<td><a
-										th:href="@{/Solware2/eliminaDetalle/{id}(id=${detalle.producto.ID_Producto})}"
+										th:href="@{/Solware2/Vendedor/eliminaDetalle/{id}(id=${detalle.producto.ID_Producto})}"
 										class="btn btn-danger">eliminar</a></td>
 								</tr>
 							</tbody>
@@ -183,7 +104,7 @@
 					</div>
 					<center>
 						<div class="form-group">
-							<a th:href="@{/Solware2/agregarProducto}" class="btn btn-success"><i
+							<a th:href="@{/Solware2/Vendedor/agregarProducto}" class="btn btn-success"><i
 								class="fa-solid fa-plus"></i></a> <input type="submit"
 								value="Guardar" class="btn btn-info">
 						</div>
@@ -192,14 +113,8 @@
 				</div>
 		</div>
 		</main>
-	</div>
-	</div>
-
-
 
 	<div th:insert="footer :: foot"></div>
-
-
 
 	<script
 		src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"

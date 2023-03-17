@@ -62,14 +62,14 @@ public class UsuarioControlador {
 	    usuario.setContrasena(passwordEncoder.encode(usuario.getContrasena())); // encriptar la contraseña
 	    attributes.addFlashAttribute("exitoso", "Registro Exitoso");
 	    usuarioServicio.guardarUsuario(usuario);
-	    return "redirect:/Solware2/home/ConsultarUs/nuevo";
+	    return "redirect:/Solware2/Admin/ConsultarUs/nuevo";
 	}
 
 	@GetMapping("/ConsultarUs/editar/{ID_Usuario}")
 	public String Editar(@PathVariable Long ID_Usuario, Model modelo) {
 	    Usuario usuario = usuarioServicio.obtenerUsuarioPorId(ID_Usuario);
 	    if(!usuario.isEstado()) { // Verifica si el usuario está inactivo
-	        return "redirect:/Solware2/home/ConsultarUs";
+	        return "redirect:/Solware2/Admin/ConsultarUs";
 	    }
 	    modelo.addAttribute("Usuario", usuario);
 	    List<Rol> listaroles = rolServicio.listarrol();
@@ -87,13 +87,13 @@ public class UsuarioControlador {
 		usuarioExistente.setTelefono(usuario.getTelefono());
 		usuarioExistente.setContrasena(usuario.getContrasena());
 		usuarioServicio.updateUsuario(usuarioExistente);
-		return "redirect:/Solware2/home/ConsultarUs";
+		return "redirect:/Solware2/Admin/ConsultarUs";
 	}
 	
 	@GetMapping("/ConsultarUs/{ID_Usuario}")
 	public String deleteUsuario(@PathVariable Long ID_Usuario) {
 		usuarioServicio.delete(ID_Usuario);
-		return "redirect:/Solware2/home/ConsultarUs";
+		return "redirect:/Solware2/Admin/ConsultarUs";
 	}
 	
 	
@@ -104,7 +104,7 @@ public class UsuarioControlador {
 	
 		usuario.setEstado(!usuario.isEstado()); // Cambia el estado actual de la venta
 		usuarioServicio.guardarUsuario(usuario); // Actualiza la venta en la base de datos
-		 return "redirect:/Solware2/home/ConsultarUs"; // Redirige a la página de lista de ventas
+		 return "redirect:/Solware2/Admin/ConsultarUs"; // Redirige a la página de lista de ventas
 	} 
 
 }

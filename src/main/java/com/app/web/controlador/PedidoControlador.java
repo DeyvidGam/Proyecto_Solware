@@ -169,7 +169,7 @@ public class PedidoControlador {
 	    if (listaDetalles.isEmpty()) {
 	        attributes.addFlashAttribute("mensaje", " No se puede guardar un pedido sin detalles");
 	        
-	        return "redirect:/Solware2/home/PedidosA";
+	        return "redirect:/Solware2/Admin/PedidosA";
 	    }
 		Date fechacreacion= new Date();
 		pedido.setFecha_Pedido(fechacreacion);
@@ -183,13 +183,13 @@ public class PedidoControlador {
 		pedido = new Pedido();
 		listaDetalles.clear();
 		attributes.addFlashAttribute("exitoso", " Registro Exitoso");
-		return "redirect:/Solware2/home/PedidosA";
+		return "redirect:/Solware2/Admin/PedidosA";
 	}
     
 	@PostMapping("/Solware2/home/C_PedidosA")
 	public String guardarCliente(@ModelAttribute("Pedido") Pedido pedido) {
 		pedidoServicio.guardarPedido(pedido);
-		return "redirect:/Solware2/home/C_PedidosA";
+		return "redirect:/Solware2/Admin/C_PedidosA";
 	}
 
 	@GetMapping("/C_PedidosA/editar/{ID_Pedido}")
@@ -205,14 +205,14 @@ public class PedidoControlador {
 		pedidoExistente.setFecha_Pedido(pedido.getFecha_Pedido());
 		pedidoExistente.setTotal(pedido.getTotal());
 		pedidoServicio.updatePedido(pedidoExistente);
-		return "redirect:/Solware2/home/C_PedidosA";
+		return "redirect:/Solware2/Admin/C_PedidosA";
 	}
 	
 	@GetMapping("/C_PedidosA/{ID_Pedido}")
 	public String deleteCliente(@PathVariable Long ID_Pedido) {
 		
 		pedidoServicio.delete(ID_Pedido);
-		return "redirect:/Solware2/home/C_PedidosA";
+		return "redirect:/Solware2/Admin/C_PedidosA";
 		
 	}
 	

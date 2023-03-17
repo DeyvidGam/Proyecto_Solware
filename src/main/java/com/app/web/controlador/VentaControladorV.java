@@ -87,12 +87,12 @@ public class VentaControladorV {
 		// Save the new Venta object to the database
 		ventaServicio.guardarVenta(venta);
 		attributes.addFlashAttribute("exitoso", " Registro Exitoso");
-		return "redirect:/Solware2/ConsultarV/nuevo";
+		return "redirect:/Solware2/Vendedor/ConsultarV/nuevo";
 	}
 	@PostMapping("/ConsultarV")
 	public String guardarCliente(@ModelAttribute("Venta") Venta venta) {
 		ventaServicio.guardarVenta(venta);
-		return "redirect:/Solware2/ConsultarV";
+		return "redirect:/Solware2/Vendedor/ConsultarV";
 	}
 
 

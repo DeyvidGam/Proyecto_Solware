@@ -41,7 +41,7 @@ public class ClienteControladorV {
 	public String guardarCliente(@ModelAttribute("Cliente") Cliente cliente, RedirectAttributes attributes) {
 		attributes.addFlashAttribute("exitoso", " Registro Exitoso");
 		clienteServicio.guardarCliente(cliente);
-		return "redirect:/Solware2/C_Cliente/nuevo";
+		return "redirect:/Solware2/Vendedor/C_Cliente/nuevo";
 	}
 
 	@GetMapping("/C_Cliente/editar/{Identificacion}")
@@ -59,13 +59,13 @@ public class ClienteControladorV {
 		clienteExistente.setEmail(cliente.getEmail());
 		clienteExistente.setTelefono(cliente.getTelefono());
 		clienteServicio.updateCliente(clienteExistente);
-		return "redirect:/Solware2/home/C_Cliente";
+		return "redirect:/Solware2/Vendedor/C_Cliente";
 	}
 	
 	@GetMapping("/C_Cliente/{Identificacion}")
 	public String deleteCliente(@PathVariable Long Identificacion) {
 		clienteServicio.delete(Identificacion);
-		return "redirect:/Solware2/C_Cliente";
+		return "redirect:/Solware2/Vendedor/C_Cliente";
 		
 	}
 

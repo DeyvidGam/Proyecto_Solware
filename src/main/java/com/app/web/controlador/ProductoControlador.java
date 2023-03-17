@@ -47,7 +47,7 @@ public class ProductoControlador {
 	public String guardarProducto(@ModelAttribute("Producto") Producto producto, RedirectAttributes attributes) {
 		attributes.addFlashAttribute("exitoso", "Registro Exitoso");
 		productoServicio.guardarProducto(producto);
-		return "redirect:/Solware2/home/ProductosA";
+		return "redirect:/Solware2/Admin/ProductosA";
 	}
 	
 	@GetMapping("/C_ProductosA/editar/{ID_Producto}")
@@ -68,14 +68,14 @@ public class ProductoControlador {
 		productoExistente.setPrecio(producto.getPrecio());
 		
 		productoServicio.updateProducto(productoExistente);
-		return "redirect:/Solware2/home/C_ProductosA";
+		return "redirect:/Solware2/Admin/C_ProductosA";
 	}
 	
 	@GetMapping("/C_ProductosA/{ID_Producto}")
 	public String deleteProducto(@PathVariable Long ID_Producto) {
 		
 		productoServicio.delete(ID_Producto);
-		return "redirect:/Solware2/home/C_ProductosA";
+		return "redirect:/Solware2/Admin/C_ProductosA";
 		
 	}
 	

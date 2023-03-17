@@ -31,158 +31,77 @@
 </head>
 <body>
 
-	<div class="container-fluid">
-		<div class="row justify-content-center align-content-center">
+	<div th:insert="headerVendedor:: header"></div>
+	<div th:insert="BarraLateralVendedor:: barra"></div>
 
-			<div class="col-7 barra1" style="color: white;"></div>
+	<main class="main col">
+		<div
+			class="row justify-content-center align-content-center text-center">
+			<div class="columna col-lg-6">
 
-			<div class="col-5 barra1">
-				<div class="dropdown">
-					<a class="btn  dropdown-toggle boton text-light" type="button"
-						id="dropdownMenuButton1" data-bs-toggle="dropdown"
-						aria-expanded="false"> <i class="fas fa-user-circle user"></i>
-						Carlos David Beltran
-					</a>
-					<ul class="dropdown-menu boton"
-						aria-labelledby="dropdownMenuButton1">
-						<a class="dropdown-item" href="/Solware2/PerfilV">Mi perfil</a>
-						<div class="dropdown-divider"></div>
-						<a class="dropdown-item" href="/Solware2/home/index">Cerrar
-							sesión</a>
-				</div>
-				</ul>
-			</div>
-		</div>
-	</div>
-	</div>
+				<main class="perfiles">
+					<h1 class="perfile">Productos</h1>
 
-	<div class="container-fluid">
-		<div class="row">
-			<div class="barra-lateral col-12 col-sm-auto">
+					<section class="form-register"
+						style="margin: auto; margin-top: 20px; width: auto; height: 400px">
 
-				<nav class="menu d-flex d-sm-block justify-content-center flex-wrap">
-					<img id="logo" th:src="@{/img/LOGO SOL WARE .PNG}" width="140px">
-					<a class="option" href="/Solware2/aa"><i class="fas fa-home"
-						title="Inicio"></i><span>Inicio</span></a> <a class="option"
-						href="/Solware2/PerfilV"> <i class="fa-solid fa-user"
-						title="Perfil"></i><span>Perfil</span></a>
-					<div class="dropdown">
-						<a class=" dropdown-toggle " type="button"
-							data-bs-toggle="dropdown" aria-expanded="false"> Proveedor </a>
-						<ul class="dropdown-menu " aria-labelledby="dropdownMenuButton1">
-							<a class="dropdown-item" href="/Solware2/C_Proveedores/nuevo">Crear</a>
-							<a class="dropdown-item" href="/Solware2/C_Proveedores">Consultar</a>
-
-						</ul>
-					</div>
-
-					<div class="dropdown">
-						<a class=" dropdown-toggle " type="button"
-							data-bs-toggle="dropdown" aria-expanded="false"> Productos </a>
-						<ul class="dropdown-menu " aria-labelledby="dropdownMenuButton1">
-							<a class="dropdown-item" href="/Solware2/C_Productos/nuevo">Crear</a>
-							<a class="dropdown-item" href="/Solware2/C_Productos">Consultar</a>
-
-						</ul>
-					</div>
-					<div class="dropdown">
-						<a class=" dropdown-toggle " type="button"
-							data-bs-toggle="dropdown" aria-expanded="false"> Cliente </a>
-						<ul class="dropdown-menu " aria-labelledby="dropdownMenuButton1">
-							<a class="dropdown-item" href="/Solware2/C_Cliente/nuevo">Crear</a>
-							<a class="dropdown-item" href="/Solware2/C_Cliente">Consultar</a>
-
-						</ul>
-					</div>
-					<div class="dropdown">
-						<a class=" dropdown-toggle " type="button"
-							data-bs-toggle="dropdown" aria-expanded="false"> pedido </a>
-						<ul class="dropdown-menu " aria-labelledby="dropdownMenuButton1">
-							<a class="dropdown-item" href="/Solware2/Pedidos">Crear</a>
-							<a class="dropdown-item" href="/Solware2/C_Pedidos">Consultar</a>
-
-						</ul>
-					</div>
-					<a class="option" href="/Solware2/ConsultarV/nuevo"><i
-						class="fas fa-dollar-sign" title="Ventas"></i><span>Crear
-							Ventas</span></a> <a class="option" href="/Solware2/ConsultarV"> <i
-						class="fa-solid fa-magnifying-glass" title="Ventas"></i><span>Consultar
-							Ventas</span></a> <a class="option" href="/Solware2/ReportesV"><i
-						class="fa-solid fa-bug"></i><span>ReportesV</span></a>
-
-				</nav>
-			</div>
-			<style type="text/css">
-</style>
-			<main class="main col">
-				<div
-					class="row justify-content-center align-content-center text-center">
-					<div class="columna col-lg-6">
-
-						<main class="perfiles">
-							<h1 class="perfile">Productos</h1>
-
-							<section class="form-register"
-								style="margin: auto; margin-top: 20px; width: auto; height: 400px">
-
+						<div class="row">
+							<form th:action="@{/Solware2/Vendedor/C_Productos}"
+								th:object="${Producto}" method="POST">
 								<div class="row">
-									<form th:action="@{/Solware2/C_Productos}"
-										th:object="${Producto}" method="POST">
-										<div class="row">
-											<div th:if="${exitoso}">
-												<div class="alert alert-success alert-dismissible">
-													<span th:text="${exitoso}"></span> <a href="#"
-														class="close" data-dismiss="alert" aria-label="close">&times;</a>
-												</div>
-											</div>
-											<div class="col-sm-6">
-												<label for="Nombre" class="form-label">Nombre</label> <input
-													id="Nombre" type="text" class="form-control" required
-													th:field="*{Nombre}" pattern="[a-zA-ZñÑ\s\.,;:\-_¡!¿\?]+" placeholder="Nombre">
-											</div>
-											<div class="col-sm-6">
-												<label class="form-label">Proveedor</label> <select
-													th:field="*{Proveedor}" class="form-control">
-													<option th:each="proveedor:${Proveedores}"
-														th:value="${proveedor.ID_Proveedor}"
-														th:text="${proveedor.Nombre}"></option>
-												</select>
-											</div>
+									<div th:if="${exitoso}">
+										<div class="alert alert-success alert-dismissible">
+											<span th:text="${exitoso}"></span> <a href="#" class="close"
+												data-dismiss="alert" aria-label="close">&times;</a>
+										</div>
+									</div>
+									<div class="col-sm-6">
+										<label for="Nombre" class="form-label">Nombre</label> <input
+											id="Nombre" type="text" class="form-control" required
+											th:field="*{Nombre}" pattern="[a-zA-ZñÑ\s\.,;:\-_¡!¿\?]+"
+											placeholder="Nombre">
+									</div>
+									<div class="col-sm-6">
+										<label class="form-label">Proveedor</label> <select
+											th:field="*{Proveedor}" class="form-control">
+											<option th:each="proveedor:${Proveedores}"
+												th:value="${proveedor.ID_Proveedor}"
+												th:text="${proveedor.Nombre}"></option>
+										</select>
+									</div>
 
-										</div>
-										<div class="row">
-											<div class="col-sm-6">
-												<label for="Tamaño" class="form-label">Tamaño</label> <input
-													id="Tamaño" type="text" class="form-control" required
-													th:field="*{Tamano}" placeholder="Tamaño">
-											</div>
-											<div class="col-sm-6">
-												<label for="Precio" class="form-label">Precio</label> <input
-													id="Precio" type="number" class="form-control" required
-
-													th:field="*{Precio}" min="1" pattern="[0-9]+" placeholder="Precio">
-											</div>
-										</div>
-										<div class="row">
-											<div class="col-md-12">
-												<br> <br> <input type="submit"
-													class="btn btn-primary" id="submit" onclick="validacion()"
-													value="Enviar"> <input type="reset" name="reset"
-													class="btn btn-danger" value="Restablecer">
-											</div>
-										</div>
-									</form>
 								</div>
-					</div>
-				</div>
-				</section>
-
-			</main>
+								<div class="row">
+									<div class="col-sm-6">
+										<label for="Tamaño" class="form-label">Tamaño</label> <input
+											id="Tamaño" type="text" class="form-control" required
+											th:field="*{Tamano}" placeholder="Tamaño">
+									</div>
+									<div class="col-sm-6">
+										<label for="Precio" class="form-label">Precio</label> <input
+											id="Precio" type="number" class="form-control" required
+											th:field="*{Precio}" min="1" pattern="[0-9]+"
+											placeholder="Precio">
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-12">
+										<br> <br> <input type="submit"
+											class="btn btn-primary" id="submit" onclick="validacion()"
+											value="Enviar"> <input type="reset" name="reset"
+											class="btn btn-danger" value="Restablecer">
+									</div>
+								</div>
+							</form>
+						</div>
+					</section>
+				</main>
+			</div>
 		</div>
-	</div>
-
-
+	</main>
+	
 	<div th:insert="footer :: foot"></div>
+	
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 	<script
 		src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
@@ -195,50 +114,56 @@
 	<script src="https://kit.fontawesome.com/646c794df3.js"></script>
 
 
-
-
-
 	<!-- JQUERY -->
 	<script src="https://code.jquery.com/jquery-3.4.1.js"
 		integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
 		crossorigin="anonymous">
-    </script>
+		
+	</script>
 	<!-- DATATABLES -->
 	<script
 		src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js">
-</script>
+		
+	</script>
 	<!-- BOOTSTRAP -->
 	<script
 		src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js">
-</script>
+		
+	</script>
 
 	<script>
-    $(document).ready(function () {
-        $('#tabla').DataTable({
-            language: {
-                processing: "Tratamiento en curso...",
-                search: "Buscar&nbsp;:",
-                lengthMenu: "Agrupar de _MENU_ items",
-                info: "Mostrando del item _START_ al _END_ de un total de _TOTAL_ items",
-                infoEmpty: "No existen datos.",
-                infoFiltered: "(filtrado de _MAX_ elementos en total)",
-                infoPostFix: "",
-                loadingRecords: "Cargando...",
-                zeroRecords: "No se encontraron datos con tu busqueda",
-                emptyTable: "No hay datos disponibles en la tabla.",
-                paginate: {
-                    first: "Primero",
-                    previous: "Anterior",
-                    next: "Siguiente",
-                    last: "Ultimo"
-                },
-            
-            },
-            scrollY: 300,
-            lengthMenu: [ [5,10, 25, -1], [5,10, 25, "All"] ],
-        });
-    });
-</script>
+		$(document)
+				.ready(
+						function() {
+							$('#tabla')
+									.DataTable(
+											{
+												language : {
+													processing : "Tratamiento en curso...",
+													search : "Buscar&nbsp;:",
+													lengthMenu : "Agrupar de _MENU_ items",
+													info : "Mostrando del item _START_ al _END_ de un total de _TOTAL_ items",
+													infoEmpty : "No existen datos.",
+													infoFiltered : "(filtrado de _MAX_ elementos en total)",
+													infoPostFix : "",
+													loadingRecords : "Cargando...",
+													zeroRecords : "No se encontraron datos con tu busqueda",
+													emptyTable : "No hay datos disponibles en la tabla.",
+													paginate : {
+														first : "Primero",
+														previous : "Anterior",
+														next : "Siguiente",
+														last : "Ultimo"
+													},
+
+												},
+												scrollY : 300,
+												lengthMenu : [
+														[ 5, 10, 25, -1 ],
+														[ 5, 10, 25, "All" ] ],
+											});
+						});
+	</script>
 </body>
 </html>
 

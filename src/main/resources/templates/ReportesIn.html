@@ -28,198 +28,63 @@
 </head>
 <body>
 
-	<div class="container-fluid">
-		<div class="row justify-content-center align-content-center">
+	<div th:insert="headerAdmin :: header"></div>
+	<div th:insert="BarraLateralAdmin:: barra"></div>
 
- <div class="col-7 barra1"style="color: white;">
+	<main class="main col">
+		<div
+			class="row justify-content-center align-content-center text-center">
+			<div class="columna col-lg-12">
 
-
-			</div>
-
-			<div class="col-5 barra1">
-				<div class="dropdown">
-					<a class="btn  dropdown-toggle boton text-light" type="button"
-						id="dropdownMenuButton1" data-bs-toggle="dropdown"
-						aria-expanded="false"> <i class="fas fa-user-circle user"></i>
-						Deyvid Gamboa Romero
-					</a>
-					<ul class="dropdown-menu boton"
-						aria-labelledby="dropdownMenuButton1">
-
-						<div class="dropdown-divider"></div>
-						<a class="dropdown-item" href="/Solware2/home/index">Cerrar
-							sesión</a>
-				</div>
-				</ul>
-			</div>
-		</div>
-	</div>
-
-
-	<div class="container-fluid">
-		<div class="row">
-			<div class="barra-lateral col-12 col-sm-auto">
-
-				<nav class="menu d-flex d-sm-block justify-content-center flex-wrap">
-					<img id="logo" th:src="@{/img/LOGO SOL WARE .PNG}" width="140px">
-					<a class="option" th:href="@{/Solware2/home/Admin}"><i
-						class="fas fa-home" title="Inicio"></i><span>Inicio</span></a>
-					<div class="dropdown">
-						<a class=" dropdown-toggle " type="button"
-							data-bs-toggle="dropdown" aria-expanded="false"> usuarios </a>
-						<ul class="dropdown-menu " aria-labelledby="dropdownMenuButton1">
-							<a class="dropdown-item"
-								th:href="@{/Solware2/home/ConsultarUs/nuevo}">Registrar
-								usuarios</a>
-							<a class="dropdown-item" th:href="@{/Solware2/home/ConsultarUs}">Consutar
-								usuarios</a>
-
-						</ul>
+				<div class="col-mx-12 medio" style="margin: auto;">
+					<div class="col-md-12">
+						<h1 style="text-align: center;">Generar Reporte de Inventario</h1>
 					</div>
 
-
-					<div class="dropdown">
-						<a class=" dropdown-toggle " type="button"
-							data-bs-toggle="dropdown" aria-expanded="false"> Inventarios
-						</a>
-						<ul class="dropdown-menu " aria-labelledby="dropdownMenuButton1">
-							<li><a class="dropdown-item"
-								th:href="@{/Solware2/home/ModuloInventario}">CREAR</a></li>
-							<li><a class="dropdown-item"
-								th:href="@{/Solware2/home/Consultar}">CONSULTAR</a></li>
-
-						</ul>
-						<div class="dropdown">
-							<a class=" dropdown-toggle " type="button"
-								data-bs-toggle="dropdown" aria-expanded="false"> Proveedor </a>
-							<ul class="dropdown-menu " aria-labelledby="dropdownMenuButton1">
-								<a class="dropdown-item"
-									th:href="@{/Solware2/home/ProveedoresA}">C_Proveedores</a>
-								<a class="dropdown-item"
-									th:href="@{/Solware2/home/C_ProveedoresA}">Consultar</a>
-
-							</ul>
-						</div>
-						<div class="dropdown">
-							<a class=" dropdown-toggle " type="button"
-								data-bs-toggle="dropdown" aria-expanded="false"> Productos </a>
-							<ul class="dropdown-menu " aria-labelledby="dropdownMenuButton1">
-								<a class="dropdown-item" th:href="@{/Solware2/home/ProductosA}">C_Productos</a>
-								<a class="dropdown-item"
-									th:href="@{/Solware2/home/C_ProductosA}">Consultar</a>
-
-							</ul>
-						</div>
-						<div class="dropdown">
-							<a class=" dropdown-toggle " type="button"
-								data-bs-toggle="dropdown" aria-expanded="false"> Cliente </a>
-							<ul class="dropdown-menu " aria-labelledby="dropdownMenuButton1">
-								<a class="dropdown-item" th:href="@{/Solware2/home/ClientesA}">C_Cliente</a>
-								<a class="dropdown-item" th:href="@{/Solware2/home/C_ClienteA}">Consultar</a>
-
-							</ul>
-						</div>
-						<div class="dropdown">
-							<a class=" dropdown-toggle " type="button"
-								data-bs-toggle="dropdown" aria-expanded="false"> pedido </a>
-							<ul class="dropdown-menu " aria-labelledby="dropdownMenuButton1">
-								<a class="dropdown-item" th:href="@{/Solware2/home/PedidosA}">C_Pedido</a>
-								<a class="dropdown-item" th:href="@{/Solware2/home/C_PedidosA}">Consultar</a>
-
-							</ul>
-						</div>
-
-						<div class="dropdown">
-							<a class=" dropdown-toggle " type="button"
-								data-bs-toggle="dropdown" aria-expanded="false"> Ventas </a>
-							<ul class="dropdown-menu " aria-labelledby="dropdownMenuButton1">
-								<a class="dropdown-item" th:href="@{/Solware2/home/ventasAdmin}">CREAR</a>
-								<a class="dropdown-item"
-									th:href="@{/Solware2/home/ConsultarAdmin}">CONSULTAR</a>
-
-							</ul>
-							<div class="dropdown">
-								<a class=" dropdown-toggle " type="button"
-									data-bs-toggle="dropdown" aria-expanded="false"> Producion
-								</a>
-								<ul class="dropdown-menu " aria-labelledby="dropdownMenuButton1">
-									<a class="dropdown-item"
-										th:href="@{/Solware2/home/ProducionAdmin}">CREAR</a>
-									<a class="dropdown-item"
-										th:href="@{/Solware2/home/ConsultarPAdmin}">CONSULTAR</a>
-								</ul>
-								<div class="dropdown">
-									<a class=" dropdown-toggle " type="button"
-										data-bs-toggle="dropdown" aria-expanded="false"> Reportes
-									</a>
-									<ul class="dropdown-menu "
-										aria-labelledby="dropdownMenuButton1">
-										<a class="option" th:href="@{/Solware2/home/ReportesVA}"><span>ReportesV</span></a>
-										<a class="dropdown-item"
-											th:href="@{/Solware2/home/ReportesIn}">ReportesIn</a>
-										<a class="dropdown-item"
-											th:href="@{/Solware2/home/ReportesPro}">ReportesPro</a>
-									</ul>
-				</nav>
-			</div>
-						<main class="main col">
-				<div
-					class="row justify-content-center align-content-center text-center">
-					<div class="columna col-lg-12">
-
-						<div class="col-mx-12 medio" style="margin: auto;">
-							<div class="col-md-12">
-								<h1 style="text-align: center;">Generar Reporte de Inventario</h1>
-							</div>
-
-							<section class="form-register"
-								style="margin: auto; margin-top: 20px; width: 650px; height: 500px">
+					<section class="form-register"
+						style="margin: auto; margin-top: 20px; width: 650px; height: 500px">
 
 
 
-								<form action="/Solware2/home/inventario/download" method="get"
-									class="">
-									<div style="display: grid; justify-content: center;">
-										<label for="fechaInicio">Fecha de inicio:</label> <input required="required"
-											class="form-control" type="date" id="fechaInicio"
-											name="fechaInicio" th:value="${fechaInicio}" /> <br> <br>
-										<label for="fechaFin">Fecha de fin:</label> <input required="required"
-											class="form-control" type="date" id="fechaFin"
-											name="fechaFin" th:value="${fechaFin}" /> <br> <br>
-										<label for="tipo">Tipo de Archivo:</label> <select required="required" id="tipo"
-											name="tipo" class="form-select">
-											<option value="PDF">PDF</option>
-											<option value="EXCEL">Excel</option>
-										</select> <br> <br>
-										<button>
-										  <div class="svg-wrapper-1">
-										    <div class="svg-wrapper">
-										      <svg height="24" width="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+						<form action="/Solware2/Admin/inventario/download" method="get"
+							class="">
+							<div style="display: grid; justify-content: center;">
+								<label for="fechaInicio">Fecha de inicio:</label> <input
+									required="required" class="form-control" type="date"
+									id="fechaInicio" name="fechaInicio" th:value="${fechaInicio}" />
+								<br> <br> <label for="fechaFin">Fecha de fin:</label>
+								<input required="required" class="form-control" type="date"
+									id="fechaFin" name="fechaFin" th:value="${fechaFin}" /> <br>
+								<br> <label for="tipo">Tipo de Archivo:</label> <select
+									required="required" id="tipo" name="tipo" class="form-select">
+									<option value="PDF">PDF</option>
+									<option value="EXCEL">Excel</option>
+								</select> <br> <br>
+								<button>
+									<div class="svg-wrapper-1">
+										<div class="svg-wrapper">
+											<svg height="24" width="24" viewBox="0 0 24 24"
+												xmlns="http://www.w3.org/2000/svg">
 										        <path d="M0 0h24v24H0z" fill="none"></path>
-										        <path d="M1.946 9.315c-.522-.174-.527-.455.01-.634l19.087-6.362c.529-.176.832.12.684.638l-5.454 19.086c-.15.529-.455.547-.679.045L12 14l6-8-8 6-8.054-2.685z" fill="currentColor"></path>
+										        <path
+													d="M1.946 9.315c-.522-.174-.527-.455.01-.634l19.087-6.362c.529-.176.832.12.684.638l-5.454 19.086c-.15.529-.455.547-.679.045L12 14l6-8-8 6-8.054-2.685z"
+													fill="currentColor"></path>
 										      </svg>
-										    </div>
-										  </div>
-										  <span>Generar</span>
-										</button>
+										</div>
 									</div>
-
-								</form>
-							</section>
-
-						</div>
-					</div>
-
+									<span>Generar</span>
+								</button>
+							</div>
+						</form>
+					</section>
 				</div>
+			</div>
 
-			</main>
 		</div>
-	</div>
+
+	</main>
+
 	<div th:insert="footer :: foot"></div>
-
-
-
-
 
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 	<script

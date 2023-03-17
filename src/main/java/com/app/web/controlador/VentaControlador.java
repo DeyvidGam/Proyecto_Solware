@@ -89,7 +89,7 @@ public class VentaControlador {
 	        ventaServicio.guardarVenta(venta);
 
 	        attributes.addFlashAttribute("exitoso", "Registro Exitoso");
-	        return "redirect:/Solware2/home/ventasAdmin";
+	        return "redirect:/Solware2/Admin/ventasAdmin";
 	    }
 	}
 
@@ -97,7 +97,7 @@ public class VentaControlador {
 	public String guardarCliente(@ModelAttribute("Venta") Venta venta, RedirectAttributes attributes) {
 
 		ventaServicio.guardarVenta(venta);
-		return "redirect:/Solware2/home/ventasAdmin";
+		return "redirect:/Solware2/Admin/ventasAdmin";
 	}
 
 	@PostMapping("/ventas/estado")
@@ -106,12 +106,12 @@ public class VentaControlador {
 	    
 	    if (!venta.isEstado()) {
 	    	attributes.addFlashAttribute("mensaje", "No se puede volver a cambiar el estado, tiene que crear una nueva venta ");
-	        return "redirect:/Solware2/home/ConsultarAdmin"; // Si la venta ya está inactiva, redirige a la página de lista de ventas
+	        return "redirect:/Solware2/Admin/ConsultarAdmin"; // Si la venta ya está inactiva, redirige a la página de lista de ventas
 	    }
 	    
 	    venta.setEstado(false); // Cambia el estado actual de la venta a inactivo
 	    ventaServicio.guardarVenta(venta); // Actualiza la venta en la base de datos
-	    return "redirect:/Solware2/home/ConsultarAdmin"; // Redirige a la página de lista de ventas
+	    return "redirect:/Solware2/Admin/ConsultarAdmin"; // Redirige a la página de lista de ventas
 	}
 	
 	@GetMapping("/ConsultarAdmin/editar/{ID_Venta}")
@@ -142,14 +142,14 @@ public class VentaControlador {
 		ventaExistente.setValor_Venta(cantidadTotal);
 		ventaExistente.setiDPedido(venta.getiDPedido());
 		ventaServicio.updateVenta(ventaExistente);
-		return "redirect:/Solware2/home/ConsultarAdmin";
+		return "redirect:/Solware2/Admin/ConsultarAdmin";
 	}
 
 	@GetMapping("/ConsultarAdmin/{ID_Venta}")
 	public String deleteCliente(@PathVariable Long ID_Venta) {
 
 		ventaServicio.delete(ID_Venta);
-		return "redirect:/Solware2/home/ConsultarAdmin";
+		return "redirect:/Solware2/Admin/ConsultarAdmin";
 
 	}
 
