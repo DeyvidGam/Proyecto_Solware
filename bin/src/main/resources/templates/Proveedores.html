@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Interfaz de Vendedor</title>
+
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+	crossorigin="anonymous">
+<script src="https://kit.fontawesome.com/babdd0dc30.js"
+	crossorigin="anonymous"></script>
+<link rel="stylesheet" type="text/css" href="/css/ab.css">
+<link rel="stylesheet" type="text/css" href="/css/estilofooter.css">
+<link rel="stylesheet" type="text/css" href="/css/estiloPerfilV.css">
+<script src="/js/Proveedores.js"></script>
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+<script
+	src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="/js/Ventas.js"></script>
+</head>
+<body>
+
+	<div class="container-fluid">
+		<div class="row justify-content-center align-content-center">
+
+			<div class="col-7 barra1" style="color: white;"></div>
+
+			<div class="col-5 barra1">
+				<div class="dropdown">
+					<a class="btn  dropdown-toggle boton text-light" type="button"
+						id="dropdownMenuButton1" data-bs-toggle="dropdown"
+						aria-expanded="false"> <i class="fas fa-user-circle user"></i>
+						Carlos David Beltran
+					</a>
+					<ul class="dropdown-menu boton"
+						aria-labelledby="dropdownMenuButton1">
+						<a class="dropdown-item" href="/Solware2/PerfilV">Mi perfil</a>
+						<div class="dropdown-divider"></div>
+						<a class="dropdown-item" href="/Solware2/home/index">Cerrar
+							sesión</a>
+				</div>
+				</ul>
+			</div>
+		</div>
+	</div>
+	</div>
+
+	<div class="container-fluid">
+		<div class="row">
+			<div class="barra-lateral col-12 col-sm-auto">
+
+				<nav class="menu d-flex d-sm-block justify-content-center flex-wrap">
+					<img id="logo" th:src="@{/img/LOGO SOL WARE .PNG}" width="140px">
+					<a class="option" href="/Solware2/aa"><i class="fas fa-home"
+						title="Inicio"></i><span>Inicio</span></a> <a class="option"
+						href="/Solware2/PerfilV"> <i class="fa-solid fa-user"
+						title="Perfil"></i><span>Perfil</span></a>
+					<div class="dropdown">
+						<a class=" dropdown-toggle " type="button"
+							data-bs-toggle="dropdown" aria-expanded="false"> Proveedor </a>
+						<ul class="dropdown-menu " aria-labelledby="dropdownMenuButton1">
+							<a class="dropdown-item" href="/Solware2/C_Proveedores/nuevo">Crear</a>
+							<a class="dropdown-item" href="/Solware2/C_Proveedores">Consultar</a>
+
+						</ul>
+					</div>
+
+					<div class="dropdown">
+						<a class=" dropdown-toggle " type="button"
+							data-bs-toggle="dropdown" aria-expanded="false"> Productos </a>
+						<ul class="dropdown-menu " aria-labelledby="dropdownMenuButton1">
+							<a class="dropdown-item" href="/Solware2/C_Productos/nuevo">Crear</a>
+							<a class="dropdown-item" href="/Solware2/C_Productos">Consultar</a>
+
+						</ul>
+					</div>
+					<div class="dropdown">
+						<a class=" dropdown-toggle " type="button"
+							data-bs-toggle="dropdown" aria-expanded="false"> Cliente </a>
+						<ul class="dropdown-menu " aria-labelledby="dropdownMenuButton1">
+							<a class="dropdown-item" href="/Solware2/C_Cliente/nuevo">Crear</a>
+							<a class="dropdown-item" href="/Solware2/C_Cliente">Consultar</a>
+
+						</ul>
+					</div>
+					<div class="dropdown">
+						<a class=" dropdown-toggle " type="button"
+							data-bs-toggle="dropdown" aria-expanded="false"> pedido </a>
+						<ul class="dropdown-menu " aria-labelledby="dropdownMenuButton1">
+							<a class="dropdown-item" href="/Solware2/Pedidos">Crear</a>
+							<a class="dropdown-item" href="/Solware2/C_Pedidos">Consultar</a>
+
+						</ul>
+					</div>
+					<a class="option" href="/Solware2/ConsultarV/nuevo"><i
+						class="fas fa-dollar-sign" title="Ventas"></i><span>Crear
+							Ventas</span></a> <a class="option" href="/Solware2/ConsultarV"> <i
+						class="fa-solid fa-magnifying-glass" title="Ventas"></i><span>Consultar
+							Ventas</span></a> <a class="option" href="/Solware2/ReportesV"><i
+						class="fa-solid fa-bug"></i><span>ReportesV</span></a>
+
+				</nav>
+			</div>
+			<style type="text/css">
+</style>
+			<main class="main col">
+				<div
+					class="row justify-content-center align-content-center text-center">
+					<div class="columna col-lg-6">
+						<main class="inicios">
+							<h1 class="perfil">Registrar Proveedor</h1>
+							<section class="form-register"
+								style="margin: auto; margin-top: 20px; width: 600px; height: 500px">
+
+								<div class="row">
+									<form th:action="@{/Solware2/C_Proveedores}"
+										th:object="${Proveedor}" method="POST">
+										<div class="row">
+											<div th:if="${exitoso}">
+												<div class="alert alert-success alert-dismissible">
+													<span th:text="${exitoso}"></span> <a href="#"
+														class="close" data-dismiss="alert" aria-label="close">&times;</a>
+												</div>
+											</div>
+											<div class="col-sm-2"></div>
+											<div class="col-sm-8">
+												<label for="Nombre" class="form-label">Nombre</label> <input
+													id="Nombre" type="text" class="form-control" required
+													th:field="*{Nombre}" placeholder="Nombre"
+													pattern="[a-zA-ZñÑ\s\.,;:\-_¡!¿\?]+">
+
+											</div>
+											<div class="col-sm-2"></div>
+										</div>
+										<div class="row">
+											<div class="col-sm-2"></div>
+											<div class="col-sm-8" style="margin-top: 20px;">
+												<label for="Email" class="form-label">Email</label> <input
+													id="Email" type="email" class="form-control" required
+													th:field="*{Email}" placeholder="Email">
+											</div>
+											<div class="col-sm-2"></div>
+										</div>
+										<div class="row">
+											<div class="col-sm-2"></div>
+											<div class="col-sm-8" style="margin-top: 20px;">
+												<label for="Telefono" class="form-label">Telefono</label> <input
+													id="Telefono" type="tel" class="form-control" required
+													th:field="*{telefono}" placeholder="Telefono"
+													pattern="[0-9]+">
+											</div>
+											<div class="col-sm-2"></div>
+
+										</div>
+
+										<div class="row">
+											<div class="col-md-12">
+												<br> <br> <input type="submit"
+													class="btn btn-primary" id="submit" onclick="validacion()"
+													value="Enviar"> <input type="reset" name="reset"
+													class="btn btn-danger" value="Restablecer">
+											</div>
+										</div>
+									</form>
+								</div>
+					</div>
+				</div>
+				</section>
+			</main>
+		</div>
+	</div>
+
+
+	<div th:insert="footer :: foot"></div>
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+		integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+		integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+		crossorigin="anonymous"></script>
+	<script src="https://kit.fontawesome.com/646c794df3.js"></script>
+
+
+
+
+
+</body>
+</html>
