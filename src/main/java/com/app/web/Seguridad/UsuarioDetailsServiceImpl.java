@@ -2,7 +2,6 @@ package com.app.web.Seguridad;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -26,14 +25,16 @@ public class UsuarioDetailsServiceImpl implements UserDetailsService{
 	@Autowired
     private UsuarioServicio  usuarioServicio;
  
-    @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Usuario usuario = usuarioRepository.findByCorreo(username);
-        if (usuario == null) {
-            throw new UsernameNotFoundException(username);
-        }
-        List<GrantedAuthority> roles = new ArrayList<>();
-        roles.add(new SimpleGrantedAuthority(usuario.getRol().getNombre_Rol()));
-        return new User(usuario.getCorreo(), usuario.getContrasena(), roles);
-    }
+	@Override
+	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+	    Usuario usuario = usuarioRepository.findByCorreo(username);
+	    if (usuario == null) {
+	        throw new UsernameNotFoundException(username);
+	    }
+	    List<GrantedAuthority> roles = new ArrayList<>();
+	    roles.add(new SimpleGrantedAuthority(usuario.getRol().getNombre_Rol()));
+	    
+	    return new User(usuario.getCorreo(), usuario.getContrasena(), roles);
+	}
+
 }
