@@ -29,7 +29,7 @@ public class Usuario {
 	    private String correo;
 
 	    @Column(name = "telefono")
-	    private int telefono;
+	    private long telefono;
 
 	    @Column(name = "Contrasena")
 	    private String Contrasena;
@@ -108,11 +108,11 @@ public class Usuario {
 			this.correo = correo;
 		}
 
-		public int getTelefono() {
+		public long getTelefono() {
 			return telefono;
 		}
 
-		public void setTelefono(int telefono) {
+		public void setTelefono(long telefono) {
 			this.telefono = telefono;
 		}
 
