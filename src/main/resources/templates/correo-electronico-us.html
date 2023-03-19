@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Bienvenido a nuestra aplicación</title>
+    <style>
+        /* Aquí puedes agregar tus estilos CSS */
+        body {
+            font-family: Arial, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <h1>Bienvenido a nuestra aplicación</h1>
+    <p>Hola <span th:text="${usuario.nombre}"></span>,</p>
+     <p>Correo <span th:text="${usuario.correo}"></span>,</p>
+     
+    <p>Gracias por registrarte en nuestra aplicación.</p>
+    <p>Saludos cordiales,</p>
+    <p>El equipo de Solware2</p>
+   
+</body>
+ <p>
+        Declinación de Responsabilidades: Los servicios de Solware son soportados tecnológicamente por © Google y ofrecidos por Solware –   Usuario de la aplicaion, las opiniones que contenga este mensaje son exclusivas de su autor y no representan la opinión de la aplicaion web o de sus autoridades. El receptor deberá verificar posibles virus informáticos que tenga el correo o cualquier anexo, razón por la cual Solware no es responsable de los daños causados por cualquier virus transmitido en este correo electrónico.
+</p>
+<p>Los contenidos, textos, imágenes, archivos enviados en este mensaje son responsabilidad exclusiva del remitente y no reflejan ni comprometen de ninguna manera a la aplicacion. No se autoriza el uso de esta herramienta para el intercambio de correos masivos, cadenas o spam, ni de mensajes ofensivos, de carácter político, sexual o religioso, con fines de lucro, con propósitos delictivos o cualquier otro mensaje que se considere indebido o que vaya en contra de la Ley.
+    </p>
+</html>

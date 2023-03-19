@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 import com.app.web.entidad.Usuario;
 import com.app.web.repositorio.UsuarioRepositorio;
 import com.app.web.servicio.UsuarioServicio;
-
+import java.util.Optional;
 @Service("usuarioDetailsService")
 public class UsuarioDetailsServiceImpl implements UserDetailsService{
 
@@ -27,13 +27,12 @@ public class UsuarioDetailsServiceImpl implements UserDetailsService{
  
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-	    Usuario usuario = usuarioRepository.findByCorreo(username);
-	    if (usuario == null) {
-	        throw new UsernameNotFoundException(username);
-	    }
+	    Optional<Usuario> usuarioOptional = usuarioRepository.findByCorreo(username);
+	    Usuario usuario = usuarioOptional.orElseThrow(() -> new UsernameNotFoundException(username));
+
 	    List<GrantedAuthority> roles = new ArrayList<>();
 	    roles.add(new SimpleGrantedAuthority(usuario.getRol().getNombre_Rol()));
-	    
+
 	    return new User(usuario.getCorreo(), usuario.getContrasena(), roles);
 	}
 

@@ -2,7 +2,12 @@ package com.app.web.controlador;
 
 import java.util.List;
 
+import javax.mail.MessagingException;
+import javax.mail.internet.MimeMessage;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,6 +20,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.thymeleaf.TemplateEngine;
+import org.thymeleaf.context.Context;
 
 import com.app.web.entidad.Rol;
 import com.app.web.entidad.Usuario;
@@ -31,6 +38,13 @@ public class UsuarioControlador {
 	@Autowired
 	private  UsuarioServicio usuarioServicio;
 
+	
+	@Autowired
+	private JavaMailSender javaMailSender;
+
+	@Autowired
+	private TemplateEngine templateEngine;
+	
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 	@Autowired
@@ -57,9 +71,28 @@ public class UsuarioControlador {
 	}
 
 	@PostMapping("/ConsultarUs")
-	public String guardarUsuario(@ModelAttribute("Usuario") Usuario usuario, RedirectAttributes attributes) {
+	public String guardarUsuario(@ModelAttribute("Usuario") Usuario usuario, RedirectAttributes attributes) throws MessagingException {
 	    usuario.setEstado(true);
 	    usuario.setContrasena(passwordEncoder.encode(usuario.getContrasena())); // encriptar la contraseña
+	    
+	    // Validar correo electrónico
+	    if(usuarioServicio.existeCorreo(usuario.getCorreo())) {
+	        attributes.addFlashAttribute("error", "El correo electrónico ya está registrado");
+	        return "redirect:/Solware2/Admin/ConsultarUs/nuevo";
+	    }
+	    
+	    // Enviar correo electrónico de bienvenida
+	    MimeMessage mensaje = javaMailSender.createMimeMessage();
+	    MimeMessageHelper helper = new MimeMessageHelper(mensaje, "utf-8");
+	    helper.setFrom("deyvidgame123@gmail.com");
+	    helper.setTo(usuario.getCorreo());
+	    helper.setSubject("Bienvenido a nuestra aplicación");
+	    Context contexto = new Context();
+	    contexto.setVariable("usuario", usuario);
+	    String html = templateEngine.process("correo-electronico-us.html", contexto);
+	    helper.setText(html, true);
+	    javaMailSender.send(mensaje);
+
 	    attributes.addFlashAttribute("exitoso", "Registro Exitoso");
 	    usuarioServicio.guardarUsuario(usuario);
 	    return "redirect:/Solware2/Admin/ConsultarUs/nuevo";

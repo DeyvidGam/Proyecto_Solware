@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.app.web.entidad.Usuario;
 import com.app.web.repositorio.UsuarioRepositorio;
-
+import java.util.Optional;
 @Service
 public class UsuarioServicioImp implements UsuarioServicio{
 	 @Autowired
@@ -37,8 +37,11 @@ public class UsuarioServicioImp implements UsuarioServicio{
 		}
 
 		@Override
-		public Usuario obtenerCorreUsuario(String Correo) {
-			// TODO Auto-generated method stub
-			return usuarioRepositorio.findByCorreo(Correo);
+		public Optional<Usuario> obtenerCorreUsuario(String correo) {
+		    return usuarioRepositorio.findByCorreo(correo);
 		}
+		@Override
+	    public boolean existeCorreo(String correo) {
+	        return usuarioRepositorio.findByCorreo(correo).isPresent();
+	    }
 }
