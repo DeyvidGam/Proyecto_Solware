@@ -70,9 +70,9 @@
 								<td th:text="${inventario.Cantidad}"></td>
 								<td th:text="${inventario.Fecha}"></td>
 								<td><a
-									th:href="@{/Solware2/home/Consultar/{ID_Inventario}(ID_Inventario=${inventario.ID_Inventario})}"
+									th:href="@{/Solware2/Admin/Consultar/{ID_Inventario}(ID_Inventario=${inventario.ID_Inventario})}"
 									class="btn btn-danger">eliminar</a> <a
-									th:href="@{/Solware2/home/Consultar/editar/{ID_Inventario}(ID_Inventario=${inventario.ID_Inventario})}"
+									th:href="@{/Solware2/Admin/Consultar/editar/{ID_Inventario}(ID_Inventario=${inventario.ID_Inventario})}"
 									class="btn btn-info">Editar</a></td>
 							</tr>
 						</tbody>

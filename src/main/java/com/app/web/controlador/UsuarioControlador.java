@@ -85,7 +85,7 @@ public class UsuarioControlador {
 		usuarioExistente.setApellido(usuario.getApellido());
 		usuarioExistente.setCorreo(usuario.getCorreo());
 		usuarioExistente.setTelefono(usuario.getTelefono());
-		usuarioExistente.setContrasena(usuario.getContrasena());
+		usuarioExistente.setContrasena(passwordEncoder.encode(usuario.getContrasena()));
 		usuarioServicio.updateUsuario(usuarioExistente);
 		return "redirect:/Solware2/Admin/ConsultarUs";
 	}

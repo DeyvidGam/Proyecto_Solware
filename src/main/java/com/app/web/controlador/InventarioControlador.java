@@ -105,7 +105,7 @@ public class InventarioControlador {
 		List<Movimiento> listamovimientos = movimientoServicio.listarmovimiento();
 		modelo.addAttribute("insumos", listainsumos);
 		modelo.addAttribute("movimientos", listamovimientos);
-
+		
 		modelo.addAttribute("Inventario", inventarioServicio.obtenerInventarioPorId(ID_Inventario));
 		return "editar_inventario";
 	}
@@ -118,7 +118,6 @@ public class InventarioControlador {
 		inventarioExistente.setMovimiento(inventario.getMovimiento());
 		inventarioExistente.setCantidad(inventario.getCantidad());
 		inventarioExistente.setFecha(inventario.getFecha());
-
 		inventarioServicio.updateInventario(inventarioExistente);
 		return "redirect:/Solware2/Admin/Consultar";
 	}

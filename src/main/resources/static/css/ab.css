@@ -1,6 +1,9 @@
 body {
-    background: #f1f1f1;
     background-image: url("https://fondosmil.com/fondo/9864.jpg");
+background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	background-attachment: fixed;
 }
 a.selected{
   color: rgb(124, 16, 16);
@@ -61,7 +64,7 @@ a.selected{
     min-width: 250px;
     min-height: 100vh;
     padding: 0;
-    
+    display: inline;
 }
 
 .barra-lateral a {
@@ -81,7 +84,7 @@ a.selected{
 }
 
 .barra-lateral .menu a:hover {
-    background-color: #003C5D;
+    background-color: #7e7e7e;
     text-decoration: none;
 }
 
@@ -150,12 +153,6 @@ a.selected{
         overflow: visible;
     }
     
-}
-
-.formulariorecursos {
-    box-shadow: 0 0 3px rgba(0, 0, 0, 0.568);
-    border-radius: 10px;
-    padding: 20px;
 }
 
 .menu {
