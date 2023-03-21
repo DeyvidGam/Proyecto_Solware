@@ -34,59 +34,62 @@
 	<div th:insert="headerAdmin :: header"></div>
 	<div th:insert="BarraLateralAdmin:: barra"></div>
 
+	<main>
+		<div
+			class="row justify-content-center align-content-center text-center">
+			<div class="columna col-lg-12">
 
-	<div class="container">
-		<div Class="row">
-			<center>
-				<h1 style="margin-top: 20px">Editar</h1>
-			</center>
-		</div>
-
-		<section class="form-register" style="margin: auto; margin-top: 20px;">
-
-
-			<form
-				th:action="@{/Solware2/Admin/C_ProductosA/{ID_Producto}(ID_Producto=${Producto.ID_Producto})} "
-				th:object="${Producto}" method="POST">
-				<div class="row">
-					<div class="col-sm-6">
-						<label for="Nombre" class="form-label">Nombre</label> <input
-							id="Nombre" type="text" class="form-control" required
-							th:field="*{Nombre}">
-					</div>
-					<div class="col-sm-6">
-						<label class="form-label">Proveedor</label> <select
-							th:field="*{Proveedor}" class="form-control">
-							<option th:each="proveedor:${Proveedores}"
-								th:value="${proveedor.ID_Proveedor}"
-								th:text="${proveedor.Nombre}"></option>
-						</select>
-					</div>
-
-				</div>
-				<div class="row">
-					<div class="col-sm-6">
-						<label for="Tamaño" class="form-label">Tamaño</label> <input
-							id="Tamaño" type="text" class="form-control" required
-							th:field="*{Tamano}">
-					</div>
-					<div class="col-sm-6">
-						<label for="Precio" class="form-label">Precio</label> <input
-							id="Precio" type="number" class="form-control" required
-							th:field="*{Precio}">
-					</div>
-				</div>
-				<div class="row">
+				<div class="col-mx-12 medio" style="margin: auto;">
 					<div class="col-md-12">
-						<br> <br> <input type="submit" class="btn btn-primary"
-							id="submit" onclick="validacion()" value="Enviar"> <input
-							type="reset" name="reset" class="btn btn-danger"
-							value="Restablecer">
+						<h1 style="text-align: center;">Editar</h1>
 					</div>
+							<section class="form-register"
+						style="margin: auto; margin-top: 20px; width: 650px; height: 500px">
+					<form
+						th:action="@{/Solware2/Admin/C_ProductosA/{ID_Producto}(ID_Producto=${Producto.ID_Producto})} "
+						th:object="${Producto}" method="POST">
+						<div class="row">
+							<div class="col-sm-6">
+								<label for="Nombre" class="form-label">Nombre</label> <input
+									id="Nombre" type="text" class="form-control" required
+									th:field="*{Nombre}">
+							</div>
+							<div class="col-sm-6">
+								<label class="form-label">Proveedor</label> <select
+									th:field="*{Proveedor}" class="form-control">
+									<option th:each="proveedor:${Proveedores}"
+										th:value="${proveedor.ID_Proveedor}"
+										th:text="${proveedor.Nombre}"></option>
+								</select>
+							</div>
+
+						</div>
+						<div class="row">
+							<div class="col-sm-6">
+								<label for="Tamaño" class="form-label">Tamaño</label> <input
+									id="Tamaño" type="text" class="form-control" required
+									th:field="*{Tamano}">
+							</div>
+							<div class="col-sm-6">
+								<label for="Precio" class="form-label">Precio</label> <input
+									id="Precio" type="number" class="form-control" required
+									th:field="*{Precio}">
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+								<br> <br> <input type="submit" class="btn btn-primary"
+									id="submit" onclick="validacion()" value="Enviar"> <input
+									type="reset" name="reset" class="btn btn-danger"
+									value="Restablecer">
+							</div>
+						</div>
+					</form>
+					</section>
 				</div>
-			</form>
-		</section>
-	</div>
+			</div>
+		</div>
+	</main>
 
 	<div th:insert="footer :: foot"></div>
 

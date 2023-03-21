@@ -33,7 +33,7 @@
 
 	<div th:insert="headerAdmin :: header"></div>
 	<div th:insert="BarraLateralAdmin:: barra"></div>
-	<main class="main col">
+	<main >
 		<div
 			class="row justify-content-center align-content-center text-center">
 			<div class="columna col-lg-12">
@@ -43,8 +43,7 @@
 						cellspacing="0" width="100%">
 
 						<h1 style="text-align: center;">Consultar usuarios</h1>
-						<thead>
-							<th>ID usuario</th>
+						<thead>			
 							<th>Nombre</th>
 							<th>Apellido</th>
 							<th>Correo</th>
@@ -55,8 +54,7 @@
 							<th>Acciones</th>
 						</thead>
 						<tbody>
-							<tr th:each="usuario : ${Usuario}">
-								<td th:text="${usuario.ID_Usuario}"></td>
+							<tr th:each="usuario : ${Usuario}">							
 								<td th:text="${usuario.Nombre}"></td>
 								<td th:text="${usuario.Apellido}"></td>
 								<td th:text="${usuario.Correo}"></td>

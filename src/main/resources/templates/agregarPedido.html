@@ -40,85 +40,87 @@
 </head>
 <body>
 
-		<div th:insert="headerAdmin :: header"></div>
-		
-	<div th:insert="BarraLateralAdmin :: Barra"></div>
+	<div th:insert="headerAdmin :: header"></div>
 
-			<main class="main col">
-				<div class="row justify-content-center align-content-center text-center">
-					<div class="columna col-lg-10">
+	<div th:insert="BarraLateralAdmin :: barra"></div>
 
-						<form th:action="@{/Solware2/home/C_Pedidos}"
-							th:object="${Pedido}" method="POST">
-										
-								<div class="col-sm-12">
+	<main>
+		<div
+			class="row justify-content-center align-content-center text-center">
+			<div class="columna col-lg-10">
 
-											<table id="tabla" class="table table-striped table-bordered" width="100%">
-												<thead class="table-dark">
-													<tr>
-														<th>ID_Producto</th>
-														<th>Nombre</th>
-														<th>Proveedor</th>
-														<th>Tamaño</th>
-														<th>Precio</th>
-														<th>Opciones</th>
-													</tr>
-												</thead>
-												<tbody>
-													<tr th:each="productos : ${Producto}">
-														<td th:text="${productos.ID_Producto}">ID_Producto</td>
-														<td th:text="${productos.Nombre}">Nombre</td>
-														<td th:text="${productos.Proveedor.nombre}">Proveedor</td>
-														<td th:text="${productos.Tamano}">Tamano</td>
-														<td th:text="${productos.Precio}">Precio</td>
+				<form th:action="@{/Solware2/home/C_Pedidos}" th:object="${Pedido}"
+					method="POST">
 
-														<td><a
-															th:href="@{/Solware2/home/PedidosA/{id}(id=${productos.ID_Producto})}"
-															class="btn btn-success"><i class="fa-solid fa-plus"></i></a></td>
-													</tr>
-												</tbody>
-											</table>
-										</div>
-							</form>
-									</div>
-					
+					<div class="col-sm-12">
+
+						<table id="tabla" class="table table-striped table-bordered"
+							width="100%">
+							<thead class="table-dark">
+								<tr>
+									<th>ID_Producto</th>
+									<th>Nombre</th>
+									<th>Proveedor</th>
+									<th>Tamaño</th>
+									<th>Precio</th>
+									<th>Opciones</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr th:each="productos : ${Producto}">
+									<td th:text="${productos.ID_Producto}">ID_Producto</td>
+									<td th:text="${productos.Nombre}">Nombre</td>
+									<td th:text="${productos.Proveedor.nombre}">Proveedor</td>
+									<td th:text="${productos.Tamano}">Tamano</td>
+									<td th:text="${productos.Precio}">Precio</td>
+
+									<td><a
+										th:href="@{/Solware2/Admin/PedidosA/{id}(id=${productos.ID_Producto})}"
+										class="btn btn-success"><i class="fa-solid fa-plus"></i></a></td>
+								</tr>
+							</tbody>
+						</table>
 					</div>
-					</main>
-				
-	
+				</form>
+			</div>
+
+		</div>
+	</main>
+
+
 	<div th:insert="footer :: foot"></div>
 
 
 
 
 
-		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-		<script
-			src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
-			integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
-			crossorigin="anonymous"></script>
-		<script
-			src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
-			integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
-			crossorigin="anonymous"></script>
-		<script src="https://kit.fontawesome.com/646c794df3.js"></script>
-        
-    </script>
-		<!-- jQuery, Popper.js, Bootstrap JS -->
-		<script src="/jquery/jquery-3.3.1.min.js"></script>
-		<script src="/popper/popper.min.js"></script>
-		<script src="/bootstrap/js/bootstrap.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+		integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+		integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+		crossorigin="anonymous"></script>
+	<script src="https://kit.fontawesome.com/646c794df3.js"></script>
 
-		<!-- datatables JS -->
-		<script type="text/javascript" src="/datatables/datatables.min.js"></script>
+	</script>
+	<!-- jQuery, Popper.js, Bootstrap JS -->
+	<script src="/jquery/jquery-3.3.1.min.js"></script>
+	<script src="/popper/popper.min.js"></script>
+	<script src="/bootstrap/js/bootstrap.min.js"></script>
 
-		<!-- para usar botones en datatables JS -->
-		<script src="/datatables/Buttons-1.5.6/js/dataTables.buttons.min.js"></script>
-		<script src="/datatables/JSZip-2.5.0/jszip.min.js"></script>
-		<script src="/datatables/pdfmake-0.1.36/pdfmake.min.js"></script>
-		<script src="/datatables/pdfmake-0.1.36/vfs_fonts.js"></script>
-		<script src="/datatables/Buttons-1.5.6/js/buttons.html5.min.js"></script>
-		<script>
+	<!-- datatables JS -->
+	<script type="text/javascript" src="/datatables/datatables.min.js"></script>
+
+	<!-- para usar botones en datatables JS -->
+	<script src="/datatables/Buttons-1.5.6/js/dataTables.buttons.min.js"></script>
+	<script src="/datatables/JSZip-2.5.0/jszip.min.js"></script>
+	<script src="/datatables/pdfmake-0.1.36/pdfmake.min.js"></script>
+	<script src="/datatables/pdfmake-0.1.36/vfs_fonts.js"></script>
+	<script src="/datatables/Buttons-1.5.6/js/buttons.html5.min.js"></script>
+	<script>
       $(document).ready(function(filename = '') {    
   $('#tabla').DataTable({        
       language: {

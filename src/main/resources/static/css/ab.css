@@ -1,7 +1,24 @@
 body {
     background: #f1f1f1;
     background-image: url("https://fondosmil.com/fondo/9864.jpg");
+    background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	background-attachment: fixed;
 }
+ main{
+    position: absolute;
+    top: 50%;
+    left: 55%;
+    transform: translate(-50%, -50%);
+    width: 1400px;
+
+  }
+  
+   main-form{
+   padding-top: 20px;
+  }
+  
 a.selected{
   color: rgb(124, 16, 16);
 }
